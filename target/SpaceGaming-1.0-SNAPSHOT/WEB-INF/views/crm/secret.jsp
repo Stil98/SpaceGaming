@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Login Non l'ho mai assaggiata ma dicono di si</title>
+    <title>Login Admin</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
