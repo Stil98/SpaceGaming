@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Login Admin prova prova gennaro è qui</title>
+    <title>Login</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
