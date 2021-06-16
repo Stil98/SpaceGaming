@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SpaceGaming:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>SpaceGaming</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="SpaceGaming-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="SpaceGaming:war exploded" />
+    </root>
+  </artifact>
+</component>
