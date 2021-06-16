@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Login è buona la mozzarella?</title>
+    <title>Login Non l'ho mai assaggiata ma dicono di si</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
