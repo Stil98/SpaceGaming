@@ -1,4 +1,4 @@
-package model.product;
+package progetto.SpaceGaming.product;
 
 public class Product {
     private int id;
