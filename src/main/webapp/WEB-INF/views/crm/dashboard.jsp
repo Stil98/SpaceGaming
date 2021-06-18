@@ -13,7 +13,7 @@
 <body>
 <main class="app">
     <aside class="sidebar">
-        <nav class="menu">
+        <nav class="menu grid-y align-center">
             <img src="${context}/images/logo.png" width="100" height="100">
             <a href="">Gestione Clienti</a>
             <a href="">Gestione Prodotti</a>
@@ -23,7 +23,7 @@
             <a href="">Logout</a>
         </nav>
     </aside>
-    <section class="content">
+    <section class="content grid-y">
         <header class="topbar">
             this is a topbar
         </header>
