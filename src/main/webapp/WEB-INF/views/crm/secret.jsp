@@ -9,8 +9,8 @@
     </jsp:include>
 </head>
 <body>
-<form class="app" action="./account/secret" method="post">
-    <fieldset class="grid-y cell">
+<form class="app align-center" action="./account/secret" method="post">
+    <fieldset class="grid-y cell field">
         <h2>Login Pannello Admin</h2>
         <span>Email</span>
         <label for="email">
@@ -20,7 +20,7 @@
         <label for="password">
             <input type="password" name="password" id="password">
         </label>
-        <button type="submit">Log in</button>
+        <button class="btn" type="submit">Log in</button>
     </fieldset>
 </form>
 </body>

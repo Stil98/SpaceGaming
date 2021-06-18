@@ -27,10 +27,6 @@
     src: url("../fonts/OpenSans-Light.ttf");
 }
 
-html {
-    color: green;
-}
-
 :root{
     font-weight: normal;
     font-style: normal;
