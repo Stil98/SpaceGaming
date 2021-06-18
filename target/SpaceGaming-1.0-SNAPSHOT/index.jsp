@@ -7,6 +7,6 @@
     </jsp:include>
 </head>
 <body>
-<% response.sendRedirect("./crm/dashboard"); %>
+<% response.sendRedirect("./account/header"); %>
 </body>
 </html>
