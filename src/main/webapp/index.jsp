@@ -7,6 +7,6 @@
     </jsp:include>
 </head>
 <body>
-<% response.sendRedirect("./account/secret"); %>
+<% response.sendRedirect("./account/dashboard"); %>
 </body>
 </html>

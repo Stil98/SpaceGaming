@@ -9,7 +9,7 @@
     </jsp:include>
     <style>
         .app{
-            background-image: linear-gradient(var(--viola), black);
+            background-image: linear-gradient(var(--viola), var(--lilla));
         }
 
         .login{
@@ -23,16 +23,23 @@
         }
 
         .btn{
+            font-weight: bold;
             color: white;
             background-color: var(--viola);
             margin-top: 15px;
+            border: solid 5px var(--viola);
+            width: 100px;
+        }
+
+        .btn:hover{
+            background-color: white;
+            color: var(--viola);
         }
     </style>
 </head>
 <body>
 <form class="app grid-x justify-center align-center" action="./account/secret" method="post">
     <fieldset class="grid-y cell w40 login">
-        <h2>Login Pannello Admin</h2>
         <span>Email</span>
         <label for="email" class="field">
             <input type="email" name="email" id="email">
@@ -41,7 +48,7 @@
         <label for="password" class="field">
             <input type="password" name="password" id="password">
         </label>
-        <button class="btn" type="submit">Log in</button>
+        <button class="btn" type="submit">Login</button>
     </fieldset>
 </form>
 </body>
