@@ -1,0 +1,48 @@
+.app{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.topbar, .sidebar{
+    background-color: var(--viola);
+    padding: .5rem;
+}
+.sidebar > a{
+    color: white;
+    padding: 1rem;
+}
+
+.menu > a{
+    color: white;
+    padding: 1rem;
+    margin: .5rem;
+    border: 2px solid black;
+    width: 75%;
+    text-align: center;
+    filter: brightness(130%);
+}
+
+a {
+    text-decoration: none;
+    background-color: var(--viola);
+}
+
+.menu > a:hover{
+    filter: brightness(160%);
+}
+
+.body{
+    flex-grow: 1;
+}
+
+.content{
+    background-color: #CCCCCC;
+    flex: 1;
+}
+
+.info{
+    text-align: right;
+    font-style: italic;
+    font-weight: normal;
+    margin-right: 1rem;
+}
