@@ -1,4 +1,5 @@
-package progetto.SpaceGaming.cart;
+package model.cart;
+
 
 import model.product.Product;
 

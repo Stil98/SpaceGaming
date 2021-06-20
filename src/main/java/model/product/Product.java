@@ -1,9 +1,12 @@
-package progetto.SpaceGaming.product;
+package model.product;
+
+import model.category.Category;
 
 public class Product {
     private int id;
     private String meta, fullName;
     private double price, weight;
+    private Category category;
 
     public Product() {
         super();
@@ -47,5 +50,13 @@ public class Product {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

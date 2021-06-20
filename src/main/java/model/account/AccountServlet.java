@@ -1,4 +1,4 @@
-package progetto.SpaceGaming.account;
+package model.account;
 
 
 import javax.servlet.ServletException;

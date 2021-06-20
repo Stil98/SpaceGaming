@@ -1,4 +1,4 @@
-package progetto.SpaceGaming.cart;
+package model.cart;
 
 import java.util.List;
 
