@@ -1,6 +1,6 @@
-package model.category;
+package progetto.SpaceGaming.category;
 
-import model.ResultSetExtractor;
+import progetto.SpaceGaming.ResultSetExtractor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

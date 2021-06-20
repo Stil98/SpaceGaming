@@ -1,7 +1,7 @@
-package model.order;
+package progetto.SpaceGaming.order;
 
-import model.account.Account;
-import model.cart.Cart;
+import progetto.SpaceGaming.account.Account;
+import progetto.SpaceGaming.cart.Cart;
 
 public class Order {
     private int id;

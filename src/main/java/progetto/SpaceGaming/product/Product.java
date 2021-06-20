@@ -1,6 +1,6 @@
-package model.product;
+package progetto.SpaceGaming.product;
 
-import model.category.Category;
+import progetto.SpaceGaming.category.Category;
 
 public class Product {
     private int id;

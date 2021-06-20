@@ -1,5 +1,5 @@
 
-package model;
+package progetto.SpaceGaming;
 
 import java.io.IOException;
 import java.sql.ResultSet;

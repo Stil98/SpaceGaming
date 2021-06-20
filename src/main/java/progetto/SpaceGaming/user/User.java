@@ -1,6 +1,6 @@
-package model.user;
+package progetto.SpaceGaming.user;
 
-import model.order.Order;
+import progetto.SpaceGaming.order.Order;
 
 import java.util.List;
 import java.util.Objects;

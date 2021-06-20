@@ -1,6 +1,6 @@
-package model.category;
+package progetto.SpaceGaming.category;
 
-import model.ConPool;
+import progetto.SpaceGaming.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;

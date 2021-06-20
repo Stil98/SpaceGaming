@@ -1,4 +1,4 @@
-package model.category;
+package progetto.SpaceGaming.category;
 
 public class Category {
     private int id;

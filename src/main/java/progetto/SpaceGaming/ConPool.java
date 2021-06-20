@@ -1,4 +1,4 @@
-package model;
+package progetto.SpaceGaming;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 
