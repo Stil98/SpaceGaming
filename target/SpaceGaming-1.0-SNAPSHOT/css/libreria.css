@@ -27,11 +27,8 @@
     src: url("../fonts/OpenSans-Light.ttf");
 }
 
-html {
-    color: green;
-}
-
 :root{
+    font-family: 'OpenSans';
     font-weight: normal;
     font-style: normal;
     font-size: clamp(16px, 2vw, 24px);
@@ -45,12 +42,29 @@ html {
     --success: #89c540;
 }
 
+input, select, textarea{
+    padding: 8px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(212,212,212,.54);
+}
+
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
 
 .hide{
     display: none !important;
+}
+
+.app{
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
 }
 
 .grid-x{
@@ -65,6 +79,10 @@ input:focus, textarea:focus, select:focus{
 
 .grid-inline{
     display: inline-flex;
+}
+
+.justify-center{
+    justify-content: center;
 }
 
 .align-center{
@@ -96,4 +114,46 @@ input:focus, textarea:focus, select:focus{
 
 .field>input[disabled], .field>select[disabled], .field>textarea[disabled]{
     background-color: grey;
+}
+
+.table{
+    border-collapse: collapse;
+    background-color: grey;
+}
+
+.table > thead{
+    visibility: hidden;
+}
+
+.table tr{
+    border: 1px solid black;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    display: block;
+}
+
+@media screen and (min-width: 769px){
+    .w10{
+        flex-basis: 10%;
+    }
+
+    .w25{
+        flex-basis: 25%;
+    }
+
+    .w40{
+        flex-basis: 40%;
+    }
+
+    .w50{
+        flex-basis: 50%;
+    }
+
+    .w75{
+        flex-basis: 75%;
+    }
+
+    .w80{
+        flex-basis: 80%;
+    }
 }

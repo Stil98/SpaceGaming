@@ -21,6 +21,9 @@ public class AccountServlet extends HttpServlet {
             case "/secret":  //login admin
                 request.getRequestDispatcher("/WEB-INF/views/crm/secret.jsp").forward(request, response);
                 break;
+            case "/header":
+                request.getRequestDispatcher("/WEB-INF/views/partials/header.jsp").forward(request, response);
+                break;
             default:
                 break;
         }

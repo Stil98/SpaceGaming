@@ -1,7 +1,7 @@
 package model.cart;
 
 
-import model.product.Product;
+import progetto.SpaceGaming.product.Product;
 
 public class CartItem {
 
