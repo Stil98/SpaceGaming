@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -24,14 +24,8 @@
         </nav>
     </aside>
     <section class="content grid-y">
-        <header class="topbar grid-x">
-            <img src="${context}/icons/menu.png">
-            <label class="field command">
-                <input type="text" placeholder="Cerca Comandi">
-            </label>
-            <span class="account">
-                Benvenuto Amministratore
-            </span>
+        <header class="topbar">
+            this is a topbar
         </header>
         <div class="body"></div>
         <footer class="info">

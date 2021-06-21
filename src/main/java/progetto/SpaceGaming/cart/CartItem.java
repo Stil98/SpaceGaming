@@ -1,5 +1,6 @@
 package progetto.SpaceGaming.cart;
 
+
 import progetto.SpaceGaming.product.Product;
 
 public class CartItem {
