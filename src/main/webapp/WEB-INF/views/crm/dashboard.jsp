@@ -8,6 +8,7 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Admin Dashboard"/>
         <jsp:param name="styles" value="crm"/>
+        <jsp:param name="scripts" value="crm"/>
     </jsp:include>
 </head>
 <body>
@@ -24,12 +25,13 @@
         </nav>
     </aside>
     <section class="content grid-y">
-        <header class="topbar grid-x">
-            <img src="${context}/icons/menu.svg">
+        <header class="topbar grid-x align-center">
+            <img class="burger" src="${context}/icons/menu.svg">
             <label class="field command">
                 <input type="text" placeholder="Cerca Comandi">
             </label>
             <span class="account">
+                <img src="${context}/icons/menu.svg">
                 Benvenuto Amministratore
             </span>
         </header>

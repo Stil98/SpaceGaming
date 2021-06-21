@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -8,6 +8,7 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Admin Dashboard"/>
         <jsp:param name="styles" value="crm"/>
+        <jsp:param name="scripts" value="crm"/>
     </jsp:include>
 </head>
 <body>
@@ -24,8 +25,15 @@
         </nav>
     </aside>
     <section class="content grid-y">
-        <header class="topbar">
-            this is a topbar
+        <header class="topbar grid-x align-center">
+            <img class="burger" src="${context}/icons/menu.svg">
+            <label class="field command">
+                <input type="text" placeholder="Cerca Comandi">
+            </label>
+            <span class="account">
+                <img src="${context}/icons/menu.svg">
+                Benvenuto Amministratore
+            </span>
         </header>
         <div class="body"></div>
         <footer class="info">
