@@ -1,18 +1,17 @@
-package progetto.SpaceGaming.category;
+package progetto.SpaceGaming.console;
 
 import progetto.SpaceGaming.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CategoryDAO {
-    public void addCategory(Category cat){
+public class ConsoleDAO {
+    public void addConsole(Console cat){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO categoria (title, description, id) VALUES(?,?,?)");
-            ps.setString(1, cat.getTitle());
-            ps.setString(2, cat.getDescription());
-            ps.setInt(3,cat.getId());
+                    "INSERT INTO Console (nome, descrizione) VALUES(?,?)");
+            ps.setString(1, cat.getNome());
+            ps.setString(2, cat.getDescrizione());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -21,12 +20,11 @@ public class CategoryDAO {
         }
     }
 
-    public boolean doChanges(Category cat){
+    public boolean doChanges(Console cat){
         try(Connection con = ConPool.getConnection()){
-            PreparedStatement ps = con.prepareStatement("UPDATE categoria c SET c.title = (?), c.description = (?) WHERE c.id = (?);");
-            ps.setString(1, cat.getTitle());
-            ps.setString(2, cat.getDescription());
-            ps.setInt(3,cat.getId());
+            PreparedStatement ps = con.prepareStatement("UPDATE Console c SET c.descrizione = (?) WHERE c.nome = (?);");
+            ps.setString(1, cat.getNome());
+            ps.setString(2, cat.getDescrizione());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -36,10 +34,10 @@ public class CategoryDAO {
         }
     }
 
-    public ArrayList<Category> doRetrieveAll(){
-        ArrayList<Category> result=new ArrayList<Category>();
+    public ArrayList<Console> doRetrieveAll(){
+        ArrayList<Console> result = new ArrayList<Console>();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM category as cat");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Console as cat");
             ResultSet rs = ps.executeQuery();
             CategoryExtractor catExtractor = new CategoryExtractor();
             while(rs.next()) {
@@ -52,11 +50,11 @@ public class CategoryDAO {
 
     }
 
-    public Category doRetrieveById(long idCategoria){
-        Category c = null;
+    public Console doRetrieveById(String nome){
+        Console c = null;
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM category as cat WHERE id=?");
-            ps.setLong(1,idCategoria);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Console as cat WHERE nome=?");
+            ps.setString(1, nome);
             ResultSet rs = ps.executeQuery();
             CategoryExtractor catExtractor = new CategoryExtractor();
             if(rs.next()) {

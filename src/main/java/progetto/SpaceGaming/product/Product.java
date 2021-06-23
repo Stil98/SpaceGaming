@@ -1,12 +1,9 @@
 package progetto.SpaceGaming.product;
 
-import progetto.SpaceGaming.category.Category;
-
 public class Product {
-    private int id;
-    private String meta, fullName;
-    private double price, weight;
-    private Category category;
+    private int id, qty;
+    private String descrizione, nome;
+    private double prezzo;
 
     public Product() {
         super();
@@ -16,47 +13,48 @@ public class Product {
         return id;
     }
 
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public String getFullName() {
+        return nome;
+    }
+
+    public void setFullName(String fullName) {
+        this.nome = fullName;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getMeta() {
-        return meta;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setMeta(String meta) {
-        this.meta = meta;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
-    public String getName() {
-        return fullName;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.fullName = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrezzo() {
+        return prezzo;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }

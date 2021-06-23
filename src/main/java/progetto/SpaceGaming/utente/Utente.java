@@ -1,46 +1,46 @@
-package progetto.SpaceGaming.user;
+package progetto.SpaceGaming.utente;
 
-import progetto.SpaceGaming.order.Order;
+import progetto.SpaceGaming.acquisto.Acquisto;
 
 import java.util.List;
 import java.util.Objects;
 
-public class User {
+public class Utente {
 
-    private String name, surname, address, username, email, password, phoneNumber;
+    private String fname, lname, address, username, email, password, phoneNumber;
     private boolean isAdmin;
-    private List<Order> orderList;
+    private List<Acquisto> acquistoList;
 
-    public User(String name, String surname, String address, String username, String email, String password, String phoneNumber, boolean isAdmin, List<Order> orderList) {
-        this.name = name;
-        this.surname = surname;
+    public Utente(String fname, String lname, String address, String username, String email, String password, String phoneNumber, boolean isAdmin, List<Acquisto> acquistoList) {
+        this.fname = fname;
+        this.lname = lname;
         this.address = address;
         this.username = username;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.isAdmin = isAdmin;
-        this.orderList = orderList;
+        this.acquistoList = acquistoList;
     }
 
-    public User() {
+    public Utente() {
         super();
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLname() {
+        return lname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getAddress() {
@@ -91,26 +91,26 @@ public class User {
         isAdmin = admin;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Acquisto> getOrderList() {
+        return acquistoList;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public void setOrderList(List<Acquisto> acquistoList) {
+        this.acquistoList = acquistoList;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                "name='" + fname + '\'' +
+                ", surname='" + lname + '\'' +
                 ", address='" + address + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", isAdmin=" + isAdmin +
-                ", orderList=" + orderList +
+                ", orderList=" + acquistoList +
                 '}';
     }
 
@@ -118,8 +118,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return isAdmin == user.isAdmin && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(address, user.address) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(orderList, user.orderList);
+        Utente utente = (Utente) o;
+        return isAdmin == utente.isAdmin && Objects.equals(fname, utente.fname) && Objects.equals(lname, utente.lname) && Objects.equals(address, utente.address) && Objects.equals(username, utente.username) && Objects.equals(email, utente.email) && Objects.equals(password, utente.password) && Objects.equals(phoneNumber, utente.phoneNumber) && Objects.equals(acquistoList, utente.acquistoList);
     }
 
 }
