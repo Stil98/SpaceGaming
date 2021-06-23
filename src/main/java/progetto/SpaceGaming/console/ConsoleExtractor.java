@@ -5,7 +5,7 @@ import progetto.SpaceGaming.ResultSetExtractor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CategoryExtractor implements ResultSetExtractor<Console> {
+public class ConsoleExtractor implements ResultSetExtractor<Console> {
 
     @Override
     public Console extract(ResultSet rs) throws SQLException {

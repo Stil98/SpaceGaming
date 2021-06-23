@@ -39,7 +39,7 @@ public class ConsoleDAO {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Console as cat");
             ResultSet rs = ps.executeQuery();
-            CategoryExtractor catExtractor = new CategoryExtractor();
+            ConsoleExtractor catExtractor = new ConsoleExtractor();
             while(rs.next()) {
                 result.add(catExtractor.extract(rs));
             }
@@ -56,7 +56,7 @@ public class ConsoleDAO {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Console as cat WHERE nome=?");
             ps.setString(1, nome);
             ResultSet rs = ps.executeQuery();
-            CategoryExtractor catExtractor = new CategoryExtractor();
+            ConsoleExtractor catExtractor = new ConsoleExtractor();
             if(rs.next()) {
                 c=catExtractor.extract(rs);
             }
