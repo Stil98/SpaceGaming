@@ -14,7 +14,7 @@
         .body > div{
             background-color: white;
             box-shadow: -9px -4px 12px 3px #B7B7B7;
-            margin: 10px;
+            margin: 30px;
             font-style: italic;
             font-weight: bold;
             text-align: center;
@@ -30,10 +30,6 @@
         .body > div > h2{
             justify-self: center;
             font-size: 3rem;
-        }
-
-        .body > div > h2:hover{
-            transform: scale3d(1.15, 1.15, 1.15);
         }
     </style>
 </head>

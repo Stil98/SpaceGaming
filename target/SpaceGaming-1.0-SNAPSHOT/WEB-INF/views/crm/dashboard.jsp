@@ -10,6 +10,28 @@
         <jsp:param name="styles" value="crm"/>
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
+    <style>
+        .body > div{
+            background-color: white;
+            box-shadow: -9px -4px 12px 3px #B7B7B7;
+            margin: 30px;
+            font-style: italic;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .body > div > h4{
+            margin: 0;
+            padding: 1rem;
+            color: white;
+            background-color: var(--viola);
+        }
+
+        .body > div > h2{
+            justify-self: center;
+            font-size: 3rem;
+        }
+    </style>
 </head>
 <body>
 <main class="app">
@@ -35,7 +57,24 @@
                 Benvenuto Amministratore
             </span>
         </header>
-        <div class="body"></div>
+        <div class="body grid-x justify-center">
+            <div class="grid-y cell w40">
+                <h2>Utenti Mensili</h2>
+                <h4>2313</h4>
+            </div>
+            <div class="grid-y cell w40">
+                <h2>Incasso Mensile</h2>
+                <h4>1312</h4>
+            </div>
+            <div class="grid-y cell w40">
+                <h2>Utenti Totali</h2>
+                <h4>411412</h4>
+            </div>
+            <div class="grid-y cell w40">
+                <h2>Incasso Totale</h2>
+                <h4>712334</h4>
+            </div>
+        </div>
         <footer class="info">
             <p>Copyright 2021</p>
         </footer>
