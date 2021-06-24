@@ -88,5 +88,17 @@ public class UtenteDAO {
             }
         }
 
+        public int userCount(){
+            int n=0;
+            try (Connection con = ConPool.getConnection()) {
+                PreparedStatement ps = con.prepareStatement("SELECT COUNT(email) AS nUtenti FROM Utente;");
+                ResultSet rs = ps.executeQuery();
+                n = rs.getInt(1);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return n;
+        }
+
     }
 

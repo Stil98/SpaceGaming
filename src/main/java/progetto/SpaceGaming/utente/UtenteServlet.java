@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import progetto.SpaceGaming.utente.UtenteDAO;
 
 @WebServlet(name = "UtenteServlet", value = "/utente/*")
 public class UtenteServlet extends HttpServlet {
@@ -17,8 +16,6 @@ public class UtenteServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
-            case "/create":
-                break;
             case "/secret":  //login admin
                 request.getRequestDispatcher("/WEB-INF/views/crm/secret.jsp").forward(request, response);
                 break;
@@ -26,7 +23,7 @@ public class UtenteServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/partials/header.jsp").forward(request, response);
                 break;
             default:
-                break;
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
         }
 
     }
@@ -37,8 +34,6 @@ public class UtenteServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
-            case "/create":
-                break;
             case "/secret":
                 String email=request.getParameter("email");
                 String pword=request.getParameter("password");
@@ -47,7 +42,7 @@ public class UtenteServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
             default:
-                break;
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
         }
     }
 
