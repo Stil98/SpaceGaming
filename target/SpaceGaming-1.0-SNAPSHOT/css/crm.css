@@ -1,0 +1,24 @@
+.app{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.topbar, .sidebar{
+    background-color: var(--viola);
+    padding: .5rem;
+}
+.sidebar > a{
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.content{
+    background-color: #CCCCCC;
+}
+
+.info{
+    text-align: right;
+    font-style: italic;
+    font-weight: normal;
+}
