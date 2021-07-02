@@ -7,6 +7,7 @@
     </jsp:include>
 </head>
 <body>
-<% response.sendRedirect("./crm/dashboard"); %>
+balgespgewgwgwgw
+<% response.sendRedirect("./crm/secret.jsp"); %>
 </body>
 </html>

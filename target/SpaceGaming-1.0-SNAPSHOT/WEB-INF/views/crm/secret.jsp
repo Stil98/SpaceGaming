@@ -50,7 +50,7 @@
         <img src="${context}/images/logo.png" width="100vw" height="100vh">
     </header>
 </section>
-<form class="app grid-x justify-center align-center" action="./account/secret" method="post">
+<form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
     <fieldset class="grid-y cell w40 login">
         <h2 style="text-align: center">Login Pannello Admin</h2>
         <br>
