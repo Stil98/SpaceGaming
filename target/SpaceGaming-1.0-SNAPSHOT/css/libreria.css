@@ -141,6 +141,10 @@ input:focus, textarea:focus, select:focus{
         flex-basis: 25%;
     }
 
+    .w30{
+        flex-basis: 30%;
+    }
+
     .w40{
         flex-basis: 40%;
     }

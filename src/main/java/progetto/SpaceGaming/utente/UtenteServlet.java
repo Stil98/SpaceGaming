@@ -1,4 +1,4 @@
-package progetto.SpaceGaming.account;
+package progetto.SpaceGaming.utente;
 
 
 import javax.servlet.ServletException;
@@ -8,15 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AccountServlet", value = "/account/*")
-public class AccountServlet extends HttpServlet {
+@WebServlet(name = "UtenteServlet", value = "/utente/*")
+public class UtenteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String path= getPath(request);
         switch (path){
             case "/":
-                break;
-            case "/create":
                 break;
             case "/secret":  //login admin
                 request.getRequestDispatcher("/WEB-INF/views/crm/secret.jsp").forward(request, response);
@@ -25,7 +23,7 @@ public class AccountServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/partials/header.jsp").forward(request, response);
                 break;
             default:
-                break;
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
         }
 
     }
@@ -36,12 +34,15 @@ public class AccountServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
-            case "/create":
-                break;
             case "/secret":
+                String email=request.getParameter("email");
+                String pword=request.getParameter("password");
+                UtenteDAO dao= new UtenteDAO();
+                if(dao.doRetrieveUserByEmailPassword(email, pword).isAdmin())
+                    request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
             default:
-                break;
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
         }
     }
 

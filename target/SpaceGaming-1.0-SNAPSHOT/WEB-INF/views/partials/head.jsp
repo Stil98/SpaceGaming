@@ -26,6 +26,6 @@
 <script src="${context}/js/libraryJS.js" defer></script>
 <c:if test="${not empty param.scripts}">
     <c:forTokens items="${param.scripts}" delims="," var="script">
-        <script src="${context}/js/${script}.js defer"></script>
+        <script src="${context}/js/${script}.js" defer></script>
     </c:forTokens>
 </c:if>

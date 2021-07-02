@@ -1,5 +1,7 @@
 package progetto.SpaceGaming.http;
 
+import progetto.SpaceGaming.utente.UtenteDAO;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -15,6 +17,8 @@ public class CrmServlet extends HttpServlet {
             case "/":
                 break;
             case "/dashboard":
+                UtenteDAO dao=new UtenteDAO();
+                int uTotali= dao.userCount();
                 request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
             default:

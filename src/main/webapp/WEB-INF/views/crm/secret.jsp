@@ -1,5 +1,6 @@
-
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
@@ -9,7 +10,13 @@
     </jsp:include>
     <style>
         .app{
-            background-image: linear-gradient(var(--viola), var(--lilla));
+            background-color: var(--viola);
+            height: 92vh;
+        }
+
+        .content{
+            height: 8vh;
+            background-color: black;
         }
 
         .login{
@@ -38,8 +45,15 @@
     </style>
 </head>
 <body>
-<form class="app grid-x justify-center align-center" action="./account/secret" method="post">
+<section class="content grid-y">
+    <header class="grid-x justify-center align-center">
+        <img src="${context}/images/logo.png" width="100vw" height="100vh">
+    </header>
+</section>
+<form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
     <fieldset class="grid-y cell w40 login">
+        <h2 style="text-align: center">Login Pannello Admin</h2>
+        <br>
         <span>Email</span>
         <label for="email" class="field">
             <input type="email" name="email" id="email">
