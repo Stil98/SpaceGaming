@@ -9,8 +9,13 @@
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
     <style>
+        body{
+            background-image: url("${context}/images/starbackground.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
         .app{
-            background-color: var(--viola);
             height: 92vh;
         }
 
@@ -47,7 +52,7 @@
 <body>
 <section class="content grid-y">
     <header class="grid-x justify-center align-center">
-        <img src="${context}/images/logo.png" width="100vw" height="100vh">
+        <img src="${context}/images/logorotondo.png" width="100%" height="100%">
     </header>
 </section>
 <form class="app grid-x justify-center align-center" action="./utente/secret" method="post">

@@ -23,7 +23,7 @@ public class UtenteServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/partials/header.jsp").forward(request, response);
                 break;
             default:
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
+                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
 
     }
@@ -42,7 +42,7 @@ public class UtenteServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
             default:
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
+                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 

@@ -44,7 +44,7 @@ public class CrmServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
                 break;
             default:
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina non Trovata");
+                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 

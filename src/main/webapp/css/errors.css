@@ -1,22 +1,42 @@
+
 body, html {
     height: 100%;
     text-align: center;
     font-size: x-large;
+
 }
+
 
 .bg {
-    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Feandt.theiet.org%2Fcontent%2Farticles%2F2018%2F07%2Fgaming-s-golden-age-top-10-retro-vintage-arcade-classics%2F&psig=AOvVaw1R77bXSr84gJNjHiN5mNTl&ust=1625326739493000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCMDd9oncxPECFQAAAAAdAAAAABAT');
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
     height: 100%;
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
-
+.btn {
+    z-index: 1;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+    padding: 8px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+    font-weight: bold;
+    margin: 15px 0px 0px 0px;
+    border: 4px solid yellow;
+    color: white;
+}
+  .btn:hover {
+     color: black;
+     background: yellow;
+     transition: 0.2s ease;
+}
 .errortext {
     background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
-    color: white;
+    color: var(--lilla);
     font-weight: bold;
     border: 3px solid #f1f1f1;
     position: absolute;
