@@ -1,0 +1,38 @@
+body, html {
+    height: 100%;
+    text-align: center;
+    font-size: x-large;
+}
+
+.bg {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Feandt.theiet.org%2Fcontent%2Farticles%2F2018%2F07%2Fgaming-s-golden-age-top-10-retro-vintage-arcade-classics%2F&psig=AOvVaw1R77bXSr84gJNjHiN5mNTl&ust=1625326739493000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCMDd9oncxPECFQAAAAAdAAAAABAT');
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.errortext {
+    background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+a:link, a:visited {
+    color: #b380ff;
+}
+
+a:active {
+    color: #9a51ff;
+}
