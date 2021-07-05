@@ -49,7 +49,6 @@
 
         .logo{
 
-
         }
 
         .nav_links{
@@ -125,10 +124,11 @@
         display: flex;
         margin-left: -50px;
     }
-    .col-1{
+
+        div_links{
         flex: 60%;
     }
-    .col-2{
+    .div_search{
         flex:20%;
         background-color:white ;
         border-radius: 50px;
@@ -137,6 +137,7 @@
         width: 450px;
         margin: 27px;
         padding-right: 15px;
+        transition: all 0.6s ease;
     }
     .search-btn{
         background-color:white ;
@@ -155,37 +156,40 @@
         margin-top:5px;
         line-height: 0px;
         height: 40px;
+        color:black;
+
     }
+
+        .div_search:hover{
+            filter:brightness(90%);
+        }
+
     </style>
 
 </head>
 
 <body>
 <header>
-        <img class="logo" src="${context}/images/logonuovo.png" width="400" height="242" >
+        <img class="logo" src="${context}/images/logonuovo.png" width="400" height="242" alt="logo" title="Space Gaming">
     <nav>
-        <div class="col-1">
+        <div class="div_links">
         <ul class="nav_links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Category</a></li>
             <li><a href="#">About</a></li></ul>
         </div>
-        <div class="col-2">
+        <div class="div_search">
         <input class="search-box" type="search" maxlength="150"  placeholder="Search...">
             <a class="search-btn" href="#">
                 <i class="fas fa-search"></i>
             </a>
         </div>
-
-
     </nav>
     <div class="dropdown">
-        <button class="dropbtn">Login/Register</button>
-        <div class="dropdown-content">
-            <a href="<%=request.getContextPath()%>/utente/secret">Login Admin</a>
-            <a href="<%=request.getContextPath()%>/utente/signup">Registrati</a>
-            <a href="<%=request.getContextPath()%>/utente/signin">Login</a>
-        </div>
+       <a href="<%=request.getContextPath()%>/utente/secret">
+           <button class="dropbtn">Login/Register</button>
+       </a>
+
     </div>
 
 
