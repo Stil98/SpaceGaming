@@ -7,6 +7,6 @@
     </jsp:include>
 </head>
 <body>
-<% response.sendRedirect("./crm/gClienti"); %>
+<% response.sendRedirect("./utente/secret"); %>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <link href="<c:url value="/css/reset.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/libreria.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/errors.css"/>" rel="stylesheet">
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,18 @@
     <title>Error Page</title>
     <style>
         h1 {
-            color: var(--cream);
+            font-size: 50px;
+            color:white;
+            font-style: normal;
+            font-weight: bold;
+
+        }
+        span {
+            font-style: italic;
+            color: white;
+        }
+        .bg {
+            background-image: url("${context}/images/backimg.jpg");
         }
     </style>
 </head>
@@ -20,11 +32,10 @@
 <div class="bg">
 </div>
 <div class="errortext">
-    <h1>Ops! Sembra che qualcosa sia andato storto. Riprova più tardi.</h1>
-    <!--div style="color: #EE4037;">
-            <Error message: <%//exception.getMessage();%>
-        </div--><br>
-    <a href="<%=request.getContextPath()%>/index.jsp">Torna alla Home</a>
+    <h1>Qui c'è qualcosa che non va...</h1>
+    <span>Riprova più tardi o torna alla home</span><br>
+
+    <button class="btn">Home</button>
 </div>
 </body>
-</html
+</html>
