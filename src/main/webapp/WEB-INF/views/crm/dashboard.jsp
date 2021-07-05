@@ -11,6 +11,12 @@
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
     <style>
+        .body{
+            background-image: url("${context}/images/starbackground.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;;
+        }
         .body > div{
             background-color: white;
             box-shadow: -9px -4px 12px 3px #B7B7B7;
@@ -37,7 +43,7 @@
 <main class="app">
     <aside class="sidebar">
         <nav class="menu grid-y align-center">
-            <img src="${context}/images/logo.png" width="100" height="100">
+            <img src="${context}/images/logorotondo.png" width="400" height="200">
             <a href="">Gestione Clienti</a>
             <a href="">Gestione Prodotti</a>
             <a href="">Gestione Ordini</a>
@@ -75,10 +81,10 @@
                 <h4>712334</h4>
             </div>
         </div>
-        <footer class="info">
-            <p>Copyright 2021</p>
-        </footer>
     </section>
 </main>
 </body>
+<jsp:include page="../partials/footer.jsp">
+    <jsp:param name="title" value="Footer"/>
+</jsp:include>
 </html>

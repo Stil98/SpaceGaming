@@ -9,9 +9,8 @@
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
     <style>
-        *{
+        body{
             box-sizing: border-box;
-
             margin:0;
             padding:0;
             background:#30075d ;
@@ -26,12 +25,21 @@
         }
 
         header{
+            height: 10vh;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding: 30px 10%;
+            padding: 10px;
             background-color: #CCCCCC;
+            background-image: url("https://media.giphy.com/media/KY2ZMhnCxP008/source.gif");
+            background-size: 30px;
 
+        }
+
+        input[type=search]{
+            margin: 1.1rem;
+            border: 2px solid black;
+            filter: brightness(130%);
         }
 
         .logo{
@@ -40,13 +48,13 @@
 
         .nav_links{
             list-style: none;
-            background-color: #CCCCCC;
         }
 
         .nav_links li{
             display: inline-block;
-            padding:0px 20px;
-            background-color: #CCCCCC;
+            padding:10px 20px;
+            background-color:#f94635;
+            border:2px solid black;
         }
 
         .nav_links li a{
@@ -65,7 +73,7 @@
         button{
             padding: 9px 25px;
             background-color:#f94635;
-            border:none;
+            border:2px solid black;
             border-radius: 50px;
             cursor:pointer;
             transition: all 0.6s ease 0s;
@@ -75,30 +83,32 @@
         button:hover{
             filter: brightness(80%);
         }
-        .search-bar{
-            height:40px ;
-            width:240px;
-            display: flex;
-
-        }
+    nav{
+        display: flex;
+    }
+    .col-1{
+        flex: 60%;
+    }
+    .col-2{
+        flex:20%;
+    }
     </style>
 
 </head>
 
 <body>
 <header>
-    <img src="${context}/images/logo.png" width="100" height="100">
-
+        <img src="${context}/images/logonuovo.png" width="400" height="240">
     <nav>
+        <div class="col-1">
         <ul class="nav_links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Category</a></li>
-            <li><a href="#">About</a></li>
-            <li class="search-bar" >
-                <input type="search" maxlength="150"  placeholder="Search...">
-            </li>
-
-        </ul>
+            <li><a href="#">About</a></li></ul>
+        </div>
+        <div class="col-2">
+        <input type="search" maxlength="150"  placeholder="Search...">
+        </div>
 
 
     </nav>

@@ -8,6 +8,7 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
+
     <style>
         body{
             background-image: url("${context}/images/starbackground.jpg");
@@ -52,7 +53,7 @@
 <body>
 <section class="content grid-y">
     <header class="grid-x justify-center align-center">
-        <img src="${context}/images/logorotondo.png" width="100%" height="100%">
+        <img src="${context}/images/logorotondo.png" width="35%" height="100%">
     </header>
 </section>
 <form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
@@ -71,4 +72,7 @@
     </fieldset>
 </form>
 </body>
+<jsp:include page="../partials/footer.jsp">
+    <jsp:param name="title" value="footer"/>
+</jsp:include>
 </html>
