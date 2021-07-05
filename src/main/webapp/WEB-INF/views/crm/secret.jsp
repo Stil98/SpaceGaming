@@ -45,26 +45,22 @@
             background-color: var(--viola);
             margin-top: 15px;
             margin-right: 0px;
-
             width: 100%;
         }
-        .btn1{
+        #regbtn{
             height: 80px;
             display: inline-block;
             font-weight: bold;
             color: black;
             border-radius: 50px;
             font-size: 25px;
-            background-color: white;
+            background-color:white;
             margin-top: 15px;
             margin-right: 0px;
             width: 100%;
         }
 
-        .btn1:hover{
-            filter:brightness(90%);
-        }
-        .btn:hover{
+        .btn:hover, #regbtn:hover{
             filter:brightness(90%);
         }
 
@@ -84,7 +80,7 @@
         <img src="${context}/images/logorotondo.png" width="35%" height="100%">
     </header>
 </section>
-<form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
+<form class="app grid-x justify-center align-center" action="./accesso" method="post">
     <fieldset class="grid-y cell w40 login">
         <h2 style="text-align: center">Accedi a Space Gaming</h2>
         <br>
@@ -100,15 +96,10 @@
             <button class="btn" type="submit" float="left">Accedi</button>
         </div>
         <div class="register_btn">
-            <a href="SpaceGaming_war/utente/signup">
-                <button class="btn1" type="submit">Crea un account</button>
-            </a>
+                <input type="button" id="regbtn" onclick="window.location.href = '<%=request.getContextPath()%>/utente/signup';" value="Crea un account"/>
         </div>
 
     </fieldset>
 </form>
-<jsp:include page="/WEB-INF/views/partials/footer.jsp">
-    <jsp:param name="title" value="footer"/>
-</jsp:include>
 </body>
 </html>

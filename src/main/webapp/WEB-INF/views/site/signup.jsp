@@ -72,7 +72,7 @@
 </section>
 <form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
     <fieldset class="grid-y cell w40 login">
-        <h2 style="text-align: center">Login Pannello Admin</h2>
+        <h2 style="text-align: center">Crea un account</h2>
         <br>
         <span> Nome </span>
         <label for="nome" class="field">
@@ -131,8 +131,5 @@
         y.style.display = "block"
     }
 </script>
-<jsp:include page="/WEB-INF/views/partials/footer.jsp">
-    <jsp:param name="title" value=""/>
-</jsp:include>
 </body>
 </html>
