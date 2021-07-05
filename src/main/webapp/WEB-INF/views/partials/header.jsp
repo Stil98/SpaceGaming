@@ -35,6 +35,31 @@
             background-size: 30px;
 
         }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: violet;}
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
         input[type=search]{
             margin: 1.1rem;
@@ -109,10 +134,15 @@
         <div class="col-2">
         <input type="search" maxlength="150"  placeholder="Search...">
         </div>
-
-
     </nav>
-    <a class="cta" href="#" ><button>Login/Register</button></a>
+    <div class="dropdown">
+    <button class="dropbtn">Login/Register</button>
+    <div class="dropdown-content">
+        <a href="<%=request.getContextPath()%>/utente/secret">Login Admin</a>
+        <a href="<%=request.getContextPath()%>/utente/signup">Registrati</a>
+        <a href="<%=request.getContextPath()%>/utente/signin">Login</a>
+    </div>
+    </div>
 
 
 </header>

@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Login Admin</title>
+    <title>Login</title>
     <jsp:include page="../partials/head.jsp">
-        <jsp:param name="title" value="Login Admin"/>
+        <jsp:param name="title" value="Login"/>
     </jsp:include>
 
     <style>
@@ -53,12 +53,12 @@
 <body>
 <section class="content grid-y">
     <header class="grid-x justify-center align-center">
-        <img src="${context}/images/logorotondo.png" width="35%" height="100%">
+        <img src="${context}/images/logonuovo.png" width="35%" height="100%">
     </header>
 </section>
-<form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
+<form class="app grid-x justify-center align-center" action="./utente/signin" method="post">
     <fieldset class="grid-y cell w40 login">
-        <h2 style="text-align: center">Login Pannello Admin</h2>
+        <h2 style="text-align: center">Login Utente</h2>
         <br>
         <span>Email</span>
         <label for="email" class="field">
@@ -72,4 +72,7 @@
     </fieldset>
 </form>
 </body>
+<jsp:include page="../partials/footer.jsp">
+    <jsp:param name="title" value="footer"/>
+</jsp:include>
 </html>

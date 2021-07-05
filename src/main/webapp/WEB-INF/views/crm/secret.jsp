@@ -72,7 +72,4 @@
     </fieldset>
 </form>
 </body>
-<jsp:include page="../partials/footer.jsp">
-    <jsp:param name="title" value="footer"/>
-</jsp:include>
 </html>

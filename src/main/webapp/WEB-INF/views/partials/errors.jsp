@@ -25,6 +25,7 @@
         .bg {
             background-image: url("${context}/images/backimg.jpg");
         }
+
     </style>
 </head>
 <body>
@@ -34,8 +35,9 @@
 <div class="errortext">
     <h1>Qui c'è qualcosa che non va...</h1>
     <span>Riprova più tardi o torna alla home</span><br>
-
-    <button class="btn">Home</button>
+    <form>
+        <input type="button" class="btn" onclick="window.location.href = '/SpaceGaming_war_exploded/index.jsp';" value="Home"/>
+    </form>
 </div>
 </body>
 </html>
