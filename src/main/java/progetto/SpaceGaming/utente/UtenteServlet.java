@@ -19,6 +19,9 @@ public class UtenteServlet extends HttpServlet {
             case "/secret":  //login admin
                 request.getRequestDispatcher("/WEB-INF/views/crm/secret.jsp").forward(request, response);
                 break;
+            case "/signup":
+                request.getRequestDispatcher("/WEB-INF/views/site/signup.jsp").forward(request,response);
+                break;
             case "/header":
                 request.getRequestDispatcher("/WEB-INF/views/partials/header.jsp").forward(request, response);
                 break;
@@ -34,12 +37,17 @@ public class UtenteServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
+            case "/signup":
+                request.getRequestDispatcher("/WEB-INF/views/site/signup.jsp").forward(request,response);
+                break;
             case "/secret":
                 String email=request.getParameter("email");
                 String pword=request.getParameter("password");
                 UtenteDAO dao= new UtenteDAO();
                 if(dao.doRetrieveUserByEmailPassword(email, pword).isAdmin())
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
+                else
+                    request.getRequestDispatcher("/WEB-INF/index.jsp");
                 break;
             default:
                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);

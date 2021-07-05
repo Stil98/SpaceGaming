@@ -8,10 +8,6 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Login Admin"/>
     </jsp:include>
-    <script
-            src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
-            data-auto-a11y="true"
-    ></script>
     <style>
         body{
             box-sizing: border-box;
@@ -39,17 +35,40 @@
             background-size: 30px;
 
         }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: violet;}
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
         input[type=search]{
-
-            margin-left: 30px;
+            margin: 1.1rem;
+            border: 2px solid black;
             filter: brightness(130%);
-
         }
 
         .logo{
-
-
+            cursor: pointer;
         }
 
         .nav_links{
@@ -59,9 +78,7 @@
         .nav_links li{
             display: inline-block;
             padding:10px 20px;
-            margin-right: 20px;
-            border-radius: 50px;
-            background-color: red;
+            background-color:#f94635;
             border:2px solid black;
         }
 
@@ -70,24 +87,17 @@
 
         }
 
-        .nav_links li:hover{
-
-            filter: brightness(80%);
+        .nav_links li a:hover{
+            color: yellow;
 
         }
         .cta {
             margin-left:auto;
-            padding-right: 20px;
 
-
-        }
-        button:hover{
-
-            filter: brightness(80%);
         }
         button{
             padding: 9px 25px;
-            background-image: repeating-linear-gradient(65deg, red, yellow 200px);
+            background-color:#f94635;
             border:2px solid black;
             border-radius: 50px;
             cursor:pointer;
@@ -95,41 +105,17 @@
             color:black;
         }
 
-
+        button:hover{
+            filter: brightness(80%);
+        }
     nav{
         display: flex;
-        margin-left: -50px;
     }
     .col-1{
         flex: 60%;
     }
     .col-2{
         flex:20%;
-        background-color:white ;
-        border-radius: 50px;
-        border: 2px solid black;
-        height: 54px;
-        width: 450px;
-        margin: 27px;
-        padding-right: 15px;
-    }
-    .search-btn{
-        background-color:white ;
-        color: black;
-        float:right;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-    margin-top: 8px;
-        border-radius: 50px;
-
-
-    }
-    .search-box{
-        margin-top:5px;
-        line-height: 0px;
-        height: 40px;
     }
     </style>
 
@@ -137,7 +123,7 @@
 
 <body>
 <header>
-        <img class="logo" src="${context}/images/logonuovo.png" width="400" height="242" >
+        <img src="${context}/images/logonuovo.png" width="400" height="240">
     <nav>
         <div class="col-1">
         <ul class="nav_links">
@@ -146,15 +132,17 @@
             <li><a href="#">About</a></li></ul>
         </div>
         <div class="col-2">
-        <input class="search-box" type="search" maxlength="150"  placeholder="Search...">
-            <a class="search-btn" href="#">
-                <i class="fas fa-search"></i>
-            </a>
+        <input type="search" maxlength="150"  placeholder="Search...">
         </div>
-
-
     </nav>
-    <a class="cta" href="#" ><button>Login/Register</button></a>
+    <div class="dropdown">
+    <button class="dropbtn">Login/Register</button>
+    <div class="dropdown-content">
+        <a href="<%=request.getContextPath()%>/utente/secret">Login Admin</a>
+        <a href="<%=request.getContextPath()%>/utente/signup">Registrati</a>
+        <a href="<%=request.getContextPath()%>/utente/signin">Login</a>
+    </div>
+    </div>
 
 
 </header>
