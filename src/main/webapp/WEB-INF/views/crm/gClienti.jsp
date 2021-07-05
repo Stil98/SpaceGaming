@@ -19,6 +19,14 @@
             overflow:hidden;
             overflow-y:scroll;
         }
+        input[type=submit]{
+            margin: .5rem;
+            border: 2px solid black;
+            filter: brightness(130%);
+        }
+        input[type=submit]:hover{
+            filter: brightness(160%);
+        }
     </style>
 </head>
 <body>
