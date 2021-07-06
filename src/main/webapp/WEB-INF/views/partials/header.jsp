@@ -23,7 +23,7 @@
         }
 
         li,a,button{
-            color:black;
+            color:white;
             text-decoration: none;
 
         }
@@ -60,58 +60,42 @@
             padding:10px 20px;
             margin-right: 20px;
             border-radius: 50px;
-            background-color: red;
+            background-color: var(--viola);
+            font-style: italic;
+            color: white;
             border:2px solid black;
         }
 
         .nav_links li a{
-            transition: all 0.6s ease 0s;
+            transition: all 0.4s ease 0s;
 
         }
 
         .nav_links li:hover{
-
+            background-color: violet;
             filter: brightness(80%);
 
         }
-        .cta {
-            margin-left:auto;
-            padding-right: 20px;
 
 
-        }
         button:hover{
 
             filter: brightness(80%);
         }
         button{
             padding: 9px 25px;
-            background-image: repeating-linear-gradient(65deg, red, yellow 200px);
+            background-color: var(--viola);
             border:2px solid black;
             border-radius: 50px;
             cursor:pointer;
             transition: all 0.6s ease 0s;
-            color:black;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+            color:white;
+            font-style: italic;
         }
 
         .dropdown-content a:hover {background-color: #ddd;}
 
-        .dropdown:hover .dropdown-content {display: block;}
+        .dropdown:hover {display: block;}
 
         .dropdown:hover .dropbtn {background-color: violet;}
 
@@ -174,9 +158,9 @@
     <nav>
         <div class="div_links">
         <ul class="nav_links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">About</a></li></ul>
+            <li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
+            <li><a href="#">Categorie</a></li>
+            <li><a href="<%=request.getContextPath()%>/info.jsp">Info</a></li></ul>
         </div>
         <div class="div_search">
         <input class="search-box" type="search" maxlength="150"  placeholder="Search...">
@@ -187,7 +171,7 @@
     </nav>
     <div class="dropdown">
        <a href="<%=request.getContextPath()%>/utente/secret">
-           <button class="dropbtn">Login/Register</button>
+           <button class="dropbtn">Login/Registrati</button>
        </a>
 
     </div>

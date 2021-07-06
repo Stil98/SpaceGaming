@@ -34,6 +34,7 @@ public class UtenteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String path= getPath(request);
+        UtenteDAO utenteDao = new UtenteDAO();
         switch (path){
             case "/":
                 break;
@@ -48,6 +49,18 @@ public class UtenteServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 else
                     request.getRequestDispatcher("/WEB-INF/index.jsp");
+                break;
+            case "/create": // CREAZIONE PROFILO CLIENTE
+                String fname = request.getParameter("nome");
+                String lname = request.getParameter("cognome");
+                String address = request.getParameter("indirizzo");
+                String username = request.getParameter("username");
+                String emailutente = request.getParameter("email");
+                String password = request.getParameter("password");
+                String phoneNumber = request.getParameter("telefono");
+                Utente newUtente = new Utente(fname,lname,address,username,emailutente,password,phoneNumber,false, null);
+                utenteDao.addUser(newUtente);
+                request.getRequestDispatcher("/WEB-INF/views/site/succreg.jsp").forward(request, response);
                 break;
             default:
                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);

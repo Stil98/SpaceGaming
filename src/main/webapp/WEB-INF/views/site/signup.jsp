@@ -9,31 +9,14 @@
     <style>
         body{
             background-image: url("${context}/images/starbackground.jpg");
-            background-repeat: no-repeat;
+            background-repeat:repeat;
             background-size: cover;
             background-position: center;
         }
         .app{
             height: 92vh;
         }
-        .inner{
-            background-color:white;
-            border:5px solid black;
-            margin:25px;
-            padding:25px;
-            width: 300px;
-            display: none;
-            position: absolute;
-            left: 2%;
-        }
-        .inner:hover{
-            filter: brightness(130%);
-        }
-        #info {
-            display: none;
-            font-size: 15px;
-            color: var(--lilla);
-        }
+
         .content{
             height: 8vh;
             background-color: black;
@@ -48,20 +31,6 @@
         .login > *{
             margin: 10px;
         }
-
-        .btn{
-            font-weight: bold;
-            color: white;
-            background-color: var(--viola);
-            margin-top: 15px;
-            border: solid 5px var(--viola);
-            width: 100px;
-        }
-
-        .btn:hover{
-            background-color: white;
-            color: var(--viola);
-        }
     </style>
 </head>
 <body>
@@ -70,7 +39,7 @@
         <img src="${context}/images/logonuovo.png" width="35%" height="100%">
     </header>
 </section>
-<form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
+<form class="app grid-x justify-center align-center" action="./create" method="post" onsubmit="return passwordValidation()">
     <fieldset class="grid-y cell w40 login">
         <h2 style="text-align: center">Crea un account</h2>
         <br>
@@ -96,12 +65,8 @@
 
         <span> Password </span>
         <label for="password" class="field">
-            <input onfocusout="hideInfoPassword()" onfocusin="showInfoPassword()" type="password" name="password" id="password" placeholder="Password" required><br>
+            <input title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" onfocusout="hideInfoPassword()" onfocusin="showInfoPassword()" type="password" name="password" id="password" placeholder="Password" required><br>
         </label>
-
-        <div class="inner" id="inner">
-            <div id="info">La password deve essere lunga almeno 8 caratteri e contenere numeri e caratteri speciali</div>
-        </div>
 
         <span>Conferma  Password </span>
         <label for="confermapassword" class="field">
@@ -117,19 +82,51 @@
         <label for="telefono" class="field">
             <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
         </label>
+        <button class="btn primary" type="submit">Registrati</button>
     </fieldset>
 </form>
+
 </body>
 </head>
 <body>
 <script>
-    function showInfoPassword(){
-        var x = document.getElementById("info")
-        x.style.display = "block"
-
-        var y = document.getElementById("inner");
-        y.style.display = "block"
+    function passwordValidation() {
+        let p = false;
+        let z = false;
+        let y = false;
+        var psw = document.getElementById("password").value;
+        var psw2 = document.getElementById("confermapassword").value;
+        var cell = document.getElementById("telefono").value;
+        var strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+        var x = strongRegex.test(psw);
+        if(cell.length==10){
+            z = true;
+        }
+        if (x) {
+        p = true;
     }
+        if(z && !p){
+            alert("La password non rispecchia i seguenti criteri: almeno una lettera minuscola, almeno una lettera maiuscola, almeno un carattere speciale, almeno otto caratteri");
+            return false;
+        }
+        if(!z && p){
+            alert("Il numero inserito non è corretto");
+            return false;
+        }
+        if(!z && !p){
+            alert ("Il numero inserito non è corretto" + "\n" +
+                "La password non rispecchia i seguenti criteri: almeno una lettera minuscola, almeno una lettera maiuscola, almeno un carattere speciale, almeno otto caratteri")
+            return false;
+        }
+        if(psw !== psw2){
+            alert("Le password non corrispondono");
+            return false;
+        }
+        if(z && y && p){
+            return true;
+        }
+    }
+
 </script>
 </body>
 </html>

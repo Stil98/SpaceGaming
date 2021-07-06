@@ -77,7 +77,6 @@
 <body>
 <section class="content grid-y">
     <header class="grid-x justify-center align-center">
-        <img src="${context}/images/logorotondo.png" width="35%" height="100%">
     </header>
 </section>
 <form class="app grid-x justify-center align-center" action="./accesso" method="post">
