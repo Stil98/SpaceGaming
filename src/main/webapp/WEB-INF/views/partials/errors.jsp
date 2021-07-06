@@ -23,7 +23,9 @@
             color: white;
         }
         .bg {
-            background-image: url("${context}/images/backimg.jpg");
+
+        background-image: url("${context}/images/backimg.jpg");
+
         }
 
     </style>

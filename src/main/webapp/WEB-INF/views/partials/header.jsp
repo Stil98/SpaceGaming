@@ -53,6 +53,7 @@
 
         .nav_links{
             list-style: none;
+            margin-top:33px;
         }
 
         .nav_links li{
@@ -93,11 +94,8 @@
             font-style: italic;
         }
 
-        .dropdown-content a:hover {background-color: #ddd;}
 
-        .dropdown:hover {display: block;}
-
-        .dropdown:hover .dropbtn {background-color: violet;}
+        .dropbtn:hover {background-color: violet;}
 
         .dropdown {
             position: relative;
@@ -143,11 +141,26 @@
         color:black;
 
     }
+        ::-webkit-input-placeholder { color: darkgrey;font-size: 16px; font-style:italic;}
 
         .div_search:hover{
             filter:brightness(90%);
         }
 
+        .cartbtn{
+            color:black;
+            background-color: white;
+            border-radius: 50px;
+            margin-left: 20px;
+            padding: 10px 15px 10px 15px;
+            border:2px solid black;
+            transition: 0.4s all ease;
+        }
+
+        .cartbtn:hover{
+
+            filter:brightness(80%);
+        }
     </style>
 
 </head>
@@ -173,8 +186,11 @@
        <a href="<%=request.getContextPath()%>/utente/secret">
            <button class="dropbtn">Login/Registrati</button>
        </a>
-
+        <a class="cartbtn" href="#" title="Carrello">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
     </div>
+
 
 
 </header>

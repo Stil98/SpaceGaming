@@ -31,6 +31,39 @@
         .login > *{
             margin: 10px;
         }
+
+        input{
+            font-size: 21px;
+        }
+        input:hover{
+            filter: brightness(80%);
+        }
+        span{
+            font-size:24px ;
+            margin:15px 0px 15px 0px;
+        }
+        ::-webkit-input-placeholder { color: darkgrey;font-size: 18px; font-style:italic;}
+
+        .btn_primary{
+            display: flex;
+            justify-content: center;
+            background-color: var(--viola);
+            border-radius: 50px;
+            color:white;
+            font-size:30px;
+            padding:5px 15px 5px 15px;
+            width: 97%;
+            height:75px;
+            transition: all 0.4s ease;
+            margin-top:20px;
+        }
+        .btn_primary:hover{
+            filter: brightness(80%);
+
+        }
+        fieldset{
+            margin-bottom:60px;
+        }
     </style>
 </head>
 <body>
@@ -40,8 +73,8 @@
     </header>
 </section>
 <form class="app grid-x justify-center align-center" action="./create" method="post" onsubmit="return passwordValidation()">
-    <fieldset class="grid-y cell w40 login">
-        <h2 style="text-align: center">Crea un account</h2>
+    <fieldset class="grid-y cell w40 login" >
+        <h1 style="text-align: center">Crea un account</h1>
         <br>
         <span> Nome </span>
         <label for="nome" class="field">
@@ -82,7 +115,8 @@
         <label for="telefono" class="field">
             <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
         </label>
-        <button class="btn primary" type="submit">Registrati</button>
+        <button class="btn_primary" type="submit">Registrati</button>
+
     </fieldset>
 </form>
 
