@@ -34,9 +34,8 @@
        <a href="<%=request.getContextPath()%>/utente/secret">
            <button class="dropbtn">Login/Registrati</button>
        </a>
-        <a href="#" class="cartbtn"><img src="${context}/icons/carticon.png" width="38" height="38"></a>
-
     </div>
+    <a href="#" class="cartbtn"><img src="${context}/icons/carticon.png" width="38" height="38"></a>
 
 
 

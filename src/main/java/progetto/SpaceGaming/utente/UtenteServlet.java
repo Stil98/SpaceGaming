@@ -41,14 +41,16 @@ public class UtenteServlet extends HttpServlet {
             case "/signup":
                 request.getRequestDispatcher("/WEB-INF/views/site/signup.jsp").forward(request,response);
                 break;
-            case "/secret":
+            case "/accesso":
                 String email=request.getParameter("email");
                 String pword=request.getParameter("password");
                 UtenteDAO dao= new UtenteDAO();
+                int nUtenti= dao.userCount();
+                request.setAttribute("nUtenti", nUtenti);
                 if(dao.doRetrieveUserByEmailPassword(email, pword).isAdmin())
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 else
-                    request.getRequestDispatcher("/WEB-INF/index.jsp");
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
                 break;
             case "/create": // CREAZIONE PROFILO CLIENTE
                 String fname = request.getParameter("nome");
