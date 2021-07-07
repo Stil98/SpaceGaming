@@ -45,7 +45,6 @@
         ::-webkit-input-placeholder { color: darkgrey;font-size: 18px; font-style:italic;}
 
         .btn_primary{
-            display: flex;
             justify-content: center;
             background-color: var(--viola);
             border-radius: 50px;
@@ -88,12 +87,12 @@
 
         <span> Email </span>
         <label for="email" class="field">
-            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="email" name="email" id="email" placeholder="prova@example.com">
         </label>
 
         <span> Password </span>
         <label for="password" class="field">
-            <input title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" onfocusout="hideInfoPassword()" onfocusin="showInfoPassword()" type="password" name="password" id="password" placeholder="Password" required><br>
+            <input title="La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numero e un carattere speciale." onfocusout="hideInfoPassword()" onfocusin="showInfoPassword()" type="password" name="password" id="password" placeholder="Password" required><br>
         </label>
 
         <span>Conferma  Password </span>

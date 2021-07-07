@@ -22,7 +22,6 @@
 <body>
 <div id="page-container">
     <div id="content-wrap">
-<!-- response.sendRedirect("./crm/gClienti");  -->
     </div>
 
 </div>
