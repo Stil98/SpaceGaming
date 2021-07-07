@@ -37,7 +37,7 @@
     <h1>Registrazione effettuata con successo!</h1>
     <span>Dai subito un'occhiata ai nostri prodotti</span><br>
     <form>
-        <input type="button" class="btn" onclick="window.location.href = '../../../index.jsp';" value="Home"/>
+        <input type="button" class="btn" onclick="window.location.href = '/SpaceGaming_war_exploded/index.jsp';" value="Home"/>
     </form>
 </div>
 </body>

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "UtenteServlet", value = "/utente/*")
@@ -34,7 +35,8 @@ public class UtenteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String path= getPath(request);
-        UtenteDAO utenteDao = new UtenteDAO();
+        HttpSession session=request.getSession();
+        UtenteDAO dao= new UtenteDAO();
         switch (path){
             case "/":
                 break;
@@ -44,13 +46,21 @@ public class UtenteServlet extends HttpServlet {
             case "/accesso":
                 String email=request.getParameter("email");
                 String pword=request.getParameter("password");
-                UtenteDAO dao= new UtenteDAO();
                 int nUtenti= dao.userCount();
                 request.setAttribute("nUtenti", nUtenti);
-                if(dao.doRetrieveUserByEmailPassword(email, pword).isAdmin())
+                Utente user = dao.doRetrieveUserByEmailPassword(email,pword);
+                if(user == null){
+                    session.setAttribute("failedLogin", true);
+                    request.getRequestDispatcher("/WEB-INF/views/site/signin.jsp").forward(request, response);
+                }
+                request.setAttribute("utente", user);
+                if(user.isAdmin())
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
-                else
+                else {
+                    session.setAttribute("log", true);
+                    session.setAttribute("profilo", user);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
+                }
                 break;
             case "/create": // CREAZIONE PROFILO CLIENTE
                 String fname = request.getParameter("nome");
@@ -60,7 +70,7 @@ public class UtenteServlet extends HttpServlet {
                 String password = request.getParameter("password");
                 String phoneNumber = request.getParameter("telefono");
                 Utente newUtente = new Utente(fname,lname,address, emailutente,password,phoneNumber,false, null);
-                utenteDao.addUser(newUtente);
+                dao.addUser(newUtente);
                 request.getRequestDispatcher("/WEB-INF/views/site/succreg.jsp").forward(request, response);
                 break;
             default:
