@@ -11,7 +11,6 @@ public class UtenteExtractor implements ResultSetExtractor<Utente> {
         c.setFname(rs.getString("usr.name"));
         c.setLname(rs.getString("usr.surname"));
         c.setEmail(rs.getString("usr.email"));
-        c.setUsername(rs.getString("usr.username"));
         c.setPassword(rs.getString("usr.password"));
         c.setAddress(rs.getString("usr.address"));
         c.setAdmin(rs.getBoolean("usr.isAdmin"));

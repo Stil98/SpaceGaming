@@ -86,11 +86,6 @@
             <input type="text" name="cognome" id="cognome" placeholder="Cognome" required>
         </label>
 
-        <span> Username </span>
-        <label for="username" class="field">
-            <input type="text" name="username" id="username" placeholder="Username" required>
-        </label>
-
         <span> Email </span>
         <label for="email" class="field">
             <input type="email" name="email" id="email" placeholder="Email">

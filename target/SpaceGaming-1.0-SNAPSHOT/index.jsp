@@ -24,6 +24,7 @@
     <div id="content-wrap">
 <!-- response.sendRedirect("./crm/gClienti");  -->
     </div>
+
 </div>
 <jsp:include page="/WEB-INF/views/partials/footer.jsp">
     <jsp:param name="title" value=""/>

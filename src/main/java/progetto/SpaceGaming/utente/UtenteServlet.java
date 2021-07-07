@@ -54,11 +54,10 @@ public class UtenteServlet extends HttpServlet {
                 String fname = request.getParameter("nome");
                 String lname = request.getParameter("cognome");
                 String address = request.getParameter("indirizzo");
-                String username = request.getParameter("username");
                 String emailutente = request.getParameter("email");
                 String password = request.getParameter("password");
                 String phoneNumber = request.getParameter("telefono");
-                Utente newUtente = new Utente(fname,lname,address,username,emailutente,password,phoneNumber,false, null);
+                Utente newUtente = new Utente(fname,lname,address, emailutente,password,phoneNumber,false, null);
                 utenteDao.addUser(newUtente);
                 request.getRequestDispatcher("/WEB-INF/views/site/succreg.jsp").forward(request, response);
                 break;
