@@ -52,11 +52,14 @@ input, select, textarea{
     padding: 8px;
     border-width: 1px;
     border-color: #CCCCCC;
-    background-color: white;
+    background-color: #e6e6e6;
     color: black;
     border-style: solid;
     border-radius: 0;
     box-shadow: 0 0 10px rgba(212,212,212,.54);
+}
+::placeholder{
+    font-size: 8px;
 }
 
 input:focus, textarea:focus, select:focus{

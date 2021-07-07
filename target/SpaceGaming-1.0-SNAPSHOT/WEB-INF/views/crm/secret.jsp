@@ -36,29 +36,52 @@
         }
 
         .btn{
+            height: 80px;
+            display: inline-block;
             font-weight: bold;
             color: white;
+            border-radius: 50px;
+            font-size: 25px;
             background-color: var(--viola);
             margin-top: 15px;
-            border: solid 5px var(--viola);
-            width: 100px;
+            margin-right: 0px;
+            width: 100%;
+        }
+        #regbtn{
+            height: 80px;
+            display: inline-block;
+            font-weight: bold;
+            color: black;
+            border-radius: 50px;
+            font-size: 25px;
+            background-color:white;
+            margin-top: 15px;
+            margin-right: 0px;
+            width: 100%;
         }
 
-        .btn:hover{
-            background-color: white;
-            color: var(--viola);
+        .btn:hover, #regbtn:hover{
+            filter:brightness(90%);
+        }
+
+        span{
+            font-size: 25px;
+        }
+        input{
+            margin: 10px;
+            height: 35px;
+            font-size:21px
         }
     </style>
 </head>
 <body>
 <section class="content grid-y">
     <header class="grid-x justify-center align-center">
-        <img src="${context}/images/logorotondo.png" width="35%" height="100%">
     </header>
 </section>
-<form class="app grid-x justify-center align-center" action="./utente/secret" method="post">
+<form class="app grid-x justify-center align-center" action="./accesso" method="post">
     <fieldset class="grid-y cell w40 login">
-        <h2 style="text-align: center">Login Pannello Admin</h2>
+        <h2 style="text-align: center">Accedi a Space Gaming</h2>
         <br>
         <span>Email</span>
         <label for="email" class="field">
@@ -68,11 +91,14 @@
         <label for="password" class="field">
             <input type="password" name="password" id="password">
         </label>
-        <button class="btn" type="submit">Login</button>
+        <div class="login_btn">
+            <button class="btn" type="submit" float="left">Accedi</button>
+        </div>
+        <div class="register_btn">
+                <input type="button" id="regbtn" onclick="window.location.href = '<%=request.getContextPath()%>/utente/signup';" value="Crea un account"/>
+        </div>
+
     </fieldset>
 </form>
 </body>
-<jsp:include page="../partials/footer.jsp">
-    <jsp:param name="title" value="footer"/>
-</jsp:include>
 </html>
