@@ -8,14 +8,13 @@ public class UtenteExtractor implements ResultSetExtractor<Utente> {
     @Override
     public Utente extract(ResultSet rs) throws SQLException {
         Utente c = new Utente();
-        c.setFname(rs.getString("usr.name"));
-        c.setLname(rs.getString("usr.surname"));
+        c.setFname(rs.getString("usr.fname"));
+        c.setLname(rs.getString("usr.lname"));
         c.setEmail(rs.getString("usr.email"));
-        c.setUsername(rs.getString("usr.username"));
-        c.setPassword(rs.getString("usr.password"));
+        c.setPassword(rs.getString("usr.pword"));
         c.setAddress(rs.getString("usr.address"));
-        c.setAdmin(rs.getBoolean("usr.isAdmin"));
-        c.setPhoneNumber(rs.getString("usr.phoneNumber"));
+        c.setAdmin(rs.getBoolean("usr.is_admin"));
+        c.setPhoneNumber(rs.getString("usr.phone_number"));
         return c;
     }
 }

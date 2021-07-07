@@ -25,20 +25,20 @@ public class CrmServlet extends HttpServlet {
                 break;
             case "/gClienti":
                 ArrayList<Utente> list= new ArrayList<>();
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
-                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com", "gens", "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
+                list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
 
                 request.setAttribute("customers", list);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);

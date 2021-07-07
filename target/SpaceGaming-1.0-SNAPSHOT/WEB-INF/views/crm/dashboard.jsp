@@ -11,12 +11,7 @@
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
     <style>
-        .body{
-            background-image: url("${context}/images/starbackground.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;;
-        }
+
         .body > div{
             background-color: white;
             box-shadow: -9px -4px 12px 3px #B7B7B7;
@@ -43,7 +38,7 @@
 <main class="app">
     <aside class="sidebar">
         <nav class="menu grid-y align-center">
-            <img src="${context}/images/logorotondo.png" width="400" height="200">
+            <img src="${context}/images/logorotondo.png" width="100" height="100">
             <a href="">Gestione Clienti</a>
             <a href="">Gestione Prodotti</a>
             <a href="">Gestione Ordini</a>
@@ -74,7 +69,7 @@
             </div>
             <div class="grid-y cell w40">
                 <h2>Utenti Totali</h2>
-                <h4>411412</h4>
+                <h4>${nUtenti}</h4>
             </div>
             <div class="grid-y cell w40">
                 <h2>Incasso Totale</h2>

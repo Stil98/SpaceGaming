@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#30075d">
 
 <link href="${context}/css/reset.css" rel="stylesheet">
-<link href="${context}/css/libreria.css" rel="stylesheet">
+<link href="${context}/css/library.css" rel="stylesheet">
 
 <c:if test="${not empty param.styles}">
     <c:forTokens items="${param.styles}" delims="," var="style">

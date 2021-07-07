@@ -11,11 +11,10 @@ public class Utente {
     private boolean isAdmin;
     private List<Acquisto> acquistoList;
 
-    public Utente(String fname, String lname, String address, String username, String email, String password, String phoneNumber, boolean isAdmin, List<Acquisto> acquistoList) {
+    public Utente(String fname, String lname, String address,  String email, String password, String phoneNumber, boolean isAdmin, List<Acquisto> acquistoList) {
         this.fname = fname;
         this.lname = lname;
         this.address = address;
-        this.username = username;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -49,14 +48,6 @@ public class Utente {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -105,21 +96,12 @@ public class Utente {
                 "name='" + fname + '\'' +
                 ", surname='" + lname + '\'' +
                 ", address='" + address + '\'' +
-                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", isAdmin=" + isAdmin +
                 ", orderList=" + acquistoList +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Utente utente = (Utente) o;
-        return isAdmin == utente.isAdmin && Objects.equals(fname, utente.fname) && Objects.equals(lname, utente.lname) && Objects.equals(address, utente.address) && Objects.equals(username, utente.username) && Objects.equals(email, utente.email) && Objects.equals(password, utente.password) && Objects.equals(phoneNumber, utente.phoneNumber) && Objects.equals(acquistoList, utente.acquistoList);
     }
 
 }

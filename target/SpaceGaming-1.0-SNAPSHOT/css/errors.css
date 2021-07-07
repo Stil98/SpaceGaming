@@ -49,10 +49,3 @@ body, html {
     text-align: center;
 }
 
-a:link, a:visited {
-    color: #b380ff;
-}
-
-a:active {
-    color: #9a51ff;
-}
