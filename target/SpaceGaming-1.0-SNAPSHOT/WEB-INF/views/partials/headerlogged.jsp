@@ -33,7 +33,7 @@
             <div class="dropdown">
             <button class="dropbtn">Bentornato ${profilo.fname}</button>
             <div class="dropdown-content">
-                <a href="<%=request.getContextPath()%>/cliente/show">Gestione Profilo</a>
+                <a href="<%=request.getContextPath()%>/site/profilo">Gestione Profilo</a>
                 <a href="<%=request.getContextPath()%>/cliente/show">I miei ordini</a>
                 <a href="<%=request.getContextPath()%>/utente/logout">Logout</a>
             </div>

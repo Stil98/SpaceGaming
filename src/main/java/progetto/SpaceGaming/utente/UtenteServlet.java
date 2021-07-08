@@ -14,6 +14,16 @@ public class UtenteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         doPost(request,response);
+        HttpSession session=request.getSession();
+        String contextPath = getServletContext().getContextPath();
+        String path= getPath(request);
+        switch (path) {
+            case "/logout": //LOGOUT CLIENTE
+                session.setAttribute("log", false);
+                session.invalidate();
+                response.sendRedirect(contextPath + "/utente/home");
+                break;
+        }
 
     }
 
@@ -39,15 +49,16 @@ public class UtenteServlet extends HttpServlet {
             case "/accesso":
                 String email=request.getParameter("email");
                 String pword=request.getParameter("password");
-                int nUtenti= dao.userCount();
-                request.setAttribute("nUtenti", nUtenti);
                 Utente user = dao.doRetrieveUserByEmailPassword(email,pword);
                 if(user == null){
                     session.setAttribute("failedLogin", true);
                     request.getRequestDispatcher("/WEB-INF/views/site/secret.jsp").forward(request, response);
                 }
-                if(user.isAdmin())
+                if(user.isAdmin()) {
+                    int nUtenti = dao.userCount();
+                    request.setAttribute("nUtenti", nUtenti);
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
+                }
                 else {
                     session.setAttribute("profilo", user);
                     session.setAttribute("log", true);
@@ -67,11 +78,6 @@ public class UtenteServlet extends HttpServlet {
                 session.setAttribute("log",true);
                 session.setAttribute("profilo",newUtente);
                 request.getRequestDispatcher("/index.jsp").forward(request,response);
-                break;
-            case "/logout": //LOGOUT CLIENTE
-                session.setAttribute("log",false);
-                session.invalidate();
-                response.sendRedirect(contextPath+"/utente/home");
                 break;
             case "/home": //TI RIMANDA ALLA HOME
                 request.getRequestDispatcher("/index.jsp").forward(request,response);

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Admin Dashboard</title>
+    <title>Gestione Clienti</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Admin Dashboard"/>
         <jsp:param name="styles" value="crm"/>
@@ -31,28 +31,9 @@
 </head>
 <body>
 <main class="app">
-    <aside class="sidebar">
-        <nav class="menu grid-y align-center">
-            <img src="${context}/images/logo.png" width="100" height="100">
-            <a href="">Gestione Clienti</a>
-            <a href="">Gestione Prodotti</a>
-            <a href="">Gestione Ordini</a>
-            <a href="">Gestione Categorie</a>
-            <a href="">Profilo</a>
-            <a href="">Logout</a>
-        </nav>
-    </aside>
+    <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
-        <header class="topbar grid-x align-center">
-            <img class="burger" src="${context}/icons/menu.svg">
-            <label class="field command">
-                <input type="text" placeholder="Cerca Comandi">
-            </label>
-            <span class="account">
-                <img src="${context}/icons/menu.svg">
-                Benvenuto Amministratore
-            </span>
-        </header>
+        <%@include file="../partials/crmHeader.jsp"%>
         <ul class="body list">
                 <c:forEach items="${customers}" var="customer">
                     <li class="w40 grid-x">${customer.fname} ${customer.lname}
@@ -63,9 +44,6 @@
                     </li>
                 </c:forEach>
         </ul>
-        <footer class="info">
-            <p>Copyright 2021</p>
-        </footer>
     </section>
 </main>
 </body>

@@ -21,14 +21,14 @@
             text-align: center;
         }
 
-        .body > div > h4{
+        .body > div > h2{
             margin: 0;
             padding: 1rem;
             color: white;
             background-color: var(--viola);
         }
 
-        .body > div > h2{
+        .body > div > h4{
             justify-self: center;
             font-size: 3rem;
         }
@@ -36,28 +36,9 @@
 </head>
 <body>
 <main class="app">
-    <aside class="sidebar">
-        <nav class="menu grid-y align-center">
-            <img src="${context}/images/logorotondo.png" width="100" height="100">
-            <a href="">Gestione Clienti</a>
-            <a href="">Gestione Prodotti</a>
-            <a href="">Gestione Ordini</a>
-            <a href="">Gestione Categorie</a>
-            <a href="">Profilo</a>
-            <a href="">Logout</a>
-        </nav>
-    </aside>
+    <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
-        <header class="topbar grid-x align-center">
-            <img class="burger" src="${context}/icons/menu.svg">
-            <label class="field command">
-                <input type="text" placeholder="Cerca Comandi">
-            </label>
-            <span class="account">
-                <img src="${context}/icons/menu.svg">
-                Benvenuto Amministratore
-            </span>
-        </header>
+        <%@include file="../partials/crmHeader.jsp"%>
         <div class="body grid-x justify-center">
             <div class="grid-y cell w40">
                 <h2>Utenti Mensili</h2>
@@ -79,7 +60,4 @@
     </section>
 </main>
 </body>
-<jsp:include page="../partials/footer.jsp">
-    <jsp:param name="title" value="Footer"/>
-</jsp:include>
 </html>

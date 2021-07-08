@@ -54,6 +54,10 @@ a {
     margin-left: -324px;
 }
 
+.logo{
+    cursor: pointer;
+}
+
 .info{
     text-align: right;
     font-style: italic;

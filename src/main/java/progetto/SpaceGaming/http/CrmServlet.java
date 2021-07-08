@@ -19,8 +19,9 @@ public class CrmServlet extends HttpServlet {
             case "/":
                 break;
             case "/dashboard":
-                // UtenteDAO dao=new UtenteDAO();
-                // int uTotali= dao.userCount();
+                UtenteDAO dao=new UtenteDAO();
+                int nUtenti = dao.userCount();
+                request.setAttribute("nUtenti", nUtenti);
                 request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
             case "/gClienti":
@@ -39,9 +40,17 @@ public class CrmServlet extends HttpServlet {
                 list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
                 list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
                 list.add(new Utente("Gennaro", "Rascato", "Via abito a torre", "gennarorascato@gmail.com",  "kjkjkjkj", "347322434", false, null));
-
                 request.setAttribute("customers", list);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
+                break;
+            case "/gProdotti":
+                request.getRequestDispatcher("/WEB-INF/views/crm/gProdotti.jsp").forward(request, response);
+                break;
+            case "/gOrdini":
+                request.getRequestDispatcher("/WEB-INF/views/crm/gOrdini.jsp").forward(request, response);
+                break;
+            case "/gCategorie":
+                request.getRequestDispatcher("/WEB-INF/views/crm/gCategorie.jsp").forward(request, response);
                 break;
             default:
                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
