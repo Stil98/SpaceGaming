@@ -46,6 +46,9 @@ public class CrmServlet extends HttpServlet {
             case "/modProdotti":
                 request.getRequestDispatcher("/WEB-INF/views/crm/modProdotti.jsp").forward(request, response);
                 break;
+            case "/newProdotto":
+                request.getRequestDispatcher("/WEB-INF/views/crm/newProdotto.jsp").forward(request, response);
+                break;
             case "/gOrdini":
                 request.getRequestDispatcher("/WEB-INF/views/crm/gOrdini.jsp").forward(request, response);
                 break;

@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<main class="app">
+<main class="app" style="height: 100vh;">
     <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp"%>

@@ -1,4 +1,4 @@
-.app{
+.app, .appList{
     display: flex;
     flex-flow: row nowrap;
 }

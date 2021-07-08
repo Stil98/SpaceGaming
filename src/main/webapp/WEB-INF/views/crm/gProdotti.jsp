@@ -10,12 +10,31 @@
         <jsp:param name="styles" value="crm"/>
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
+    <style>
+        .createBtn{
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            margin: 20px 30px 0px 20px;
+            width: 300px;
+            color: white;
+            background-color: var(--viola);
+            align-self: flex-end;
+        }
+
+        .createBtn:hover{
+            filter: brightness(130%);
+        }
+    </style>
 </head>
 <body>
-<main class="app">
+<main class="appList">
     <%@include file="../partials/crmSidebar.jsp" %>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp" %>
+        <form action="./newProdotto">
+            <input type="submit" class="createBtn" value="Crea Prodotto">
+        </form>
         <div class="body grid-x justify-center">
             <section class="grid-y cell products">
                 <table class="table product-table">
