@@ -13,9 +13,40 @@
 </head>
 <body>
 <main class="app">
-    <%@include file="../partials/crmSidebar.jsp"%>
+    <%@include file="../partials/crmSidebar.jsp" %>
     <section class="content grid-y">
-        <%@include file="../partials/crmHeader.jsp"%>
+        <%@include file="../partials/crmHeader.jsp" %>
+        <div class="body grid-x justify-center">
+            <section class="grid-y cell products">
+                <table class="table product-table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Prezzo</th>
+                        <th>Copie</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${products}" var="product">
+                    <tr>
+                        <td data-head="id">${product.id}</td>
+                        <td data-head="nome">${product.nome}</td>
+                        <td data-head="prezzo">${product.prezzo}€</td>
+                        <td data-head="copie">${product.qty}</td>
+                        <td>
+                            <form action="./modProdotti">
+                                <input type="hidden" id="id" name="id" value="${product.id}">
+                                <input type="submit" class="btn" value="Modifica">
+                            </form>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </section>
 </main>
 </body>

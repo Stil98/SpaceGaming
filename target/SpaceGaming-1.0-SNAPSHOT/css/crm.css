@@ -83,6 +83,10 @@ a {
     cursor: pointer;
 }
 
+.product-table{
+    margin: 20px;
+}
+
 @media screen and (min-width: 769px){
     .topbar > .account{
         display: block;
