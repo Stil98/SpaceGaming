@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
-<jsp:useBean id="utente" scope="request" type="progetto.SpaceGaming.utente.Utente"/>
-
 <link href="<c:url value="/css/header.css"/>" rel="stylesheet">
 
 <html>
@@ -32,13 +30,12 @@
             </a>
         </div>
     </nav>
-        <a href="<%=request.getContextPath()%>/utente/profilo"></a>
             <div class="dropdown">
-            <button class="dropbtn">Bentornato ${utente.fname}</button>
+            <button class="dropbtn">Bentornato ${profilo.fname}</button>
             <div class="dropdown-content">
                 <a href="<%=request.getContextPath()%>/cliente/show">Gestione Profilo</a>
                 <a href="<%=request.getContextPath()%>/cliente/show">I miei ordini</a>
-                <a href="<%=request.getContextPath()%>/cliente/logout">Logout</a>
+                <a href="<%=request.getContextPath()%>/utente/logout">Logout</a>
             </div>
     </div>
     <a href="#" class="cartbtn"><img src="${context}/icons/carticon.png" width="38" height="38"></a>
