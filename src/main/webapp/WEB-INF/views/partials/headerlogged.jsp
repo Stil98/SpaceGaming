@@ -10,7 +10,12 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value=""/>
     </jsp:include>
-
+<style>
+    button{
+        background-color: var(--rosso);
+        font-weight: bold;
+    }
+</style>
 </head>
 
 <body>
