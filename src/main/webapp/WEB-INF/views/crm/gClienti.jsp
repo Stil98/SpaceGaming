@@ -4,21 +4,13 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Admin Dashboard</title>
+    <title>Gestione Clienti</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Admin Dashboard"/>
         <jsp:param name="styles" value="crm"/>
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
     <style>
-        .list{
-            height: 70vh;
-            width:80vw;
-        }
-        .list{
-            overflow:hidden;
-            overflow-y:scroll;
-        }
         input[type=submit]{
             margin: .5rem;
             border: 2px solid black;
@@ -31,41 +23,54 @@
 </head>
 <body>
 <main class="app">
-    <aside class="sidebar">
-        <nav class="menu grid-y align-center">
-            <img src="${context}/images/logo.png" width="100" height="100">
-            <a href="">Gestione Clienti</a>
-            <a href="">Gestione Prodotti</a>
-            <a href="">Gestione Ordini</a>
-            <a href="">Gestione Categorie</a>
-            <a href="">Profilo</a>
-            <a href="">Logout</a>
-        </nav>
-    </aside>
-    <section class="content grid-y">
-        <header class="topbar grid-x align-center">
-            <img class="burger" src="${context}/icons/menu.svg">
-            <label class="field command">
-                <input type="text" placeholder="Cerca Comandi">
-            </label>
-            <span class="account">
-                <img src="${context}/icons/menu.svg">
-                Benvenuto Amministratore
-            </span>
-        </header>
-        <ul class="body list">
-                <c:forEach items="${customers}" var="customer">
-                    <li class="w40 grid-x">${customer.fname} ${customer.lname}
-                        <form action="UpdateCustomer">
-                            <input type="hidden" name="email" value="${customer.email}">
-                            <input type="submit" value="Modifica">
-                        </form>
-                    </li>
-                </c:forEach>
-        </ul>
-        <footer class="info">
-            <p>Copyright 2021</p>
-        </footer>
+    <%@include file="../partials/crmSidebar.jsp"%>
+    <section class="content grid-y" style="flex-wrap: nowrap">
+        <%@include file="../partials/crmHeader.jsp"%>
+        <div class="body grid-x justify-center">
+            <section class="grid-y cell products">
+                <table class="table product-table">
+                    <thead>
+                    <tr>
+                        <th>E-Mail</th>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Admin</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${customers}" var="customer">
+                        <tr>
+                            <td data-head="E-Mail">${customer.email}</td>
+                            <td data-head="Nome">${customer.fname}</td>
+                            <td data-head="Cognome">${customer.lname}</td>
+                            <td data-head="Admin">${customer.admin}</td>
+                            <td>
+                                <form action="./modClienti">
+                                    <input type="hidden" id="id" name="id" value="${customer.email}">
+                                    <input type="submit" class="btn" value="Modifica">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="./setAdmin" method="post">
+                                    <input type="hidden" id="idAdm" name="idAdm" value="${customer.email}">
+                                    <input type="submit" class="btn" value="Admin Toggle">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="./delClienti">
+                                    <input type="hidden" id="idDel" name="idDel" value="${customer.email}">
+                                    <input type="submit" class="btn" value="Elimina">
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </section>
 </main>
 </body>

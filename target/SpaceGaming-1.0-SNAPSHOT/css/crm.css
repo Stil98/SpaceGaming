@@ -1,4 +1,4 @@
-.app{
+.app, .appList{
     display: flex;
     flex-flow: row nowrap;
 }
@@ -54,6 +54,10 @@ a {
     margin-left: -324px;
 }
 
+.logo{
+    cursor: pointer;
+}
+
 .info{
     text-align: right;
     font-style: italic;
@@ -77,6 +81,10 @@ a {
 
 .topbar > img{
     cursor: pointer;
+}
+
+.product-table{
+    margin: 20px;
 }
 
 @media screen and (min-width: 769px){

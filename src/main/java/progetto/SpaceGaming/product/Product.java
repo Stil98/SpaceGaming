@@ -4,11 +4,19 @@ public class Product {
     private int id, qty;
     private String descrizione, nome;
     private double prezzo;
+    private String base64img;
 
     public Product() {
         super();
     }
-
+    public Product(int id, int qty, String descrizione, String nome, double prezzo, String base64img){
+        this.id = id;
+        this.qty = qty;
+        this.descrizione = descrizione;
+        this.nome = nome;
+        this.prezzo = prezzo;
+        this.base64img = base64img;
+    }
     public int getId() {
         return id;
     }
@@ -21,13 +29,6 @@ public class Product {
         this.qty = qty;
     }
 
-    public String getFullName() {
-        return nome;
-    }
-
-    public void setFullName(String fullName) {
-        this.nome = fullName;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -57,4 +58,10 @@ public class Product {
         this.prezzo = prezzo;
     }
 
+    public String getBase64img() {
+        return base64img;
+    }
+    public void setBase64img(String base64img) {
+        this.base64img = base64img;
+    }
 }

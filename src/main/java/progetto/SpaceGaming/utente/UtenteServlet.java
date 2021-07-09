@@ -13,32 +13,35 @@ import java.io.IOException;
 public class UtenteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        doPost(request,response);
+        HttpSession session=request.getSession();
+        String contextPath = getServletContext().getContextPath();
         String path= getPath(request);
+        switch (path) {
+            case "/logout": //LOGOUT CLIENTE
+                session.setAttribute("log", false);
+                session.invalidate();
+                response.sendRedirect(contextPath + "/utente/home");
+                break;
+        }
+
+    }
+
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        String path= getPath(request);
+        String contextPath = getServletContext().getContextPath();
+        HttpSession session=request.getSession();
+        UtenteDAO dao= new UtenteDAO();
         switch (path){
             case "/":
                 break;
             case "/secret":  //login admin
                 request.getRequestDispatcher("/WEB-INF/views/crm/secret.jsp").forward(request, response);
                 break;
-            case "/signup":
-                request.getRequestDispatcher("/WEB-INF/views/site/signup.jsp").forward(request,response);
-                break;
             case "/header":
                 request.getRequestDispatcher("/WEB-INF/views/partials/header.jsp").forward(request, response);
-                break;
-            default:
-                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
-        }
-
-    }
-
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        String path= getPath(request);
-        HttpSession session=request.getSession();
-        UtenteDAO dao= new UtenteDAO();
-        switch (path){
-            case "/":
                 break;
             case "/signup":
                 request.getRequestDispatcher("/WEB-INF/views/site/signup.jsp").forward(request,response);
@@ -46,19 +49,19 @@ public class UtenteServlet extends HttpServlet {
             case "/accesso":
                 String email=request.getParameter("email");
                 String pword=request.getParameter("password");
-                int nUtenti= dao.userCount();
-                request.setAttribute("nUtenti", nUtenti);
                 Utente user = dao.doRetrieveUserByEmailPassword(email,pword);
                 if(user == null){
                     session.setAttribute("failedLogin", true);
-                    request.getRequestDispatcher("/WEB-INF/views/site/signin.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/site/secret.jsp").forward(request, response);
                 }
-                request.setAttribute("utente", user);
-                if(user.isAdmin())
+                if(user.isAdmin()) {
+                    int nUtenti = dao.userCount();
+                    request.setAttribute("nUtenti", nUtenti);
                     request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
+                }
                 else {
-                    session.setAttribute("log", true);
                     session.setAttribute("profilo", user);
+                    session.setAttribute("log", true);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
                 break;
@@ -72,9 +75,15 @@ public class UtenteServlet extends HttpServlet {
                 Utente newUtente = new Utente(fname,lname,address, emailutente,password,phoneNumber,false, null);
                 dao.addUser(newUtente);
                 request.getRequestDispatcher("/WEB-INF/views/site/succreg.jsp").forward(request, response);
+                session.setAttribute("log",true);
+                session.setAttribute("profilo",newUtente);
+                request.getRequestDispatcher("/index.jsp").forward(request,response);
+                break;
+            case "/home": //TI RIMANDA ALLA HOME
+                request.getRequestDispatcher("/index.jsp").forward(request,response);
                 break;
             default:
-                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
+               // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 

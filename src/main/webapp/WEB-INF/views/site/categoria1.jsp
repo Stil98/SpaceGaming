@@ -1,19 +1,14 @@
 
-<%@ page import="java.text.DecimalFormat" %>
-<%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link href="<c:url value="/css/navbar.css"/>" rel="stylesheet">
-    <link href="<c:url value="/css/prodotti.css"/>" rel="stylesheet">
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
-        <jsp:param name="title" value="Uomo"/>
+        <jsp:param name="title" value=""/>
     </jsp:include>
     <c:choose>
         <c:when test="${log}">
-            <jsp:include page="/WEB-INF/views/partials/headerLoggato.jsp">
+            <jsp:include page="/WEB-INF/views/partials/headerlogged.jsp">
                 <jsp:param name="title" value=""/>
             </jsp:include>
         </c:when>
@@ -26,41 +21,30 @@
 </head>
 
 <body>
-<div>
-    <div class="dropdown">
-        <div>
-            <button class="dropbtn" id="cat">Seleziona Categoria</button>
-        </div>
-        <div class="content-product">
-            <% request.getSession().setAttribute("genere", "uomo");%>
-            <c:forEach items="${listaCat}" var="categoria">
-                <a href="<%=request.getContextPath()%>/prodotto/selezione?id=${categoria.idCategoria}">${categoria.nome}</a>
+<div class="body grid-x justify-center">
+    <section class="grid-y cell products">
+        <table class="table product-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Prezzo</th>
+                <th>Copie</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${lista}" var="product">
+                <tr>
+                    <td data-head="id">${product.id}</td>
+                    <td data-head="nome">${product.nome}</td>
+                    <td data-head="prezzo">${product.prezzo}€</td>
+                    <td data-head="copie">${product.qty}</td>
+                </tr>
             </c:forEach>
-        </div>
-    </div>
-</div>
-
-<h1>Prodotti Uomo</h1>
-
-<div class="products">
-    <%DecimalFormat df = new DecimalFormat("#.00");
-        int i=0;
-        ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getSession().getAttribute("prodotti");%>
-    <c:forEach items="${prodotti}" var="prodotto">
-        <%Prodotto prodotto = prodotti.get(i++);%>
-        <div class="product-card" onclick="window.open('<%=request.getContextPath()%>/cliente/product?id=${prodotto.idProdotto}', '_self');">
-            <div class="product-image">
-                <img src="data:image/jpg;base64,${prodotto.base64Image}" width="350" height="370">
-            </div>
-            <div class="product-info">
-                <h5>${prodotto.nome}</h5>
-                <h6>€<%=df.format(prodotto.getPrezzo())%></h6>
-            </div>
-        </div>
-    </c:forEach>
-    <%i=0;%>
+            </tbody>
+        </table>
+    </section>
 </div>
 </body>
 </html>
-</body>
-</html>
+

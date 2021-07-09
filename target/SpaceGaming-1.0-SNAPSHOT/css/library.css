@@ -76,6 +76,11 @@ input:focus, textarea:focus, select:focus{
     max-width: 100%;
 }
 
+.appList{
+    width: 100vw;
+    max-width: 100%;
+}
+
 .grid-x{
     display: flex;
     flex-flow: row wrap;
@@ -127,8 +132,8 @@ input:focus, textarea:focus, select:focus{
 
 .table{
     border-collapse: collapse;
-    background-color: grey;
 }
+
 
 .table > thead{
     visibility: hidden;
@@ -139,9 +144,50 @@ input:focus, textarea:focus, select:focus{
     margin-bottom: .5rem;
     padding: .5rem;
     display: block;
+    background-color: grey;
+}
+
+.table > tbody td{
+    display: block;
+    border-bottom: 1px solid black;
+    text-align: right;
+}
+
+.table > tbody td:before{
+    content: attr(data-head);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.paginator{
+    list-style-type: none;
+}
+
+.paginator > li{
+    border: 1px solid;
+    padding: .5rem;
 }
 
 @media screen and (min-width: 769px){
+    .table > thead{
+        visibility: visible;
+    }
+
+    .table tr{
+        display: table-row;
+    }
+
+    .table > tbody td{
+        display: table-cell;
+        text-align: center;
+    }
+
+    .table > tbody td:before{
+        content: "";
+        float: none;
+    }
+
     .w10{
         flex-basis: 10%;
     }
