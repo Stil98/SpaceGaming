@@ -1,0 +1,94 @@
+.app, .appList{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.topbar, .sidebar{
+    background-color: var(--viola);
+    padding: .5rem;
+}
+.sidebar > a{
+    color: white;
+    padding: 1rem;
+}
+
+.menu > a{
+    color: white;
+    padding: 1rem;
+    margin: .5rem;
+    border: 2px solid black;
+    width: 75%;
+    text-align: center;
+    filter: brightness(130%);
+}
+
+a {
+    text-decoration: none;
+    background-color: var(--viola);
+}
+
+.menu > a:hover{
+    filter: brightness(160%);
+}
+
+.body{
+    flex-grow: 1;
+}
+
+.sidebar{
+    flex-basis: 300px;
+    transition: all .3s ease-in-out;
+}
+
+.content{
+    background-color: #CCCCCC;
+    flex: 1;
+    transition: all .3s ease-in-out;
+}
+
+.sidebar.collapse{
+    transform: translate3d(-324px, 0, 0);
+}
+
+.content.full-width{
+    margin-left: -324px;
+}
+
+.logo{
+    cursor: pointer;
+}
+
+.info{
+    text-align: right;
+    font-style: italic;
+    font-weight: normal;
+    padding-right: 1rem;
+    border: 1px solid darkgray;
+}
+
+.topbar > .account{
+    display: none;
+}
+
+.topbar > .command{
+    flex: 1;
+}
+
+.topbar > *{
+    color: white;
+    margin-right: 8px;
+}
+
+.topbar > img{
+    cursor: pointer;
+}
+
+.product-table{
+    margin: 20px;
+}
+
+@media screen and (min-width: 769px){
+    .topbar > .account{
+        display: block;
+    }
+}
