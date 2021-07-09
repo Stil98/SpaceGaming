@@ -80,7 +80,7 @@ public class UtenteDAO {
                 Statement st = con.createStatement();
 
                 String query = "UPDATE Utente usr SET usr.fname='" + c.getFname() + "', " + "usr.lname='"+c.getLname() + "', usr.address='"+c.getAddress() +"'," +
-                        "usr.phone_number='"+c.getPhoneNumber()+"' WHERE usr.email=" + c.getEmail() + ";";
+                        "usr.phone_number='"+c.getPhoneNumber()+"' WHERE usr.email='" + c.getEmail() + "';";
                 st.executeUpdate(query);
             }
             catch (SQLException e) {

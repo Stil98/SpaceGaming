@@ -10,7 +10,12 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value=""/>
     </jsp:include>
-
+<style>
+    button{
+        background-color: var(--rosso);
+        font-weight: bold;
+    }
+</style>
 </head>
 
 <body>
@@ -20,7 +25,14 @@
         <div class="div_links">
             <ul class="nav_links">
                 <li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
-                <li><a href="#">Categorie</a></li>
+                <li><div class="dropdown">
+                    <button class="dropbtn">Categorie</button>
+                    <div class="dropdown-content">
+                        <a href="<%=request.getContextPath()%>/prodotto/PS4">PS4</a>
+                        <a href="<%=request.getContextPath()%>/prodotto/XBOX">XBOX</a>
+                        <a href="<%=request.getContextPath()%>/prodotto/SWITCH">SWITCH</a>
+                    </div>
+                </div></li>
                 <li><a href="<%=request.getContextPath()%>/info.jsp">Info</a></li></ul>
         </div>
         <div class="div_search">

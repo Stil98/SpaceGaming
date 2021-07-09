@@ -80,7 +80,7 @@ public class ProductDAO {
     public ArrayList<Product> doRetrieveProdottiByPlatform(String nomePiattaforma){
         ArrayList<Product> prodotti = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
-            String query = "SELECT * FROM Product p, Platform plat WHERE p.id = plat.product AND console =  " + nomePiattaforma;
+            String query = "SELECT * FROM Product pro, Platform plat WHERE pro.id = plat.product AND console =  '" + nomePiattaforma + "';";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             ProductExtractor proExtractor = new ProductExtractor();
