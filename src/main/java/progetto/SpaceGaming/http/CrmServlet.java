@@ -36,6 +36,8 @@ public class CrmServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
                 break;
             case "/modClienti":
+                Utente usr=usrDao.doRetrieveByEmail(request.getParameter("id"));
+                request.setAttribute("customer", usr);
                 request.getRequestDispatcher("/WEB-INF/views/crm/modClienti.jsp").forward(request, response);
                 break;
             case "/gProdotti":
@@ -62,5 +64,27 @@ public class CrmServlet extends HttpServlet {
         }
     }
 
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path=(request.getPathInfo() != null) ? request.getPathInfo() : "/";
+        UtenteDAO usrDao=new UtenteDAO();
+        ProductDAO prodDao=new ProductDAO();
+        ConsoleDAO cnslDao=new ConsoleDAO();
+        switch (path){
+            case "/":
+                break;
+            case "/clienteModificato":
+                Utente usr= usrDao.doRetrieveByEmail(request.getParameter("email"));
+                usr.setFname(request.getParameter("nome"));
+                usr.setLname(request.getParameter("cognome"));
+                usr.setPhoneNumber(request.getParameter("telefono"));
+                usr.setAddress(request.getParameter("indirizzo"));
+                usrDao.doChanges(usr);
+                ArrayList<Utente> customers= usrDao.doRetrieveAll();
+                request.setAttribute("customers", customers);
+                request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
+        }
+    }
 }
