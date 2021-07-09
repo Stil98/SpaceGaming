@@ -78,15 +78,27 @@ public class UtenteDAO {
         public void doChanges(Utente c){
             try (Connection con = ConPool.getConnection()) {
                 Statement st = con.createStatement();
-
                 String query = "UPDATE Utente usr SET usr.fname='" + c.getFname() + "', " + "usr.lname='"+c.getLname() + "', usr.address='"+c.getAddress() +"'," +
-                        "usr.phone_number='"+c.getPhoneNumber()+"' WHERE usr.email='" + c.getEmail() + "';";
+                        "usr.phone_number='"+c.getPhoneNumber()+"', usr.is_admin=" + c.isAdmin() + " WHERE usr.email='" + c.getEmail() + "';";
                 st.executeUpdate(query);
             }
             catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
+
+    public void deleteByEmail(String email){
+        try (Connection con = ConPool.getConnection()) {
+            String query ="DELETE FROM Utente as usr WHERE usr.email = (?);";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("DELETE error.");
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+    }
 
         public int userCount(){
             int n=0;
