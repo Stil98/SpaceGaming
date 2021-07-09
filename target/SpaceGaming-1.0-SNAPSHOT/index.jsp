@@ -35,8 +35,7 @@
 <body>
 <div id="page-container">
 <% ProductDAO dao = new ProductDAO();
-ArrayList<Product> prodotti = dao.doRetrieveAll();
-System.out.println(prodotti.get(0).getNome());%>
+ArrayList<Product> prodotti = dao.doRetrieveAll();%>
     <%for(int i = 0; i<prodotti.size(); i++){%>
     <div class="product-image">
         <img src="data:image/jpg;base64,<%=prodotti.get(i).getBase64img()%>" width="350" height="370">

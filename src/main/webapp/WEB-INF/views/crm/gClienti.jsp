@@ -36,6 +36,8 @@
                         <th>Cognome</th>
                         <th>Admin</th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +51,18 @@
                                 <form action="./modClienti">
                                     <input type="hidden" id="id" name="id" value="${customer.email}">
                                     <input type="submit" class="btn" value="Modifica">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="./setAdmin">
+                                    <input type="hidden" id="idAdm" name="idAdm" value="${customer.email}">
+                                    <input type="submit" class="btn" value="Admin Toggle">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="./delClienti">
+                                    <input type="hidden" id="idDel" name="idDel" value="${customer.email}">
+                                    <input type="submit" class="btn" value="Elimina">
                                 </form>
                             </td>
                         </tr>
