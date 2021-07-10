@@ -23,8 +23,9 @@ public class ConsoleDAO {
     public boolean doChanges(Console cat){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement("UPDATE Console c SET c.descrizione = (?) WHERE c.nome = (?);");
-            ps.setString(1, cat.getNome());
-            ps.setString(2, cat.getDescrizione());
+            ps.setString(1, cat.getDescrizione());
+            ps.setString(2, cat.getNome());
+
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

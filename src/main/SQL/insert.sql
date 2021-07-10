@@ -1,0 +1,1 @@
+INSERT into spacegaming.product(id, qty, nome, prezzo, descrizione, image) VALUES (001,30, 'Elder Ring', 66.90, 'PEGI : Età consigliata 16 e oltre', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));

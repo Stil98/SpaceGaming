@@ -2,25 +2,18 @@ package progetto.SpaceGaming.acquisto;
 
 import progetto.SpaceGaming.utente.Utente;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Acquisto {
-    private double total;
     private Utente utente;
     private String metpagamento;
-    private GregorianCalendar data;
+    private Date data;
+    private int id;
 
     public Acquisto(){
         super();
-    }
-
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 
     public Utente getUtente() {
@@ -39,11 +32,19 @@ public class Acquisto {
         this.metpagamento = metpagamento;
     }
 
-    public GregorianCalendar getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(GregorianCalendar data) {
+    public void setData(Date data) {
         this.data = data;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

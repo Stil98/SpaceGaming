@@ -62,13 +62,15 @@ public class ProductDAO {
 
     public void addProdotto(Product prodotto) {
         try (Connection con = ConPool.getConnection()) {
+            String path ="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
+            path+=prodotto.getBase64img();
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO product (id, qty, nome, prezzo, descrizione) VALUES(?,?,?,?,?)");
-            ps.setInt(1, prodotto.getId());
-            ps.setInt(2,prodotto.getQty());
-            ps.setString(3, prodotto.getNome());
-            ps.setDouble(4, prodotto.getPrezzo());
-            ps.setString(5, prodotto.getDescrizione());
+                    "INSERT INTO product (qty, nome, prezzo, descrizione,image) VALUES(?,?,?,?,LOAD_FILE(?))");
+            ps.setInt(1,prodotto.getQty());
+            ps.setString(2, prodotto.getNome());
+            ps.setDouble(3, prodotto.getPrezzo());
+            ps.setString(4, prodotto.getDescrizione());
+            ps.setString(5, path);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
