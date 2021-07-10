@@ -65,7 +65,7 @@ public class ProductDAO {
             String path ="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
             path+=prodotto.getBase64img();
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO product (qty, nome, prezzo, descrizione,image) VALUES(?,?,?,?,?,LOAD_FILE(?))");
+                    "INSERT INTO product (qty, nome, prezzo, descrizione,image) VALUES(?,?,?,?,LOAD_FILE(?))");
             ps.setInt(1,prodotto.getQty());
             ps.setString(2, prodotto.getNome());
             ps.setDouble(3, prodotto.getPrezzo());

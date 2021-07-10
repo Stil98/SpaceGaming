@@ -74,30 +74,6 @@ public class CrmServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/crm/newProdotto.jsp").forward(request, response);
                 break;
 
-            case "/prodCreato":
-                p=new Product();
-                p.setNome(request.getParameter("prod"));
-                double prezzo= Double.parseDouble(request.getParameter("prezzo"));
-                p.setPrezzo(prezzo);
-                int qty = Integer.parseInt(request.getParameter("quantita"));
-                p.setQty(qty);
-                p.setDescrizione(request.getParameter("descrizione"));
-                String updatePath = "C:"+ File.separator+"ProgramData" +File.separator + "MySQL" +
-                        File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
-                Part filePart=request.getPart("img");
-                String fileName= Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-                InputStream stream = filePart.getInputStream();
-                String linkImg = updatePath + fileName;
-                File file= new File(linkImg);
-                try{
-                    Files.copy(stream,file.toPath());
-                } catch (FileAlreadyExistsException e){
-                    /* do nothing */
-                }
-                p.setBase64img(fileName);
-                prodDao.addProdotto(p);
-                response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
-                break;
 
             case "/prodModifica":
                 int idn= Integer.parseInt(request.getParameter("id"));
@@ -147,6 +123,8 @@ public class CrmServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path=(request.getPathInfo() != null) ? request.getPathInfo() : "/";
         UtenteDAO usrDao=new UtenteDAO();
+        ProductDAO prodDao=new ProductDAO();
+        Product p=new Product();
         switch (path){
             case "/":
                 break;
@@ -172,7 +150,30 @@ public class CrmServlet extends HttpServlet {
                 request.setAttribute("customers", customerz);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
                 break;
-
+            case "/prodCreato":
+                p=new Product();
+                p.setNome(request.getParameter("prod"));
+                double prezzo= Double.parseDouble(request.getParameter("prezzo"));
+                p.setPrezzo(prezzo);
+                int qty = Integer.parseInt(request.getParameter("quantita"));
+                p.setQty(qty);
+                p.setDescrizione(request.getParameter("descrizione"));
+                String updatePath = "C:"+ File.separator+"ProgramData" +File.separator + "MySQL" +
+                        File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
+                Part filePart=request.getPart("img");
+                String fileName= Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+                InputStream stream = filePart.getInputStream();
+                String linkImg = updatePath + fileName;
+                File file= new File(linkImg);
+                try{
+                    Files.copy(stream,file.toPath());
+                } catch (FileAlreadyExistsException e){
+                    /* do nothing */
+                }
+                p.setBase64img(fileName);
+                prodDao.addProdotto(p);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
+                break;
             default:
                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
