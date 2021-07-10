@@ -13,9 +13,10 @@ CREATE TABLE Utente(
 );
 
 CREATE TABLE Acquisto(
-                         utente char(30) PRIMARY KEY,
+                         ref_id int PRIMARY KEY auto_increment,
                          metPagamento char(20) NOT NULL,
                          dataAcquisto datetime NOT NULL,
+                         utente char(30) NOT NULL,
                          FOREIGN KEY (utente) references Utente (email)
 );
 
@@ -57,3 +58,6 @@ CREATE TABLE Platform(
                          FOREIGN KEY (console) references Console(nome),
                          FOREIGN KEY (product) references Product(id)
 );
+
+INSERT INTO Product
+VALUES (001,30, 'Elder Ring', 66.90, 'PEGI : Età consigliata 16 e oltre', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));
