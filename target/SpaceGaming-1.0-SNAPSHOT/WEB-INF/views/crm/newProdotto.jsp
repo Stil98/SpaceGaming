@@ -16,12 +16,12 @@
     <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp"%>
-        <form class="grid-x justify-center align-center" action="./prodCreato" method="post">
+        <form class="grid-x justify-center align-center" action="./prodCreato">
             <fieldset class="field grid-y cell w40">
                 <h2 style="text-align: center">Crea un Prodotto</h2>
                 <span> Nome </span>
-                <label for="nome" class="field">
-                    <input type="text" name="nome" id="nome" placeholder="Nome" required>
+                <label for="prod" class="field">
+                    <input type="text" name="prod" id="prod" placeholder="Nome" required>
                 </label>
 
                 <span> Prezzo </span>

@@ -5,7 +5,6 @@
         <a href="${context}/crm/gProdotti">Gestione Prodotti</a>
         <a href="${context}/crm/gOrdini">Gestione Ordini</a>
         <a href="${context}/crm/gCategorie">Gestione Categorie</a>
-        <a href="">Profilo</a>
         <a href="<%=request.getContextPath()%>/utente/logout">Logout</a>
     </nav>
 </aside>

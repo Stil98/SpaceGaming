@@ -22,7 +22,7 @@
                 <br>
                 <span> Descrizione </span>
                 <label for="descrizione" class="field">
-                    <textarea id="descrizione" name="descrizione" rows="3" cols="50" required></textarea>
+                    <textarea id="descrizione" name="descrizione" rows="3" cols="50" required>${console.descrizione}</textarea>
                 </label>
 
                 <input type="hidden" name="nome" id="nome" value="${console.nome}">

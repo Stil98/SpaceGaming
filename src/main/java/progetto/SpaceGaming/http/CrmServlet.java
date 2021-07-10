@@ -10,10 +10,16 @@ import progetto.SpaceGaming.utente.UtenteDAO;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 @WebServlet(name = "CrmServlet", value = "/crm/*")
+@MultipartConfig
 public class CrmServlet extends HttpServlet {
 
     @Override
@@ -23,63 +29,108 @@ public class CrmServlet extends HttpServlet {
         ProductDAO prodDao=new ProductDAO();
         ConsoleDAO cnslDao=new ConsoleDAO();
         Utente usr=new Utente();
+        Product p=new Product();
         switch (path){
             case "/":
                 break;
+
             case "/dashboard":
                 int nUtenti = usrDao.userCount();
                 request.setAttribute("nUtenti", nUtenti);
                 request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
+
             case "/gClienti":
                 ArrayList<Utente> customers= usrDao.doRetrieveAll();
                 request.setAttribute("customers", customers);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
                 break;
+
             case "/modClienti":
                 usr=usrDao.doRetrieveByEmail(request.getParameter("id"));
                 request.setAttribute("customer", usr);
                 request.getRequestDispatcher("/WEB-INF/views/crm/modClienti.jsp").forward(request, response);
                 break;
+
             case "/delClienti":
                 usrDao.deleteByEmail(request.getParameter("idDel"));
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
+                break;
+
             case "/gProdotti":
                 ArrayList<Product> products= prodDao.doRetrieveAll();
                 request.setAttribute("products", products);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gProdotti.jsp").forward(request, response);
                 break;
+
             case "/modProdotti":
+                int id= Integer.parseInt(request.getParameter("id"));
+                p=prodDao.doRetrieveById(id);
+                request.setAttribute("product", p);
                 request.getRequestDispatcher("/WEB-INF/views/crm/modProdotti.jsp").forward(request, response);
                 break;
+
             case "/newProdotto":
                 request.getRequestDispatcher("/WEB-INF/views/crm/newProdotto.jsp").forward(request, response);
                 break;
+
             case "/prodCreato":
-                Product p=new Product();
-                p.setNome(request.getParameter("nome"));
+                p=new Product();
+                p.setNome(request.getParameter("prod"));
                 double prezzo= Double.parseDouble(request.getParameter("prezzo"));
                 p.setPrezzo(prezzo);
                 int qty = Integer.parseInt(request.getParameter("quantita"));
                 p.setQty(qty);
                 p.setDescrizione(request.getParameter("descrizione"));
-                p.setBase64img(request.getParameter("img"));
-                //addproduct che va aggiustata
+                String updatePath = "C:"+ File.separator+"ProgramData" +File.separator + "MySQL" +
+                        File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
+                Part filePart=request.getPart("img");
+                String fileName= Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+                InputStream stream = filePart.getInputStream();
+                String linkImg = updatePath + fileName;
+                File file= new File(linkImg);
+                try{
+                    Files.copy(stream,file.toPath());
+                } catch (FileAlreadyExistsException e){
+                    /* do nothing */
+                }
+                p.setBase64img(fileName);
+                prodDao.addProdotto(p);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
                 break;
+
+            case "/prodModifica":
+                int idn= Integer.parseInt(request.getParameter("id"));
+                p=prodDao.doRetrieveById(idn);
+                p.setNome(request.getParameter("prod"));
+                int qt= Integer.parseInt(request.getParameter("quantita"));
+                p.setQty(qt);
+                double price=Double.parseDouble(request.getParameter("prezzo"));
+                p.setPrezzo(price);
+                p.setDescrizione(request.getParameter("descrizione"));
+                if (request.getParameter("img")!=null) {
+                    p.setBase64img(request.getParameter("img"));
+                }
+                prodDao.doChanges(p);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
+                break;
+
             case "/gOrdini":
                 request.getRequestDispatcher("/WEB-INF/views/crm/gOrdini.jsp").forward(request, response);
                 break;
+
             case "/gCategorie":
                 ArrayList<Console> consoles= cnslDao.doRetrieveAll();
                 request.setAttribute("consoles", consoles);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gCategorie.jsp").forward(request, response);
                 break;
+
             case "/modCategorie":
                 Console c=cnslDao.doRetrieveById(request.getParameter("id"));
                 request.setAttribute("console", c);
                 request.getRequestDispatcher("/WEB-INF/views/crm/modCategorie.jsp").forward(request, response);
                 break;
+
             case "/cnslModifica":
                 System.out.println(cnslDao.doRetrieveById(request.getParameter("nome")));
                 Console cn=cnslDao.doRetrieveById(request.getParameter("nome"));
@@ -99,6 +150,7 @@ public class CrmServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
+
             case "/clienteModifica":
                 Utente usr= usrDao.doRetrieveByEmail(request.getParameter("email"));
                 usr.setFname(request.getParameter("nome"));
@@ -108,6 +160,7 @@ public class CrmServlet extends HttpServlet {
                 usrDao.doChanges(usr);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
                 break;
+
             case "/setAdmin":
                 usr=usrDao.doRetrieveByEmail(request.getParameter("idAdm"));
                 if (usr.isAdmin())
@@ -119,6 +172,7 @@ public class CrmServlet extends HttpServlet {
                 request.setAttribute("customers", customerz);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
                 break;
+
             default:
                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
