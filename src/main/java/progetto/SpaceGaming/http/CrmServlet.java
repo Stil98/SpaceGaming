@@ -22,7 +22,6 @@ public class CrmServlet extends HttpServlet {
         UtenteDAO usrDao=new UtenteDAO();
         ProductDAO prodDao=new ProductDAO();
         ConsoleDAO cnslDao=new ConsoleDAO();
-        ArrayList<Utente> customers= usrDao.doRetrieveAll();
         Utente usr=new Utente();
         switch (path){
             case "/":
@@ -33,6 +32,7 @@ public class CrmServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
             case "/gClienti":
+                ArrayList<Utente> customers= usrDao.doRetrieveAll();
                 request.setAttribute("customers", customers);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
                 break;
@@ -41,20 +41,9 @@ public class CrmServlet extends HttpServlet {
                 request.setAttribute("customer", usr);
                 request.getRequestDispatcher("/WEB-INF/views/crm/modClienti.jsp").forward(request, response);
                 break;
-            case "/setAdmin":
-                usr=usrDao.doRetrieveByEmail(request.getParameter("idAdm"));
-                if (usr.isAdmin())
-                    usr.setAdmin(false);
-                else
-                    usr.setAdmin(true);
-                usrDao.doChanges(usr);
-                request.setAttribute("customers", customers);
-                request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
-                break;
             case "/delClienti":
                 usrDao.deleteByEmail(request.getParameter("idDel"));
-                request.setAttribute("customers", customers);
-                request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
             case "/gProdotti":
                 ArrayList<Product> products= prodDao.doRetrieveAll();
                 request.setAttribute("products", products);
@@ -66,6 +55,18 @@ public class CrmServlet extends HttpServlet {
             case "/newProdotto":
                 request.getRequestDispatcher("/WEB-INF/views/crm/newProdotto.jsp").forward(request, response);
                 break;
+            case "/prodCreato":
+                Product p=new Product();
+                p.setNome(request.getParameter("nome"));
+                double prezzo= Double.parseDouble(request.getParameter("prezzo"));
+                p.setPrezzo(prezzo);
+                int qty = Integer.parseInt(request.getParameter("quantita"));
+                p.setQty(qty);
+                p.setDescrizione(request.getParameter("descrizione"));
+                p.setBase64img(request.getParameter("img"));
+                //addproduct che va aggiustata
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
+                break;
             case "/gOrdini":
                 request.getRequestDispatcher("/WEB-INF/views/crm/gOrdini.jsp").forward(request, response);
                 break;
@@ -74,8 +75,21 @@ public class CrmServlet extends HttpServlet {
                 request.setAttribute("consoles", consoles);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gCategorie.jsp").forward(request, response);
                 break;
-            default:
-                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
+            case "/modCategorie":
+                Console c=cnslDao.doRetrieveById(request.getParameter("id"));
+                request.setAttribute("console", c);
+                request.getRequestDispatcher("/WEB-INF/views/crm/modCategorie.jsp").forward(request, response);
+                break;
+            case "/cnslModifica":
+                System.out.println(cnslDao.doRetrieveById(request.getParameter("nome")));
+                Console cn=cnslDao.doRetrieveById(request.getParameter("nome"));
+                cn.setDescrizione(request.getParameter("descrizione"));
+                cnslDao.doChanges(cn);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gCategorie");
+                break;
+
+                default:
+                    request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 
@@ -85,16 +99,25 @@ public class CrmServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
-            case "/clienteModificato":
+            case "/clienteModifica":
                 Utente usr= usrDao.doRetrieveByEmail(request.getParameter("email"));
                 usr.setFname(request.getParameter("nome"));
                 usr.setLname(request.getParameter("cognome"));
                 usr.setPhoneNumber(request.getParameter("telefono"));
                 usr.setAddress(request.getParameter("indirizzo"));
                 usrDao.doChanges(usr);
-                ArrayList<Utente> customers= usrDao.doRetrieveAll();
-                request.setAttribute("customers", customers);
-                request.getRequestDispatcher("/WEB-INF/views/crm/gClienti.jsp").forward(request, response);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
+                break;
+            case "/setAdmin":
+                usr=usrDao.doRetrieveByEmail(request.getParameter("idAdm"));
+                if (usr.isAdmin())
+                    usr.setAdmin(false);
+                else
+                    usr.setAdmin(true);
+                usrDao.doChanges(usr);
+                ArrayList<Utente> customerz= usrDao.doRetrieveAll();
+                request.setAttribute("customers", customerz);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
                 break;
             default:
                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);

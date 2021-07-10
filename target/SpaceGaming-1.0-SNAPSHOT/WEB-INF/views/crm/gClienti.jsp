@@ -54,7 +54,7 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="./setAdmin">
+                                <form action="./setAdmin" method="post">
                                     <input type="hidden" id="idAdm" name="idAdm" value="${customer.email}">
                                     <input type="submit" class="btn" value="Admin Toggle">
                                 </form>

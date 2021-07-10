@@ -15,7 +15,33 @@
 <main class="app">
     <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
-        <%@include file="../partials/crmHeader.jsp"%>
+        <%@include file="../partials/crmHeader.jsp"%>        <div class="body grid-x justify-center">
+        <section class="grid-y cell products">
+            <table class="table product-table">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${consoles}" var="console">
+                    <tr>
+                        <td data-head="Nome">${console.nome}</td>
+                        <td data-head="Descrizione">${console.descrizione}</td>
+                        <td>
+                            <form action="./modCategorie">
+                                <input type="hidden" id="id" name="id" value="${console.nome}">
+                                <input type="submit" class="btn" value="Modifica">
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </section>
+    </div>
     </section>
 </main>
 </body>
