@@ -10,7 +10,6 @@ public class Product {
         super();
     }
     public Product(int id, int qty, String descrizione, String nome, double prezzo, String base64img){
-        this.id = id;
         this.qty = qty;
         this.descrizione = descrizione;
         this.nome = nome;
