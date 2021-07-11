@@ -7,13 +7,13 @@ CREATE TABLE Utente(
                        pword char(40) NOT NULL,
                        fname varchar(20) NOT NULL,
                        lname varchar(20) NOT NULL,
-                       address varchar(30) NOT NULL,
+                       address varchar(100) NOT NULL,
                        phone_number char(13) NOT NULL,
                        is_admin boolean NOT NULL
 );
 
 CREATE TABLE Acquisto(
-                         ref_id int PRIMARY KEY auto_increment,
+                         id int PRIMARY KEY auto_increment,
                          metPagamento char(20) NOT NULL,
                          dataAcquisto datetime NOT NULL,
                          utente char(30) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE Carrello(
 
 CREATE TABLE Console(
                         nome varchar(20) PRIMARY KEY,
-                        descrizione varchar(50) NOT NULL
+                        descrizione varchar(200) NOT NULL
 );
 
 
@@ -38,7 +38,7 @@ CREATE TABLE Product(
                         nome char(20) NOT NULL,
                         prezzo float NOT NULL,
                         descrizione varchar(200) NOT NULL,
-                        image longblob not null
+                        image longblob NOT NULL
 );
 
 CREATE TABLE InserimentoCart(
@@ -58,6 +58,3 @@ CREATE TABLE Platform(
                          FOREIGN KEY (console) references Console(nome),
                          FOREIGN KEY (product) references Product(id)
 );
-
-INSERT INTO Product
-VALUES (001,30, 'Elder Ring', 66.90, 'PEGI : Età consigliata 16 e oltre', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));

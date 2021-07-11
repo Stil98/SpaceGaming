@@ -158,6 +158,7 @@ public class CrmServlet extends HttpServlet {
                 int qty = Integer.parseInt(request.getParameter("quantita"));
                 p.setQty(qty);
                 p.setDescrizione(request.getParameter("descrizione"));
+
                 String updatePath = "C:"+ File.separator+"ProgramData" +File.separator + "MySQL" +
                         File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
                 Part filePart=request.getPart("img");
@@ -171,6 +172,7 @@ public class CrmServlet extends HttpServlet {
                     /* do nothing */
                 }
                 p.setBase64img(fileName);
+
                 prodDao.addProdotto(p);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
                 break;
