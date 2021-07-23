@@ -12,10 +12,11 @@ public class AcquistoExtractor implements ResultSetExtractor<Acquisto> {
     public Acquisto extract(ResultSet rs) throws SQLException {
         Acquisto ordine = new Acquisto();
         UtenteDAO dao = new UtenteDAO();
-        ordine.setId(rs.getInt("acquisto.ref_id"));
-        ordine.setMetpagamento(rs.getString("acquisto.metPagamento"));
-        ordine.setData(rs.getDate("acquisto.dataAcquisto"));
-        Utente user = dao.doRetrieveByEmail(rs.getString("acquisto.email"));
+        ordine.setId(rs.getInt("ordine.id"));
+        ordine.setMetpagamento(rs.getString("ordine.metPagamento"));
+        ordine.setData(rs.getDate("ordine.dataAcquisto"));
+        Utente user = dao.doRetrieveByEmail(rs.getString("ordine.utente"));
+        ordine.setUtente(user);
         return ordine;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Utente {
 
-    private String fname, lname, address, username, email, password, phoneNumber;
+    private String fname, lname, address, email, password, phoneNumber;
     private boolean isAdmin;
     private List<Acquisto> acquistoList;
 
