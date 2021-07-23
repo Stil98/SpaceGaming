@@ -1,5 +1,7 @@
 package progetto.SpaceGaming.http;
 
+import progetto.SpaceGaming.acquisto.Acquisto;
+import progetto.SpaceGaming.acquisto.AcquistoDAO;
 import progetto.SpaceGaming.console.Console;
 import progetto.SpaceGaming.console.ConsoleDAO;
 import progetto.SpaceGaming.product.Product;
@@ -28,6 +30,7 @@ public class CrmServlet extends HttpServlet {
         UtenteDAO usrDao=new UtenteDAO();
         ProductDAO prodDao=new ProductDAO();
         ConsoleDAO cnslDao=new ConsoleDAO();
+        AcquistoDAO ordDao=new AcquistoDAO();
         Utente usr=new Utente();
         Product p=new Product();
         switch (path){
@@ -92,6 +95,8 @@ public class CrmServlet extends HttpServlet {
                 break;
 
             case "/gOrdini":
+                ArrayList<Acquisto> orders=ordDao.doRetrieveAll();
+                request.setAttribute("orders", orders);
                 request.getRequestDispatcher("/WEB-INF/views/crm/gOrdini.jsp").forward(request, response);
                 break;
 

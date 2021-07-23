@@ -3,7 +3,7 @@ INSERT into spacegaming.utente(email, pword, fname, lname, address, phone_number
 INSERT into spacegaming.utente(email, pword, fname, lname, address, phone_number, is_admin) VALUES ('gennarorascato@gmail.com', SHA1('Gennaro12!'), 'Gennaro', 'Rascatp', 'Via Abita a Torre 23', 1234567890, true);
 INSERT into spacegaming.utente(email, pword, fname, lname, address, phone_number, is_admin) VALUES ('marcopastore@gmail.com', SHA1('Marco12!'), 'Marco', 'Pastore', 'Via e di Salerno 91', 0987654321, false);
 
-INSERT into spacegaming.acquisto(metPagamento, dataAcquisto, utente) VALUES ('Contanti', 06/06/2021, 'sabatocelentano@gmail.com');
+INSERT into spacegaming.acquisto(metPagamento, dataAcquisto, utente) VALUES ('Contanti', '20210618', 'sabatocelentano@gmail.com');
 INSERT into spacegaming.acquisto(metPagamento, dataAcquisto, utente) VALUES ('Carta di Credito', 08/07/2021, 'sabatocelentano@gmail.com');
 INSERT into spacegaming.acquisto(metPagamento, dataAcquisto, utente) VALUES ('Contanti', 06/06/2021, 'gennarorascato@gmail.com');
 
