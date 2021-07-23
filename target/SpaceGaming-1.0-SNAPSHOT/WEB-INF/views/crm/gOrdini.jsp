@@ -6,12 +6,17 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-    <title>Gestione Ordini</title>
+    <title>Visualizza Ordini</title>
     <jsp:include page="../partials/head.jsp">
-        <jsp:param name="title" value="Admin Dashboard"/>
+        <jsp:param name="title" value="Ordini"/>
         <jsp:param name="styles" value="crm"/>
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
+    <style>
+        tr {
+            height: 50px;
+        }
+    </style>
 </head>
 <body>
 <main class="app">
@@ -27,7 +32,6 @@
                         <th>Utente</th>
                         <th>Data</th>
                         <th>Metodo di Pagamento</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,12 +41,7 @@
                             <td data-head="email">${order.utente.email}</td>
                             <td data-head="data">${order.data}</td>
                             <td data-head="metodo di pagamento">${order.metpagamento}</td>
-                            <td>
-                                <form action="./modOrdini">
-                                    <input type="hidden" id="id" name="id" value="${product.id}">
-                                    <input type="submit" class="btn" value="Modifica">
-                                </form>
-                            </td>
+
                         </tr>
                     </c:forEach>
                     </tbody>
