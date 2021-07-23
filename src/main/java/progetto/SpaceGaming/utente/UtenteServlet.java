@@ -12,19 +12,22 @@ import java.io.IOException;
 @WebServlet(name = "UtenteServlet", value = "/utente/*")
 public class UtenteServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        doPost(request,response);
-        HttpSession session=request.getSession();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        doPost(request, response);
+        HttpSession session = request.getSession();
         String contextPath = getServletContext().getContextPath();
-        String path= getPath(request);
+        String path = getPath(request);
         switch (path) {
             case "/logout": //LOGOUT CLIENTE
                 session.setAttribute("log", false);
                 session.invalidate();
                 response.sendRedirect(contextPath + "/utente/home");
                 break;
-        }
 
+            case "/profilo": //apre pagina profilo
+                request.getRequestDispatcher("/WEB-INF/views/site/profilo.jsp");
+                break;
+        }
     }
 
 

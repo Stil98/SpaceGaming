@@ -25,16 +25,16 @@ import java.util.ArrayList;
                     request.setAttribute("lista", listaP);
                     System.out.println(listaP.size());
 
-                    request.getRequestDispatcher("/WEB-INF/views/site/categoria1.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                     break;
                 case "/XBOX":
                     ArrayList<Product> listaX = proDAO.doRetrieveProdottiByPlatform("XBOX");
                     request.setAttribute("lista", listaX);
-                    request.getRequestDispatcher("/WEB-INF/views/site/categoria1.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                 case "/SWITCH":
                     ArrayList<Product> listaS = proDAO.doRetrieveProdottiByPlatform("SWITCH");
                     request.setAttribute("lista", listaS);
-                    request.getRequestDispatcher("/WEB-INF/views/site/categoria1.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
             }
         }
     }
