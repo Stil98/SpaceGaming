@@ -24,11 +24,10 @@ import java.util.ArrayList;
                     ArrayList<Product> listaP = proDAO.doRetrieveProdottiByPlatform("PS4");
                     request.setAttribute("lista", listaP);
                     System.out.println(listaP.size());
-
                     request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                     break;
                 case "/XBOX":
-                    ArrayList<Product> listaX = proDAO.doRetrieveProdottiByPlatform("XBOX");
+                    ArrayList<Product> listaX = proDAO.doRetrieveProdottiByPlatform("XBOX ONE");
                     request.setAttribute("lista", listaX);
                     request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                 case "/SWITCH":

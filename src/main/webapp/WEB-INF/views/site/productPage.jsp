@@ -28,7 +28,8 @@
             padding: 20px 6px;
             margin-left: 30%;
             margin-right: 30%;
-            border-bottom: solid 1px #dfdbd9;
+            border-bottom: solid 1px black;
+            background-color: white;
         }
 
         .singleProduct .prodImg {
@@ -72,7 +73,7 @@
             list-style: none;
         }
         h3{
-            color: white;
+            color: black;
         }
         .singleProdInfo ul {
             margin-top: 16px;
@@ -118,27 +119,25 @@
             cursor: pointer;
         }
         div.singleProdInfo strong {
-            color: white;
+            color: black;
             font-style: italic;
         }
     </style>
 </head>
 
 <body>
-<% ProductDAO dao = new ProductDAO();
-    ArrayList<Product> prodotti = dao.doRetrieveAll();%>
-<%for(int i = 0; i<prodotti.size(); i++){%>
+<c:forEach items="${lista}" var="product">
 <div class="body grid-x justify-center">
     <div class="singleProduct" id="product_1">
         <a class="prodImg" href="#">
-            <img src="data:image/jpg;base64,<%=prodotti.get(i).getBase64img()%>" width="150" height="220">
+            <img src="data:image/jpg;base64,${product.base64img}" width="150" height="220">
         </a>
         <div class="singleProdInfo">
             <h3>
-                <%=prodotti.get(i).getNome()%>
+                ${product.nome}
             </h3>
             <p>
-                <strong><%=prodotti.get(i).getDescrizione()%></strong>
+                <strong>${product.descrizione}</strong>
             </p>
 
         </div>
@@ -147,7 +146,7 @@
                 <a class="megaButton cartAddNoRadio">
         <span>
                 <strong>Aggiungi al carrello</strong>
-                     <b>€<%=prodotti.get(i).getPrezzo()%></b>
+                     <b>€${product.prezzo}</b>
         </span>
                 </a>
             </p>
@@ -156,7 +155,7 @@
         <div class="clearing"></div>
     </div>
 </div>
-<%}%>
+</c:forEach>
 </body>
 </html>
 

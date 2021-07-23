@@ -30,6 +30,7 @@ INSERT into spacegaming.platform(console, product) VALUES ('PS4', 2);
 INSERT into spacegaming.platform(console, product) VALUES ('PS4', 3);
 INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 1);
 INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 2);
-INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 3);
+INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 4);
 INSERT into spacegaming.platform(console, product) VALUES ('SWITCH', 2);
+INSERT into spacegaming.platform(console, product) VALUES ('SWITCH', 4);
 

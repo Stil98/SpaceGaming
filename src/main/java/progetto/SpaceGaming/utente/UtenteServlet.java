@@ -60,7 +60,7 @@ public class UtenteServlet extends HttpServlet {
                 if(user.isAdmin()) {
                     int nUtenti = dao.userCount();
                     request.setAttribute("nUtenti", nUtenti);
-                    request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
+                    response.sendRedirect(getServletContext().getContextPath() + "/crm/dashboard");
                 }
                 else {
                     session.setAttribute("profilo", user);
