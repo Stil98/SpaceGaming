@@ -11,7 +11,7 @@
         <jsp:param name="title" value=""/>
     </jsp:include>
 <style>
-    button{
+    #wcm{
         background-color: var(--rosso);
         font-weight: bold;
     }
@@ -25,7 +25,7 @@
         <div class="div_links">
             <ul class="nav_links">
                 <li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
-                <li><div class="dropdown">
+                <li id="drop"><div class="dropdown">
                     <button class="dropbtn">Categorie</button>
                     <div class="dropdown-content">
                         <a href="<%=request.getContextPath()%>/prodotto/PS4">PS4</a>
@@ -43,9 +43,9 @@
         </div>
     </nav>
             <div class="dropdown">
-            <button class="dropbtn">Bentornato ${profilo.fname}</button>
+            <button id="wcm">Bentornato ${profilo.fname}</button>
             <div class="dropdown-content">
-                <a href="<%=request.getContextPath()%>/site/profilo">Gestione Profilo</a>
+                <a href="<%=request.getContextPath()%>/utente/profile">Gestione Profilo</a>
                 <a href="<%=request.getContextPath()%>/cliente/show">I miei ordini</a>
                 <a href="<%=request.getContextPath()%>/utente/logout">Logout</a>
             </div>

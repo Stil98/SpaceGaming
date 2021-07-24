@@ -66,48 +66,50 @@
     </style>
 </head>
 <body>
+<% Utente user = (Utente) session.getAttribute("profilo");%>
 <section class="content grid-y">
     <header class="grid-x justify-center align-center">
         <img src="${context}/images/logonuovo.png" width="35%" height="100%">
     </header>
 </section>
-<form class="app grid-x justify-center align-center" action="./create" method="post" onsubmit="return passwordValidation()">
+<form class="app grid-x justify-center align-center" action="./update" method="post" onsubmit="return passwordValidation()">
+    <input type="hidden" name="oldemail" value="<%=user.getEmail()%>">
     <fieldset class="grid-y cell w40 login" >
-        <h1 style="text-align: center">Modifica Profilo utente</h1>
+        <h1 style="text-align: center">Modifica profilo utente</h1>
         <br>
         <span> Nome </span>
         <label for="nome" class="field">
-            <input type="text" name="nome" id="nome" placeholder="Nome" required>
+            <input type="text" name="nome" id="nome" value="<%=user.getFname()%>" required>
         </label>
 
         <span> Cognome </span>
         <label for="cognome" class="field">
-            <input type="text" name="cognome" id="cognome" placeholder="Cognome" required>
+            <input type="text" name="cognome" id="cognome" value="<%=user.getLname()%>" required>
         </label>
 
         <span> Email </span>
         <label for="email" class="field">
-            <input type="email" name="email" id="email" placeholder="prova@example.com">
+            <input type="email" name="email" id="email" value="<%=user.getEmail()%>">
         </label>
 
         <span> Password </span>
         <label for="password" class="field">
-            <input title="La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numero e un carattere speciale." onfocusout="hideInfoPassword()" onfocusin="showInfoPassword()" type="password" name="password" id="password" placeholder="Password" required><br>
+            <input title="La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numero e un carattere speciale." onfocusout="hideInfoPassword()" onfocusin="showInfoPassword()" type="password" name="password" id="password" value="<%=user.getPassword()%>" required><br>
         </label>
 
         <span>Conferma  Password </span>
         <label for="confermapassword" class="field">
-            <input type="password" name="confermapassword" id="confermapassword" placeholder="Conferma Password" required><br>
+            <input type="password" name="confermapassword" id="confermapassword" value="<%=user.getPassword()%>" required><br>
         </label>
 
         <span> Indirizzo </span>
         <label for="indirizzo" class="field">
-            <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo" required>
+            <input type="text" name="indirizzo" id="indirizzo" value="<%=user.getAddress()%>" required>
         </label>
 
         <span> Telefono </span>
         <label for="telefono" class="field">
-            <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
+            <input type="text" name="telefono" id="telefono" value="<%=user.getPhoneNumber()%>" required>
         </label>
         <button class="btn_primary" type="submit">Conferma Modifiche</button>
 

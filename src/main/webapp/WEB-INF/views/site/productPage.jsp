@@ -1,6 +1,7 @@
 <%@ page import="progetto.SpaceGaming.product.Product" %>
 <%@ page import="progetto.SpaceGaming.product.ProductDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -122,12 +123,36 @@
             color: black;
             font-style: italic;
         }
+        b{
+            color:white;
+        }
+        .btnCart {
+            background-color: #ee3124;
+            transition: none;
+            border: none;
+            padding: 8px;
+            font-weight: bold;
+            font-style: normal;
+        }
+        .btnCart:hover{
+            filter:none;
+            transition: none;
+            background-color: #ee3124;
+        }
+        a.megaButton:hover{
+            filter:brightness(140%);
+        }
     </style>
 </head>
 
 <body>
+<%DecimalFormat df = new DecimalFormat("#.00");
+    int i = 0;
+    ArrayList<Product> prodotti = (ArrayList<Product>) request.getAttribute("lista");%>
 <c:forEach items="${lista}" var="product">
-<div class="body grid-x justify-center">
+    <%Product product = prodotti.get(i);
+    i++;%>
+    <div class="body grid-x justify-center">
     <div class="singleProduct" id="product_1">
         <a class="prodImg" href="#">
             <img src="data:image/jpg;base64,${product.base64img}" width="150" height="220">
@@ -141,21 +166,26 @@
             </p>
 
         </div>
-        <div class="prodBuy">
+        <form action="${pageContext.request.contextPath}/utente/inputcarrello" method="post">
+            <input type="hidden" name="id" value="${product.id}">
+            <div class="prodBuy">
             <p class="buyPresell">
                 <a class="megaButton cartAddNoRadio">
         <span>
-                <strong>Aggiungi al carrello</strong>
-                     <b>€${product.prezzo}</b>
+            <button type="submit" class="btnCart">Aggiungi al Carrello</button>
+                     <b>€<%=df.format(product.getPrezzo())%></b>
         </span>
                 </a>
             </p>
 
         </div>
         <div class="clearing"></div>
+        </form>
     </div>
+
 </div>
 </c:forEach>
+<%i=0;%>
 </body>
 </html>
 
