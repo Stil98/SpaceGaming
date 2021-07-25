@@ -15,8 +15,8 @@ public class ConPool {
             p.setUrl("jdbc:mysql://localhost:3306/SpaceGaming?serverTimezone=" + TimeZone.getDefault().getID());
             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
             p.setUsername("root");
-            p.setPassword("admin");
-            //e muri si cagn password maronn
+            p.setPassword("root");
+            //gni gni adesso cambio password di sql cosí non ti rompo piú i coglioni -semicit Gennar a bugij
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);

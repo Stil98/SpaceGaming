@@ -16,7 +16,6 @@
 
 <link href="${context}/css/reset.css" rel="stylesheet">
 <link href="${context}/css/library.css" rel="stylesheet">
-
 <c:if test="${not empty param.styles}">
     <c:forTokens items="${param.styles}" delims="," var="style">
         <link rel="stylesheet" href="${context}/css/${style}.css">
@@ -24,6 +23,8 @@
 </c:if>
 
 <script src="${context}/js/libraryJS.js" defer></script>
+<script src="${context}/js/header.js" defer> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <c:if test="${not empty param.scripts}">
     <c:forTokens items="${param.scripts}" delims="," var="script">
         <script src="${context}/js/${script}.js" defer></script>
