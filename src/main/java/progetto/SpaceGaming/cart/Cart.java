@@ -38,11 +38,45 @@ public class Cart {
             if (i==items.size()){
                 items.add(p);
                 copies.add(1);
+                return p;
             }
-            else if (p.equals(items.get(i)))
-                copies.set(i, copies.get(i)+1);
+            else if (p.getId()==items.get(i).getId()) {
+                copies.set(i, copies.get(i) + 1);
+                return p;
+            }
         }
         return p;
+    }
+
+    public void removeProduct(Product p){
+        for (int i=0; i<items.size(); i++) {
+            if (p.getId() == items.get(i).getId()) {
+                if (copies.get(i) == 1) {
+                    items.remove(i);
+                    copies.remove(i);
+                    return;
+                } else {
+                    copies.set(i, copies.get(i) - 1);
+                    return;
+                }
+            }
+        }
+        return;
+    }
+
+    public void removeProduct(int id){
+        for (int i=0; i<items.size(); i++) {
+            if (id == items.get(i).getId()) {
+                if (copies.get(i) == 1) {
+                    items.remove(i);
+                    copies.remove(i);
+                    return;
+                } else {
+                    copies.set(i, copies.get(i) - 1);
+                    return;
+                }
+            }
+        }
     }
 
     public Utente getUtente() {
@@ -86,6 +120,8 @@ public class Cart {
     }
 
     public void setItems(ArrayList<Product> items) {
+        if(items==null)
+            return;
         this.items = items;
     }
 }

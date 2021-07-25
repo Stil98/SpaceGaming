@@ -43,7 +43,6 @@ public class UtenteServlet extends HttpServlet {
         HttpSession session=request.getSession();
         UtenteDAO dao= new UtenteDAO();
         ProductDAO prodao = new ProductDAO();
-        ArrayList<Product> cart;
         Boolean b;
         Cart car = new Cart();
         switch (path){
@@ -123,12 +122,12 @@ public class UtenteServlet extends HttpServlet {
                     session.setAttribute("log",b);
                 }
                 if (b) { //CONTROLLO SE LOGGATO E SE IL CART ESISTE SENO ISTANZIO
-                    cart = (ArrayList<Product>) session.getAttribute("cart");
-                    if (cart != null)
+                    if (session.getAttribute("cart") != null)
+                        car=(Cart) session.getAttribute("cart");
+                    if (car != null)
                         request.getRequestDispatcher("/WEB-INF/views/site/cart.jsp").forward(request, response);
                     else {
-                        cart = new ArrayList<>();
-                        session.setAttribute("cart", cart);
+                        session.setAttribute("cart", car);
                         request.getRequestDispatcher("/WEB-INF/views/site/cart.jsp").forward(request, response);
                     }
                 }
@@ -143,9 +142,9 @@ public class UtenteServlet extends HttpServlet {
 
                 }else { //SE LOGGATO AGGIUNGO
                     int id=Integer.parseInt(request.getParameter("id"));
-
                     Product pro = prodao.doRetrieveById(id);//RECUPERO PRODOTTO
-                    car.setItems((ArrayList<Product>) session.getAttribute("cart"));
+                    if (session.getAttribute("cart") != null)
+                        car=(Cart) session.getAttribute("cart");
                     if (car.getItems() == null) { //SE PRIMA VOLTA DICHIARO
                         car.addProduct(pro); //aggiungo a cart il prodotto
                     }
@@ -159,6 +158,18 @@ public class UtenteServlet extends HttpServlet {
                     response.sendRedirect(contextPath+"/utente/carrello");
                     break;
                 }
+            case "/deletepro":
+                car= (Cart) session.getAttribute("cart");
+                System.out.println("COmp");
+                car.removeProduct(Integer.parseInt(request.getParameter("delete")));
+                if(car.getItems().isEmpty()){
+                    response.sendRedirect(contextPath+"/utente/home");
+                }
+                else {
+                    session.setAttribute("cart", car);
+                    response.sendRedirect(contextPath + "/utente/carrello");
+                }
+                break;
             default:
                // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }

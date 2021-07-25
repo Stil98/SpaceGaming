@@ -35,7 +35,7 @@ public class JSONServlet extends HttpServlet {
             id = result.get(i).getId();
             String idJSON = String.valueOf(id);
             response.getWriter().append("{\"nome\":\"").append(nome).append("\", ");
-            response.getWriter().append("\"idProdotto\":\"").append(idJSON).append("\"");
+            response.getWriter().append("\"id\":\"").append(idJSON).append("\"");
             response.getWriter().append("}");
             if (i!=result.size()-1)
                 response.getWriter().append(",");

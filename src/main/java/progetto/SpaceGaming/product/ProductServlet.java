@@ -33,6 +33,10 @@ import java.util.ArrayList;
                     ArrayList<Product> listaS = proDAO.doRetrieveProdottiByPlatform("SWITCH");
                     request.setAttribute("lista", listaS);
                     request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
+                case "/product":
+                    Product p=proDAO.doRetrieveById(Integer.parseInt(request.getParameter("id")));
+                    request.setAttribute("product", p);
+                    request.getRequestDispatcher("/WEB-INF/views/site/singleProduct.jsp").forward(request, response);
             }
         }
     }

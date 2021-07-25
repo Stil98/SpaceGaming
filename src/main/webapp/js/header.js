@@ -46,10 +46,10 @@ function searchDB(xmlhttp){
         var exploded = '/SpaceGaming_war_exploded';
         var snapshot = '/SpaceGaming-1.0-SNAPSHOT';
         if(ctx == exploded){
-            text+="<a href='/SpaceGaming_war_exploded/cliente/product?id="+idp+"'>";
+            text+="<a href='/SpaceGaming_war_exploded/prodotto/product?id="+idp+"'>";
         }
         else if (ctx == snapshot){
-            text+="<a href='/SpaceGaming-1.0-SNAPSHOT/cliente/product?id="+idp+"'>";
+            text+="<a href='/SpaceGaming-1.0-SNAPSHOT/prodotto/product?id="+idp+"'>";
         }
         text+=x+"</a>";
     }

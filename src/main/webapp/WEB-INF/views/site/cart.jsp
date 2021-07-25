@@ -147,16 +147,14 @@
 
 <body>
 <%  DecimalFormat df = new DecimalFormat("#.00");
-    ArrayList<Product> prodotticarrello = (ArrayList<Product>) request.getSession().getAttribute("cart");
     Utente user = (Utente) request.getSession().getAttribute("profilo");
-    Cart carrello = new Cart(prodotticarrello, user);
-    int qty = (Integer) request.getSession().getAttribute("qty");
-
+    Cart carrello = (Cart) request.getSession().getAttribute("cart");
+    ArrayList<Product> prodotticarrello=carrello.getItems();
     int i = 0;
 double total = 0;%>
-<c:forEach items="${cart}" var="productCart">
+<c:forEach items="${cart.items}" var="productCart">
     <%Product product = prodotticarrello.get(i);
-        total +=prodotticarrello.get(i).getPrezzo();
+        total = carrello.total();
         i++;
     %>
 <div class="body grid-x justify-center">
@@ -170,11 +168,15 @@ double total = 0;%>
             </h3>
             <p>
                 <strong>${productCart.descrizione}</strong>
-            </p>
-            <b>€<%=df.format(product.getPrezzo())%></b>
-            <b><%=qty%></b>
+            </p><br><br>
+            <b>€<%=df.format(product.getPrezzo())%></b><br>
+            <b style="font-size: 18px;font-style: italic;"> Quantità: <%=carrello.getProductCopies(product)%></b>
 
-
+            <div>
+                <form method="post">
+                <button type="submit" class="delete btn primary" name="delete" value="${productCart.id}">Elimina</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -183,7 +185,7 @@ double total = 0;%>
     <a class="megaButton cartAddNoRadio">
         <span>
             <button type="submit" class="btnCart">Acquista Carrello</button>
-                     <b id="total">€<%=carrello.total()%></b>
+                     <b id="total">€<%=df.format(total)%></b>
         </span>
     </a>
     </p>
@@ -191,4 +193,14 @@ double total = 0;%>
 </body>
 
 <%i=0;%>
+<script>
+    $(document).ready(function(){
+        $(".delete").click(function () {
+            $('form').attr('action', '${pageContext.request.contextPath}/utente/deletepro');
+        })
+        $(".buy").click(function () {
+            $('form').attr('action', '${pageContext.request.contextPath}/utente/acquistacarrello');
+        })
+    });
+</script>
 </html>
