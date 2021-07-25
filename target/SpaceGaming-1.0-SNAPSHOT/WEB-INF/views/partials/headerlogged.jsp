@@ -50,7 +50,7 @@
                 <a href="<%=request.getContextPath()%>/utente/logout">Logout</a>
             </div>
     </div>
-    <a href="#" class="cartbtn"><img src="${context}/icons/carticon.png" width="38" height="38"></a>
+    <a href="<%=request.getContextPath()%>/utente/carrello" class="cartbtn"><img src="${context}/icons/carticon.png" width="38" height="38"></a>
 
 
 

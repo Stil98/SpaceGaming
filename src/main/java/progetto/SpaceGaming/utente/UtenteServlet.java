@@ -1,6 +1,7 @@
 package progetto.SpaceGaming.utente;
 
 
+import progetto.SpaceGaming.cart.Cart;
 import progetto.SpaceGaming.product.Product;
 import progetto.SpaceGaming.product.ProductDAO;
 
@@ -42,6 +43,9 @@ public class UtenteServlet extends HttpServlet {
         HttpSession session=request.getSession();
         UtenteDAO dao= new UtenteDAO();
         ProductDAO prodao = new ProductDAO();
+        ArrayList<Product> cart;
+        Boolean b;
+        Cart car = new Cart();
         switch (path){
             case "/":
                 break;
@@ -104,22 +108,32 @@ public class UtenteServlet extends HttpServlet {
                 String phoneNumber2 = request.getParameter("telefono");
                 String oldemail = request.getParameter("oldemail");
                 Utente oldprof= dao.doRetrieveByEmail(oldemail);
-                System.out.print(oldprof.getAddress());
                 Utente newProfilo = new Utente(fname2,lname2,address2,emailutente2,password2,phoneNumber2,false,null);
-                System.out.println(newProfilo.getAddress());
-                if (oldprof.getPassword().equals(password2)) {
-                    dao.doChanges(newProfilo);
-                    session.setAttribute("profilo", newProfilo);
-                }
+                dao.doChanges(newProfilo);
+                session.setAttribute("profilo", newProfilo);
                 response.sendRedirect(contextPath+"/utente/profile");
                 break;
             case "/home": //TI RIMANDA ALLA HOME
                 request.getRequestDispatcher("/index.jsp").forward(request,response);
                 break;
+            case "/carrello": //VIEW CARRELLO
+                b =(Boolean) session.getAttribute("log"); // DA SESSIONE PRENDO LOGGATO
+                if (b==null){ //CONTROLLO SE PRIMA VOLTA
+                    b=false;
+                    session.setAttribute("log",b);
+                }
+                if (b) { //CONTROLLO SE LOGGATO E SE IL CART ESISTE SENO ISTANZIO
+                    cart = (ArrayList<Product>) session.getAttribute("cart");
+                    if (cart != null)
+                        request.getRequestDispatcher("/WEB-INF/views/site/cart.jsp").forward(request, response);
+                    else {
+                        cart = new ArrayList<>();
+                        session.setAttribute("cart", cart);
+                        request.getRequestDispatcher("/WEB-INF/views/site/cart.jsp").forward(request, response);
+                    }
+                }
             case "/inputcarrello": //INSERIMENTO IN CARRELLO
-                Boolean b = (Boolean)session.getAttribute("log"); // DA SESSIONE PRENDO LOGGATO
-                ArrayList<Product> cart;
-
+                b = (Boolean)session.getAttribute("log"); // DA SESSIONE PRENDO LOGGATO
                 if (b==null){ //CONTROLLO SE PRIMA VOLTA
                     b=false;
                     session.setAttribute("log",b);
@@ -131,21 +145,21 @@ public class UtenteServlet extends HttpServlet {
                     int id=Integer.parseInt(request.getParameter("id"));
 
                     Product pro = prodao.doRetrieveById(id);//RECUPERO PRODOTTO
-                    System.out.println(pro.getNome());
-
                     cart = (ArrayList<Product>) session.getAttribute("cart");
                     if (cart == null) { //SE PRIMA VOLTA DICHIARO
                         cart = new ArrayList<>();
                         cart.add(pro); //aggiungo a cart il prodotto
-                        System.out.println("aggiunto");
-                        session.setAttribute("cart", cart);
                     }
                     else {
                         cart.add(pro); //aggiungo a cart il prodotto se non c'è gia
-                        System.out.println("aggiunto");
-                        session.setAttribute("cart", cart);
                     }
-                    System.out.println(cart.get(0).getNome());
+                    int qty = car.contaCopie(cart,pro);
+                    int[] numCopie = new int[prodao.doRetrieveAll().size()];
+
+                    session.setAttribute("qty", qty);
+                    session.setAttribute("cart", cart);
+                    response.sendRedirect(contextPath+"/utente/carrello");
+                    break;
                 }
             default:
                // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);

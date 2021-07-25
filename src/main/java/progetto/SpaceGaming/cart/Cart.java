@@ -11,17 +11,15 @@ public class Cart {
     private Utente utente;
     private ArrayList<Product> items;
 
+    public Cart(){
+
+    }
     public Cart(ArrayList<Product> items, Utente user){
         this.utente = user;
         this.items = items;
     }
 
-    public void addProduct(Product x){
-        items.add(x);
-    }
-    public void removeProduct(Product x){
-        items.remove(x);
-    }
+
     public double total(){
        double total = 0.0;
        for(Product x: items){
@@ -29,7 +27,15 @@ public class Cart {
        }
        return total;
     }
-
+    public int contaCopie(ArrayList<Product> items, Product p) {
+        int count = 0;
+        for (int i = 0; i < items.size(); i++){
+            if (items.get(i).getId() == p.getId()) {
+                count++;
+            }
+        }
+        return count;
+    }
     public Utente getUtente() {
         return utente;
     }

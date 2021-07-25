@@ -23,7 +23,6 @@ import java.util.ArrayList;
                 case "/PS4":
                     ArrayList<Product> listaP = proDAO.doRetrieveProdottiByPlatform("PS4");
                     request.setAttribute("lista", listaP);
-                    System.out.println(listaP.size());
                     request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                     break;
                 case "/XBOX":
