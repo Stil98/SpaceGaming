@@ -145,19 +145,17 @@ public class UtenteServlet extends HttpServlet {
                     int id=Integer.parseInt(request.getParameter("id"));
 
                     Product pro = prodao.doRetrieveById(id);//RECUPERO PRODOTTO
-                    cart = (ArrayList<Product>) session.getAttribute("cart");
-                    if (cart == null) { //SE PRIMA VOLTA DICHIARO
-                        cart = new ArrayList<>();
-                        cart.add(pro); //aggiungo a cart il prodotto
+                    car.setItems((ArrayList<Product>) session.getAttribute("cart"));
+                    if (car.getItems() == null) { //SE PRIMA VOLTA DICHIARO
+                        car.addProduct(pro); //aggiungo a cart il prodotto
                     }
                     else {
-                        cart.add(pro); //aggiungo a cart il prodotto se non c'è gia
+                        car.addProduct(pro); //aggiungo a cart il prodotto se non c'è gia
                     }
-                    int qty = car.contaCopie(cart,pro);
-                    int[] numCopie = new int[prodao.doRetrieveAll().size()];
+                    int qty = car.getProductCopies(pro);
+                    int numCopie = car.getCopieTotali();
 
-                    session.setAttribute("qty", qty);
-                    session.setAttribute("cart", cart);
+                    session.setAttribute("cart", car);
                     response.sendRedirect(contextPath+"/utente/carrello");
                     break;
                 }

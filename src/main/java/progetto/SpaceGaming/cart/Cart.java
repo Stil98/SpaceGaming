@@ -10,38 +10,75 @@ public class Cart {
 
     private Utente utente;
     private ArrayList<Product> items;
+    private ArrayList<Integer> copies;
 
     public Cart(){
-
+        items=new ArrayList<>();
+        copies=new ArrayList<>();
     }
+
     public Cart(ArrayList<Product> items, Utente user){
         this.utente = user;
         this.items = items;
+        for (int i=0; i<items.size(); i++)
+            copies.add(1);
     }
 
 
     public double total(){
        double total = 0.0;
-       for(Product x: items){
-           total += x.getPrezzo();
+       for (int i=0; i<items.size(); i++){
+           total+=items.get(i).getPrezzo() * copies.get(i);
        }
        return total;
     }
-    public int contaCopie(ArrayList<Product> items, Product p) {
-        int count = 0;
-        for (int i = 0; i < items.size(); i++){
-            if (items.get(i).getId() == p.getId()) {
-                count++;
+
+    public Product addProduct(Product p){
+        for (int i=0; i<=items.size(); i++){
+            if (i==items.size()){
+                items.add(p);
+                copies.add(1);
             }
+            else if (p.equals(items.get(i)))
+                copies.set(i, copies.get(i)+1);
         }
-        return count;
+        return p;
     }
+
     public Utente getUtente() {
         return utente;
     }
 
     public void setUtente(Utente utente) {
         this.utente = utente;
+    }
+
+    public int getProductCopies(Product p){
+        for (int i=0; i<items.size(); i++) {
+            if (p.equals(items.get(i)))
+                return copies.get(i);
+        }
+        return 0;
+    }
+
+    public int getProductCopies(int index){
+        return copies.get(index);
+    }
+
+    public ArrayList<Integer> getCopies() {
+        return copies;
+    }
+
+    public void setCopies(ArrayList<Integer> copies) {
+        this.copies = copies;
+    }
+
+    public int getCopieTotali(){
+        int total=0;
+        for (Integer c : copies) {
+            total+=c;
+        }
+        return total;
     }
 
     public ArrayList<Product> getItems() {
