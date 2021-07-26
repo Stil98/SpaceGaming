@@ -154,7 +154,7 @@
     i++;%>
     <div class="body grid-x justify-center">
     <div class="singleProduct" id="product_1">
-        <a class="prodImg" href="#">
+        <a class="prodImg" href="<%=request.getContextPath()%>/prodotto/product?id=${product.id}">
             <img src="data:image/jpg;base64,${product.base64img}" width="150" height="220">
         </a>
         <div class="singleProdInfo">

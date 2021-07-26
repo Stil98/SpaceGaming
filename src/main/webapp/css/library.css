@@ -178,7 +178,7 @@ div#demo {
 .dropdown-search {
     display: grid;
     position: absolute;
-    width: 150px;
+    width: 18rem;
     top: 0px;
     left: 9px;
     overflow: auto;

@@ -175,6 +175,7 @@ double total = 0;%>
             <div>
                 <form method="post">
                 <button type="submit" class="delete btn primary" name="delete" value="${productCart.id}">Elimina</button>
+                    <button type="submit" class="add btn primary" name="add" value="${productCart.id}">Aggiungi</button>
                 </form>
             </div>
         </div>
@@ -197,6 +198,9 @@ double total = 0;%>
     $(document).ready(function(){
         $(".delete").click(function () {
             $('form').attr('action', '${pageContext.request.contextPath}/utente/deletepro');
+        })
+        $(".add").click(function () {
+            $('form').attr('action', '${pageContext.request.contextPath}/utente/addprod');
         })
         $(".buy").click(function () {
             $('form').attr('action', '${pageContext.request.contextPath}/utente/acquistacarrello');
