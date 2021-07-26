@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 public class Acquisto {
     private Utente utente;
     private String metpagamento;
+    private double prezzoTot;
     private Date data;
     private int id;
 
@@ -46,5 +47,13 @@ public class Acquisto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public double getPrezzoTot() {
+        return prezzoTot;
+    }
+
+    public void setPrezzoTot(double prezzoTot) {
+        this.prezzoTot = prezzoTot;
     }
 }

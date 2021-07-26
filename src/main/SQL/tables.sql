@@ -16,13 +16,8 @@ CREATE TABLE Acquisto(
                          id int PRIMARY KEY auto_increment,
                          metPagamento char(20) NOT NULL,
                          dataAcquisto datetime NOT NULL,
-                         utente char(30) NOT NULL,
-                         FOREIGN KEY (utente) references Utente (email)
-);
-
-CREATE TABLE Carrello(
-                         utente char(30) PRIMARY KEY,
                          prezzoTot float,
+                         utente char(30) NOT NULL,
                          FOREIGN KEY (utente) references Utente (email)
 );
 
@@ -43,11 +38,11 @@ CREATE TABLE Product(
                         FOREIGN KEY (console) references Console(nome)
 );
 
-CREATE TABLE InserimentoCart(
-                                videogame int NOT NULL,
-                                carrello char(30) NOT NULL,
+CREATE TABLE AcqProd(
+                                prodotto int NOT NULL,
+                                acquisto int NOT NULL,
                                 nCopie int NOT NULL,
-                                PRIMARY KEY(carrello, videogame),
-                                FOREIGN KEY (videogame) references Product(id),
-                                FOREIGN KEY (carrello) references Utente (email)
+                                PRIMARY KEY(acquisto, prodotto),
+                                FOREIGN KEY (prodotto) references Product(id),
+                                FOREIGN KEY (acquisto) references Acquisto(id)
 );
