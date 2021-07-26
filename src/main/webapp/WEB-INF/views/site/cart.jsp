@@ -142,6 +142,16 @@
         #total {
             color: white;
         }
+        .add{
+            border-radius: 100%;
+            padding: 0px 8px 3px 8px;
+            background-color: var(--verde);
+        }
+        .delete{
+            border-radius: 100%;
+            padding: 0px 10px 3px 10px;
+            background-color: var(--rosso);
+        }
     </style>
 </head>
 
@@ -168,16 +178,14 @@ double total = 0;%>
             </h3>
             <p>
                 <strong>${productCart.descrizione}</strong>
-            </p><br><br>
+            </p><br>
             <b>€<%=df.format(product.getPrezzo())%></b><br>
-            <b style="font-size: 18px;font-style: italic;"> Quantità: <%=carrello.getProductCopies(product)%></b>
-
-            <div>
+            <b style="font-size: 18px;font-style: italic;"> Quantità: <%=carrello.getProductCopies(product)%>
                 <form method="post">
-                <button type="submit" class="delete btn primary" name="delete" value="${productCart.id}">Elimina</button>
-                    <button type="submit" class="add btn primary" name="add" value="${productCart.id}">Aggiungi</button>
+                <button type="submit" class="delete btn primary" name="delete" value="${productCart.id}">-</button>
+                    <button type="submit" class="add btn primary" name="add" value="${productCart.id}">+</button>
                 </form>
-            </div>
+            </b>
         </div>
     </div>
 </div>
@@ -185,8 +193,11 @@ double total = 0;%>
 <div class="singleProduct">
     <a class="megaButton cartAddNoRadio">
         <span>
-            <button type="submit" class="btnCart">Acquista Carrello</button>
-                     <b id="total">€<%=df.format(total)%></b>
+            <form action="./acquistoCart">
+                <input type="hidden" name="cart" value="${cart}">
+                <button type="submit" class="btnCart">Acquista Carrello</button>
+                <b id="total">€<%=df.format(total)%></b>
+            </form>
         </span>
     </a>
     </p>

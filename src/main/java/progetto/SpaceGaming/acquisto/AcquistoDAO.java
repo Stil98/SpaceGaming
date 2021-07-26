@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public class AcquistoDAO {
     public void addAcquisto(Acquisto ordine, Cart cart) {
+        ordine.setPrezzoTot(cart.total());
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Acquisto (metPagamento, dataAcquisto, prezzoTot, utente) VALUES(?,?,?,?)");
+                    "INSERT INTO Acquisto (utente, prezzoTot, dataAcquisto) VALUES(?,?,?)");
             ps.setString(1, ordine.getUtente().getEmail());
-            ps.setString(2, ordine.getMetpagamento());
-            ps.setDouble(3, ordine.getPrezzoTot());
-            ps.setDate(4, (Date) ordine.getData());
+            ps.setDouble(2, ordine.getPrezzoTot());
+            ps.setDate(3, (Date) ordine.getData());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -52,7 +52,7 @@ public class AcquistoDAO {
         Acquisto ordine = null;
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT * FROM Acquisto WHERE id=(SELECT max(id) FROM Acquisto)");
+                    "SELECT * FROM Acquisto as ordine WHERE id=(SELECT max(id) FROM Acquisto)");
             ResultSet rs = ps.executeQuery();
             AcquistoExtractor aex = new AcquistoExtractor();
             if (rs.next()) {

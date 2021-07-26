@@ -13,7 +13,6 @@ public class AcquistoExtractor implements ResultSetExtractor<Acquisto> {
         Acquisto ordine = new Acquisto();
         UtenteDAO dao = new UtenteDAO();
         ordine.setId(rs.getInt("ordine.id"));
-        ordine.setMetpagamento(rs.getString("ordine.metPagamento"));
         ordine.setData(rs.getDate("ordine.dataAcquisto"));
         Utente user = dao.doRetrieveByEmail(rs.getString("ordine.utente"));
         ordine.setUtente(user);

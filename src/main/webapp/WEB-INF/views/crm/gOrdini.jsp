@@ -31,7 +31,6 @@
                         <th>Id</th>
                         <th>Utente</th>
                         <th>Data</th>
-                        <th>Metodo di Pagamento</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,8 +39,6 @@
                             <td data-head="id">${order.id}</td>
                             <td data-head="email">${order.utente.email}</td>
                             <td data-head="data">${order.data}</td>
-                            <td data-head="metodo di pagamento">${order.metpagamento}</td>
-
                         </tr>
                     </c:forEach>
                     </tbody>

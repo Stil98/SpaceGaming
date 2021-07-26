@@ -14,10 +14,9 @@ CREATE TABLE Utente(
 
 CREATE TABLE Acquisto(
                          id int PRIMARY KEY auto_increment,
-                         metPagamento char(20) NOT NULL,
                          dataAcquisto datetime NOT NULL,
-                         prezzoTot float,
                          utente char(30) NOT NULL,
+                         prezzoTot float,
                          FOREIGN KEY (utente) references Utente (email)
 );
 
@@ -36,13 +35,4 @@ CREATE TABLE Product(
                         console char(12) NOT NULL,
                         image longblob NOT NULL,
                         FOREIGN KEY (console) references Console(nome)
-);
-
-CREATE TABLE AcqProd(
-                                prodotto int NOT NULL,
-                                acquisto int NOT NULL,
-                                nCopie int NOT NULL,
-                                PRIMARY KEY(acquisto, prodotto),
-                                FOREIGN KEY (prodotto) references Product(id),
-                                FOREIGN KEY (acquisto) references Acquisto(id)
 );

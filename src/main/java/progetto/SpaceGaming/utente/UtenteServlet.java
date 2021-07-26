@@ -1,6 +1,8 @@
 package progetto.SpaceGaming.utente;
 
 
+import progetto.SpaceGaming.acquisto.Acquisto;
+import progetto.SpaceGaming.acquisto.AcquistoDAO;
 import progetto.SpaceGaming.cart.Cart;
 import progetto.SpaceGaming.product.Product;
 import progetto.SpaceGaming.product.ProductDAO;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @WebServlet(name = "UtenteServlet", value = "/utente/*")
 public class UtenteServlet extends HttpServlet {
@@ -139,7 +143,6 @@ public class UtenteServlet extends HttpServlet {
                 }
                 if (!b) { //CONTROLLO SE NON LOGGATO
                     request.getRequestDispatcher("/WEB-INF/views/crm/secret.jsp").forward(request, response);
-
                 }else { //SE LOGGATO AGGIUNGO
                     int id=Integer.parseInt(request.getParameter("id"));
                     Product pro = prodao.doRetrieveById(id);//RECUPERO PRODOTTO
@@ -171,6 +174,18 @@ public class UtenteServlet extends HttpServlet {
                     session.setAttribute("cart", car);
                     response.sendRedirect(contextPath + "/utente/carrello");
                 }
+                break;
+            case "/acquistoCart":
+                car = (Cart) session.getAttribute("cart");
+                Acquisto acquisto=new Acquisto();
+                java.util.Date dataOrdine=new Date();
+                java.sql.Date sqlDate = new java.sql.Date(dataOrdine.getTime());
+                System.out.println(sqlDate);
+                acquisto.setUtente((Utente) session.getAttribute("profilo"));
+                acquisto.setData(sqlDate);
+                AcquistoDAO aDao=new AcquistoDAO();
+                aDao.addAcquisto(acquisto, car);
+                response.sendRedirect(contextPath + "/utente/home");
                 break;
             default:
                // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
