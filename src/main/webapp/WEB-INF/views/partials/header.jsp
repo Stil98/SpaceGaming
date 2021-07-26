@@ -7,6 +7,23 @@
 <html>
 <!DOCTYPE html>
 <head>
+    <style>
+        .dropdown-search{
+            background-color: #e6e6e6;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: center;
+        }
+        .dropdown-search a {
+            color: black;
+            display: block;
+            font-size: 24px;
+            border-bottom: solid 1px #02020c;
+            padding: 5px;
+        }
+    </style>
     <title>Header</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Login Admin"/>

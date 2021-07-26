@@ -155,9 +155,14 @@ public class UtenteServlet extends HttpServlet {
                     response.sendRedirect(contextPath+"/utente/carrello");
                     break;
                 }
+            case "/addprod":
+                car = (Cart) session.getAttribute("cart");
+                car.addProduct(prodao.doRetrieveById(Integer.parseInt(request.getParameter("add"))));
+                session.setAttribute("cart", car);
+                response.sendRedirect(contextPath + "/utente/carrello");
+                break;
             case "/deletepro":
                 car= (Cart) session.getAttribute("cart");
-                System.out.println("COmp");
                 car.removeProduct(Integer.parseInt(request.getParameter("delete")));
                 if(car.getItems().isEmpty()){
                     response.sendRedirect(contextPath+"/utente/home");

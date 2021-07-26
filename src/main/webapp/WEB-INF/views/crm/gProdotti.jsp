@@ -43,6 +43,7 @@
                         <th></th>
                         <th>Id</th>
                         <th>Nome</th>
+                        <th>Console</th>
                         <th>Prezzo</th>
                         <th>Copie</th>
                         <th></th>
@@ -56,12 +57,17 @@
                         </td>
                         <td data-head="id">${product.id}</td>
                         <td data-head="nome">${product.nome}</td>
+                        <td data-head="console">${product.console}</td>
                         <td data-head="prezzo">${product.prezzo}€</td>
                         <td data-head="copie">${product.qty}</td>
                         <td>
                             <form action="./modProdotti">
                                 <input type="hidden" id="id" name="id" value="${product.id}">
                                 <input type="submit" class="btn" value="Modifica">
+                            </form><br>
+                            <form action="./delProdotti">
+                                <input type="hidden" id="idDel" name="idDel" value="${product.id}">
+                                <input type="submit" class="btn" value="Elimina">
                             </form>
                         </td>
                     </tr>
