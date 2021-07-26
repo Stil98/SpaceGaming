@@ -1,3 +1,4 @@
+
 body{
     box-sizing: border-box;
     margin:0;
@@ -32,9 +33,7 @@ input[type=search]{
 
 }
 
-.logo{
 
-}
 
 .nav_links{
     list-style: none;
@@ -164,4 +163,20 @@ div_links{
 .cartbtn:hover{
 
     filter:brightness(80%);
+}
+.logo{
+    margin-left:-100px;
+    margin-right: -70px;
+    width: 400px;
+    height: 242px;
+}
+@media screen and (max-width:1300px){
+.header{
+
+    background-color: red;
+    display: block;
+}
+.logo,.div_links *,.div_search *{
+    width: 100%;
+}
 }

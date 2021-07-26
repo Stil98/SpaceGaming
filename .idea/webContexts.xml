@@ -7,6 +7,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/crm/secret.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/crm" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/partials/head.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/partials" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/partials/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/partials" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/partials/new_header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/partials" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/css" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
