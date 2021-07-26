@@ -1,4 +1,4 @@
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,7 +8,7 @@
         .containerProd{
             display: flex;
             margin:20px 20px 50px 20px;
-            height: 300px;
+
             background-color: lightcyan;
             border:2px solid black;
         }
@@ -18,7 +18,9 @@
             flex:25%;
             text-align: center;
         }
-
+        .product-1:hover{
+            filter: brightness(80%);
+        }
         .singleProdInfo{
             text-align: center;
         }
@@ -36,6 +38,15 @@
             text-align: center;
 
         }
+
+         @media screen and (max-width: 800px){
+             .containerProd{
+                 display:block;
+             }
+             .product-1{
+                 width: 100%;
+             }
+         }
     </style>
 </head>
 

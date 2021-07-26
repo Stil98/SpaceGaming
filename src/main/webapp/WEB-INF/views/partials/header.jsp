@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 <link href="<c:url value="/css/header.css"/>" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <html>
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
 <% ProductDAO pDao=new ProductDAO();
     request.setAttribute("games", pDao.doRetrieveAll()); %>
 <header>
-        <img class="logo" src="${context}/images/logonuovo.png" width="400" height="242" alt="logo" title="Space Gaming">
+        <img class="logo" src="${context}/images/logonuovo.png"  alt="logo" title="Space Gaming">
     <nav>
         <div class="div_links">
         <ul class="nav_links">

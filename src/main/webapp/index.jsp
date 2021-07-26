@@ -3,6 +3,7 @@
 <%@ page import="progetto.SpaceGaming.product.ProductDAO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
             </jsp:include>
         </c:when>
         <c:otherwise>
-            <jsp:include page="/WEB-INF/views/partials/header.jsp">
+            <jsp:include page="/WEB-INF/views/partials/new_header.jsp">
                 <jsp:param name="title" value=""/>
             </jsp:include>
         </c:otherwise>
