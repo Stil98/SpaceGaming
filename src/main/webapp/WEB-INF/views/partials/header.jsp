@@ -16,6 +16,7 @@
             border-radius: 5px;
             padding: 5px;
             text-align: center;
+
         }
         .dropdown-search a {
             color: black;
