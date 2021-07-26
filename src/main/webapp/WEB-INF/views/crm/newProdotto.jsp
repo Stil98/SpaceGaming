@@ -42,7 +42,17 @@
                 <span> Copertina </span>
                 <label for="img" class="field">
                     <input type="file" name="img" id="img" accept="image/*" required>
-                </label>
+                </label><br>
+
+                <div class="grid-x align-center">
+                <input type="radio" id="PS4" name="console" value="PS4">
+                <label for="PS4">PS4</label>  
+                    <input type="radio" id="XBOX ONE" name="console" value="XBOX ONE">
+                <label for="XBOX ONE">XBOX ONE</label>  
+                    <input type="radio" id="SWITCH" name="console" value="SWITCH">
+                <label for="SWITCH">SWITCH</label>  
+                </div>
+
                 <br>
                 <button class="btn_primary" type="submit">Crea</button>
             </fieldset>

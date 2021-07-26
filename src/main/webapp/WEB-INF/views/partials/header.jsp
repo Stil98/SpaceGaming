@@ -32,10 +32,10 @@
             <li><a href="<%=request.getContextPath()%>/info.jsp">Info</a></li></ul>
         </div>
         <div class="div_search">
-        <input class="search-box" id="search" onkeyup="enterKey()" autocomplete="off" type="search"
+        <input type="search" id="search" onkeyup="enterKey()" class="search-box" autocomplete="off"
                maxlength="150"  placeholder="Search...">
             <a class="search-btn" href="#">
-                <i class="fas fa-search"></i>
+                <i class="fa fa-search"></i>
             </a>
             <div id="demo"></div>
         </div>

@@ -169,6 +169,31 @@ input:focus, textarea:focus, select:focus{
     padding: .5rem;
 }
 
+div#demo {
+    position: absolute;
+    top: 44px;
+    background-color: white;
+}
+
+.dropdown-search {
+    display: grid;
+    position: absolute;
+    width: 150px;
+    top: 0px;
+    left: 9px;
+    overflow: auto;
+    max-height: 207px;
+    border-bottom:1px solid;
+    border-left:1px solid;
+    border-right:1px solid;
+}
+
+.dropdown-search a {
+    background-color: white;
+    color: black;
+}
+
+
 @media screen and (min-width: 769px){
     .table > thead{
         visibility: visible;

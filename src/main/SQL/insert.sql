@@ -15,22 +15,13 @@ INSERT into spacegaming.console(nome, descrizione) VALUES ('XBOX ONE', 'test xbo
 INSERT into spacegaming.console(nome, descrizione) VALUES ('PS4', 'Test PS4');
 INSERT into spacegaming.console(nome, descrizione) VALUES ('SWITCH', 'Test SWITCH');
 
-INSERT into spacegaming.product(qty, nome, prezzo, descrizione, image) VALUES (30, 'Elder Ring', 66.90, 'PEGI : Età consigliata 16 e oltre', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));
-INSERT into spacegaming.product(qty, nome, prezzo, descrizione, image) VALUES (20, 'Fifa 21', 50, 'PEGI : 14', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\002.jpeg'));
-INSERT into spacegaming.product(qty, nome, prezzo, descrizione, image) VALUES (30, 'The Last of Us 2', 60.99, 'Pegi : 18', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\003.jpg'));
-INSERT into spacegaming.product(qty, nome, prezzo, descrizione, image) VALUES (13, 'Halo 4', 24.99, 'Pegi : 16', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\004.jpg'));
+INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (30, 'Elder Ring', 66.90, 'PEGI : Età consigliata 16 e oltre','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));
+INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (20, 'Fifa 21', 50, 'PEGI : 14','SWITCH', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\002.jpeg'));
+INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (30, 'The Last of Us 2', 60.99, 'Pegi : 18','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\003.jpg'));
+INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (13, 'Halo 4', 24.99, 'Pegi : 16', 'XBOX ONE', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\004.jpg'));
 
 INSERT into spacegaming.inserimentocart(videogame, carrello, nCopie) VALUES (1, 'sabatocelentano@gmail.com' ,1);
 INSERT into spacegaming.inserimentocart(videogame, carrello, nCopie) VALUES (3, 'sabatocelentano@gmail.com',2);
 INSERT into spacegaming.inserimentocart(videogame, carrello, nCopie) VALUES (1, 'gennarorascato@gmail.com',1);
 INSERT into spacegaming.inserimentocart(videogame, carrello, nCopie) VALUES (2, 'gennarorascato@gmail.com',1);
-
-INSERT into spacegaming.platform(console, product) VALUES ('PS4', 1);
-INSERT into spacegaming.platform(console, product) VALUES ('PS4', 2);
-INSERT into spacegaming.platform(console, product) VALUES ('PS4', 3);
-INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 1);
-INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 2);
-INSERT into spacegaming.platform(console, product) VALUES ('XBOX ONE', 4);
-INSERT into spacegaming.platform(console, product) VALUES ('SWITCH', 2);
-INSERT into spacegaming.platform(console, product) VALUES ('SWITCH', 4);
 

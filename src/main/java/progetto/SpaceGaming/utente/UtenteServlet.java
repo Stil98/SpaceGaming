@@ -151,9 +151,6 @@ public class UtenteServlet extends HttpServlet {
                     else {
                         car.addProduct(pro); //aggiungo a cart il prodotto se non c'è gia
                     }
-                    int qty = car.getProductCopies(pro);
-                    int numCopie = car.getCopieTotali();
-
                     session.setAttribute("cart", car);
                     response.sendRedirect(contextPath+"/utente/carrello");
                     break;

@@ -76,24 +76,6 @@ public class CrmServlet extends HttpServlet {
             case "/newProdotto":
                 request.getRequestDispatcher("/WEB-INF/views/crm/newProdotto.jsp").forward(request, response);
                 break;
-
-
-            case "/prodModifica":
-                int idn= Integer.parseInt(request.getParameter("id"));
-                p=prodDao.doRetrieveById(idn);
-                p.setNome(request.getParameter("prod"));
-                int qt= Integer.parseInt(request.getParameter("quantita"));
-                p.setQty(qt);
-                double price=Double.parseDouble(request.getParameter("prezzo"));
-                p.setPrezzo(price);
-                p.setDescrizione(request.getParameter("descrizione"));
-                if (request.getParameter("img")!=null) {
-                    p.setBase64img(request.getParameter("img"));
-                }
-                prodDao.doChanges(p);
-                response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
-                break;
-
             case "/gOrdini":
                 ArrayList<Acquisto> orders=ordDao.doRetrieveAll();
                 request.setAttribute("orders", orders);
@@ -133,7 +115,6 @@ public class CrmServlet extends HttpServlet {
         switch (path){
             case "/":
                 break;
-
             case "/clienteModifica":
                 Utente usr= usrDao.doRetrieveByEmail(request.getParameter("email"));
                 usr.setFname(request.getParameter("nome"));
@@ -162,8 +143,8 @@ public class CrmServlet extends HttpServlet {
                 p.setPrezzo(prezzo);
                 int qty = Integer.parseInt(request.getParameter("quantita"));
                 p.setQty(qty);
+                p.setConsole(request.getParameter("console"));
                 p.setDescrizione(request.getParameter("descrizione"));
-
                 String updatePath = "C:"+ File.separator+"ProgramData" +File.separator + "MySQL" +
                         File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
                 Part filePart=request.getPart("img");
@@ -177,8 +158,32 @@ public class CrmServlet extends HttpServlet {
                     /* do nothing */
                 }
                 p.setBase64img(fileName);
-
                 prodDao.addProdotto(p);
+                response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
+                break;
+            case "/prodModifica":
+                int idn= Integer.parseInt(request.getParameter("id"));
+                p=prodDao.doRetrieveById(idn);
+                p.setNome(request.getParameter("prod"));
+                int qt= Integer.parseInt(request.getParameter("quantita"));
+                p.setQty(qt);
+                double price=Double.parseDouble(request.getParameter("prezzo"));
+                p.setPrezzo(price);
+                p.setDescrizione(request.getParameter("descrizione"));
+                String uPath = "C:"+ File.separator+"ProgramData" +File.separator + "MySQL" +
+                        File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
+                Part fPart=request.getPart("img");
+                String fName= Paths.get(fPart.getSubmittedFileName()).getFileName().toString();
+                InputStream strm = fPart.getInputStream();
+                String lImg = uPath + fName;
+                File f= new File(lImg);
+                try{
+                    Files.copy(strm,f.toPath());
+                } catch (FileAlreadyExistsException e){
+                    /* do nothing */
+                }
+                p.setBase64img(fName);
+                prodDao.doChanges(p);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
                 break;
             default:

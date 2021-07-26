@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<main class="app">
+<main class="appList">
     <%@include file="../partials/crmSidebar.jsp" %>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp" %>
@@ -40,6 +40,7 @@
                 <table class="table product-table">
                     <thead>
                     <tr>
+                        <th></th>
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Prezzo</th>
@@ -50,6 +51,9 @@
                     <tbody>
                     <c:forEach items="${products}" var="product">
                     <tr>
+                        <td>
+                                <img src="data:image/jpg;base64,${product.base64img}" width="150" height="220">
+                        </td>
                         <td data-head="id">${product.id}</td>
                         <td data-head="nome">${product.nome}</td>
                         <td data-head="prezzo">${product.prezzo}€</td>

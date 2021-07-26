@@ -65,12 +65,13 @@ public class ProductDAO {
             String path ="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
             path+=prodotto.getBase64img();
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO product (qty, nome, prezzo, descrizione,image) VALUES(?,?,?,?,LOAD_FILE(?))");
+                    "INSERT INTO product (qty, nome, prezzo, console, descrizione,image) VALUES(?,?,?,?,?,LOAD_FILE(?))");
             ps.setInt(1,prodotto.getQty());
             ps.setString(2, prodotto.getNome());
             ps.setDouble(3, prodotto.getPrezzo());
-            ps.setString(4, prodotto.getDescrizione());
-            ps.setString(5, path);
+            ps.setString(4, prodotto.getConsole());
+            ps.setString(5, prodotto.getDescrizione());
+            ps.setString(6, path);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -82,7 +83,7 @@ public class ProductDAO {
     public ArrayList<Product> doRetrieveProdottiByPlatform(String nomePiattaforma){
         ArrayList<Product> prodotti = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
-            String query = "SELECT * FROM Product pro, Platform plat WHERE pro.id = plat.product AND console =  '" + nomePiattaforma + "';";
+            String query = "SELECT * FROM Product pro WHERE console =  '" + nomePiattaforma + "';";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             ProductExtractor proExtractor = new ProductExtractor();

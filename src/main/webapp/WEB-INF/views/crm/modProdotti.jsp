@@ -16,7 +16,7 @@
     <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp"%>
-        <form class="grid-x justify-center align-center" action="./prodModifica">
+        <form class="grid-x justify-center align-center" action="./prodModifica" method="post" enctype="multipart/form-data">
             <fieldset class="field grid-y cell w40">
                 <h1 style="text-align: center">Modifica Prodotto</h1>
                 <br>

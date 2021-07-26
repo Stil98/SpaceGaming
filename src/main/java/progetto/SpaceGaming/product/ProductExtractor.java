@@ -22,6 +22,7 @@ public class ProductExtractor implements ResultSetExtractor<Product> {
         p.setNome((rs.getString("pro.nome")));
         p.setPrezzo(rs.getDouble("pro.prezzo"));
         p.setDescrizione(rs.getString("pro.descrizione"));
+        p.setConsole((rs.getString("pro.console")));
         Blob blob = rs.getBlob("pro.image");
         if (blob!=null) {
             InputStream inputStream = blob.getBinaryStream();

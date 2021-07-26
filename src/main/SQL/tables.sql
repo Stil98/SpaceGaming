@@ -38,7 +38,9 @@ CREATE TABLE Product(
                         nome char(20) NOT NULL,
                         prezzo float NOT NULL,
                         descrizione varchar(200) NOT NULL,
-                        image longblob NOT NULL
+                        console char(12) NOT NULL,
+                        image longblob NOT NULL,
+                        FOREIGN KEY (console) references Console(nome)
 );
 
 CREATE TABLE InserimentoCart(
@@ -48,13 +50,4 @@ CREATE TABLE InserimentoCart(
                                 PRIMARY KEY(carrello, videogame),
                                 FOREIGN KEY (videogame) references Product(id),
                                 FOREIGN KEY (carrello) references Utente (email)
-);
-
-
-CREATE TABLE Platform(
-                         console char(12) NOT NULL,
-                         product int NOT NULL,
-                         PRIMARY KEY(console, product),
-                         FOREIGN KEY (console) references Console(nome),
-                         FOREIGN KEY (product) references Product(id)
 );
