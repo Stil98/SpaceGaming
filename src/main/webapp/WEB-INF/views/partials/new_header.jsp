@@ -41,13 +41,17 @@
             color:white;
             transition: all 0.4s ease 0s;
         }
-
+        .cartbtn{
+            flex: 10%;
+            margin-left: 1%;
+            margin-top: 1.15%;
+        }
         button:hover{
             background-color: violet;
             filter: brightness(100%);
         }
         .cartbtn img{
-            border-radius: 50px;
+            border-radius: 30px;
             transition: all 0.4s ease 0s;
             padding: 10px;
             height: 50px;
@@ -114,7 +118,7 @@
 
 <header>
     <div class="img_logo">
-        <img class="logo" src="${context}/icons/logo12.png" width="200" height="100" alt="logo" title="Space Gaming">
+        <a href="<%=request.getContextPath()%>/index.jsp"><img class="logo" src="${context}/icons/logo12.png" width="200" height="100" alt="logo" title="Space Gaming"></a>
     </div>
     <div class="buttons">
         <a href="<%=request.getContextPath()%>/prodotto/PS4"><img src="${context}/images/ps4.png" width="38" height="38"></a>
@@ -129,10 +133,9 @@
         <a href="<%=request.getContextPath()%>/utente/secret">Login/Registrati</a>
     </div>
     <div class="cartbtn">
-        <a href="<%=request.getContextPath()%>/utente/carrello" class="cartbtn"><img src="${context}/icons/carticon.png" width="38" height="38"></a>    </div>
+        <a href="<%=request.getContextPath()%>/utente/carrello" class="cartbtn"><img src="${context}/icons/cart-icon.jpg" width="38" height="38"></a>
 
-
-
+    </div>
 </header>
 
 </body>
