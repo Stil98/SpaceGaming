@@ -78,7 +78,7 @@ public class UtenteDAO {
         public void doChanges(Utente c){
             try (Connection con = ConPool.getConnection()) {
                 Statement st = con.createStatement();
-                String query = "UPDATE Utente usr SET usr.fname='" + c.getFname() + "', " + "usr.lname='"+c.getLname() + "', usr.address='"+c.getAddress() +"'," +
+                String query = "UPDATE Utente usr SET usr.pword=SHA1('"+c.getPassword()+"')," +"usr.fname='" + c.getFname() + "', " + "usr.lname='"+c.getLname() + "', usr.address='"+c.getAddress() +"'," +
                         "usr.phone_number='"+c.getPhoneNumber()+"', usr.is_admin=" + c.isAdmin() + " WHERE usr.email='" + c.getEmail() + "';";
                 st.executeUpdate(query);
             }

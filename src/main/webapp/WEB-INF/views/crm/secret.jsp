@@ -6,7 +6,7 @@
 <head>
     <title>Login Admin</title>
     <jsp:include page="../partials/head.jsp">
-        <jsp:param name="title" value="Login Admin"/>
+        <jsp:param name="title" value="Login"/>
     </jsp:include>
 
     <style>
