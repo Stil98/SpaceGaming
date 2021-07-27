@@ -97,7 +97,7 @@
     </div>
     <div class="product-1">
       <h3>Mostra di più</h3>
-      <a class="show-more" href="#"><img src="${context}/icons/plus.png" width="50" height="50"></a>
+      <a class="show-more" href="<%=request.getContextPath()%>/prodotto/PS4"><img src="${context}/icons/plus.png" width="50" height="50"></a>
     </div>
 
   </div>
@@ -134,7 +134,7 @@
     </div>
     <div class="product-1">
       <h3>Mostra di più</h3>
-      <a class="show-more" href="#"><img src="${context}/icons/plus.png" width="50" height="50"></a>
+      <a class="show-more" href="<%=request.getContextPath()%>/prodotto/XBOX"><img src="${context}/icons/plus.png" width="50" height="50"></a>
     </div>
 
   </div>
@@ -171,7 +171,7 @@
     </div>
     <div class="product-1">
       <h3>Mostra di più</h3>
-      <a class="show-more" href="#"><img src="${context}/icons/plus.png" width="50" height="50"></a>
+      <a class="show-more" href="<%=request.getContextPath()%>/prodotto/SWITCH"><img src="${context}/icons/plus.png" width="50" height="50"></a>
     </div>
 
   </div>
