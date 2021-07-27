@@ -41,20 +41,20 @@
         <%@include file="../partials/crmHeader.jsp"%>
         <div class="body grid-x justify-center">
             <div class="grid-y cell w40">
-                <h2>Utenti Mensili</h2>
-                <h4>2313</h4>
+                <h2>Prodotti in vendita</h2>
+                <h4>${totaleprodotti}</h4>
             </div>
             <div class="grid-y cell w40">
                 <h2>Incasso Mensile</h2>
-                <h4>1312</h4>
+                <h4>${totalemese}</h4>
             </div>
             <div class="grid-y cell w40">
                 <h2>Utenti Totali</h2>
                 <h4>${nUtenti}</h4>
             </div>
             <div class="grid-y cell w40">
-                <h2>Incasso Totale</h2>
-                <h4>712334</h4>
+                <h2>Incasso totale</h2>
+                <h4>${totale}</h4>
             </div>
         </div>
     </section>

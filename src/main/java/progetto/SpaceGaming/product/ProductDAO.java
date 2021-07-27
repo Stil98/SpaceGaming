@@ -27,48 +27,48 @@ public class ProductDAO {
         }
     }
 
-    public ArrayList<Product> doRetrieveAll(){
+    public ArrayList<Product> doRetrieveAll() {
         ArrayList<Product> prodotti = new ArrayList<>();
-        try(Connection con = ConPool.getConnection()){
+        try (Connection con = ConPool.getConnection()) {
             PreparedStatement s = con.prepareStatement("SELECT * FROM Product as pro");
             ResultSet rs = s.executeQuery();
-            ProductExtractor proExtractor = new ProductExtractor() ;
-            while(rs.next()){
+            ProductExtractor proExtractor = new ProductExtractor();
+            while (rs.next()) {
                 prodotti.add(proExtractor.extract(rs));
             }
             return prodotti;
-        } catch(SQLException | IOException e){
+        } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean doChanges(Product prodotto){
-        try(Connection con = ConPool.getConnection()){
+    public boolean doChanges(Product prodotto) {
+        try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE Product p SET p.qty = (?), p.nome = (?), p.prezzo = (?)," +
                     " p.descrizione = (?) WHERE p.id = (?);");
             ps.setInt(1, prodotto.getQty());
             ps.setString(2, prodotto.getNome());
-            ps.setDouble(3,prodotto.getPrezzo());
+            ps.setDouble(3, prodotto.getPrezzo());
             ps.setString(4, prodotto.getDescrizione());
             ps.setInt(5, prodotto.getId());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
             return true;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             return false;
         }
     }
 
-    public boolean doChangesImg(Product prodotto){
-        try(Connection con = ConPool.getConnection()){
-            String path ="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
-            path+=prodotto.getBase64img();
+    public boolean doChangesImg(Product prodotto) {
+        try (Connection con = ConPool.getConnection()) {
+            String path = "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
+            path += prodotto.getBase64img();
             PreparedStatement ps = con.prepareStatement("UPDATE Product p SET p.qty = (?), p.nome = (?), p.prezzo = (?)," +
                     " p.descrizione = (?), p.image = LOAD_FILE(?) WHERE p.id = (?);");
             ps.setInt(1, prodotto.getQty());
             ps.setString(2, prodotto.getNome());
-            ps.setDouble(3,prodotto.getPrezzo());
+            ps.setDouble(3, prodotto.getPrezzo());
             ps.setString(4, prodotto.getDescrizione());
             ps.setString(5, path);
             ps.setInt(6, prodotto.getId());
@@ -76,18 +76,18 @@ public class ProductDAO {
                 throw new RuntimeException("INSERT error.");
             }
             return true;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             return false;
         }
     }
 
     public void addProdotto(Product prodotto) {
         try (Connection con = ConPool.getConnection()) {
-            String path ="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
-            path+=prodotto.getBase64img();
+            String path = "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\";
+            path += prodotto.getBase64img();
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO product (qty, nome, prezzo, console, descrizione,image) VALUES(?,?,?,?,?,LOAD_FILE(?))");
-            ps.setInt(1,prodotto.getQty());
+            ps.setInt(1, prodotto.getQty());
             ps.setString(2, prodotto.getNome());
             ps.setDouble(3, prodotto.getPrezzo());
             ps.setString(4, prodotto.getConsole());
@@ -101,14 +101,14 @@ public class ProductDAO {
         }
     }
 
-    public ArrayList<Product> doRetrieveProdottiByPlatform(String nomePiattaforma){
+    public ArrayList<Product> doRetrieveProdottiByPlatform(String nomePiattaforma) {
         ArrayList<Product> prodotti = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             String query = "SELECT * FROM Product pro WHERE console =  '" + nomePiattaforma + "';";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             ProductExtractor proExtractor = new ProductExtractor();
-            while( rs.next()) {
+            while (rs.next()) {
                 Product p;
                 p = proExtractor.extract(rs);
                 prodotti.add(p);
@@ -119,9 +119,9 @@ public class ProductDAO {
         return prodotti;
     }
 
-    public void deleteById(int id){
+    public void deleteById(int id) {
         try (Connection con = ConPool.getConnection()) {
-            String query ="DELETE FROM product as pro WHERE pro.id = (?);";
+            String query = "DELETE FROM product as pro WHERE pro.id = (?);";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, id);
             if (ps.executeUpdate() != 1) {
@@ -132,4 +132,18 @@ public class ProductDAO {
         }
     }
 
+    public int countById() {
+        int n = 0;
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement s = con.prepareStatement("SELECT count(id) FROM Product as pro");
+            ResultSet rs = s.executeQuery();
+            while (rs.next()) {
+                n = rs.getInt(1);
+            }
+            return n;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

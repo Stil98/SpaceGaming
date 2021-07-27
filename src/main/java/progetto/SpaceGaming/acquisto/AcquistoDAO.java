@@ -6,6 +6,8 @@ import progetto.SpaceGaming.console.Console;
 import progetto.SpaceGaming.console.ConsoleExtractor;
 
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AcquistoDAO {
@@ -96,5 +98,38 @@ public class AcquistoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getTotal(){
+        double n=0;
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT sum(prezzoTot) FROM acquisto");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                n = rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(n);
+    }
+    public String getTotalMonthly(){
+        double tot=0;
+        LocalDate today = LocalDate.now();
+        int month = today.getMonthValue();
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT sum(prezzoTot) FROM acquisto WHERE dataAcquisto >= '2021-"+month+"-01';");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                tot = rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.print(tot);
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(tot);
     }
 }

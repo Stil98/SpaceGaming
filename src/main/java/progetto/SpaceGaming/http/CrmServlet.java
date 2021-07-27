@@ -39,6 +39,12 @@ public class CrmServlet extends HttpServlet {
                 break;
             case "/dashboard":
                 int nUtenti = usrDao.userCount();
+                String total = ordDao.getTotal();
+                String monthlytotal = ordDao.getTotalMonthly();
+                int totProd = prodDao.countById();
+                request.setAttribute("totaleprodotti",totProd);
+                request.setAttribute("totalemese", monthlytotal);
+                request.setAttribute("totale", total);
                 request.setAttribute("nUtenti", nUtenti);
                 request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
