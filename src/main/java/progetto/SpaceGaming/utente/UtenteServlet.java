@@ -47,6 +47,7 @@ public class UtenteServlet extends HttpServlet {
         HttpSession session=request.getSession();
         UtenteDAO dao= new UtenteDAO();
         ProductDAO prodao = new ProductDAO();
+        Product p = new Product();
         Boolean b;
         Cart car = new Cart();
         switch (path){
@@ -149,19 +150,23 @@ public class UtenteServlet extends HttpServlet {
                     Product pro = prodao.doRetrieveById(id);//RECUPERO PRODOTTO
                     if (session.getAttribute("cart") != null)
                         car=(Cart) session.getAttribute("cart");
-                    if (car.getItems() == null) { //SE PRIMA VOLTA DICHIARO
-                        car.addProduct(pro); //aggiungo a cart il prodotto
+                    if(!(pro.getQty()<=0)) {
+                        if (car.getItems() == null) { //SE PRIMA VOLTA DICHIARO
+                            car.addProduct(pro); //aggiungo a cart il prodotto
+                        } else {
+                            car.addProduct(pro); //aggiungo a cart il prodotto se non c'è gia
+                        }
                     }
-                    else {
-                        car.addProduct(pro); //aggiungo a cart il prodotto se non c'è gia
-                    }
-                    session.setAttribute("cart", car);
-                    response.sendRedirect(contextPath+"/utente/carrello");
-                    break;
+                        session.setAttribute("cart", car);
+                        response.sendRedirect(contextPath + "/utente/carrello");
+                        break;
                 }
             case "/addprod":
                 car = (Cart) session.getAttribute("cart");
-                car.addProduct(prodao.doRetrieveById(Integer.parseInt(request.getParameter("add"))));
+                p =prodao.doRetrieveById(Integer.parseInt(request.getParameter("add")));
+                System.out.println(car.getProductCopies(0)+"___"+p.getQty());
+                if(car.getProductCopies(p)<p.getQty())
+                    car.addProduct(p);
                 session.setAttribute("cart", car);
                 response.sendRedirect(contextPath + "/utente/carrello");
                 break;
@@ -177,7 +182,7 @@ public class UtenteServlet extends HttpServlet {
                 }
                 break;
             case "/acquistoCart":
-                car = (Cart) session.getAttribute("cart");
+                car = (Cart) request.getSession().getAttribute("cart");
                 Acquisto acquisto=new Acquisto();
                 java.util.Date dataOrdine=new Date();
                 java.sql.Date sqlDate = new java.sql.Date(dataOrdine.getTime());

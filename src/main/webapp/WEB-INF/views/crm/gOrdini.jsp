@@ -31,6 +31,7 @@
                         <th>Id</th>
                         <th>Utente</th>
                         <th>Data</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,12 @@
                             <td data-head="id">${order.id}</td>
                             <td data-head="email">${order.utente.email}</td>
                             <td data-head="data">${order.data}</td>
+                            <td>
+                                <form action="./viewOrdine">
+                                    <input type="hidden" id="idOrdine" name="idOrdine" value="${order.id}">
+                                    <input type="submit" class="btn" value="Visualizza">
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

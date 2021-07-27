@@ -4,6 +4,8 @@ import progetto.SpaceGaming.ConPool;
 import progetto.SpaceGaming.cart.Cart;
 import progetto.SpaceGaming.console.Console;
 import progetto.SpaceGaming.console.ConsoleExtractor;
+import progetto.SpaceGaming.product.Product;
+import progetto.SpaceGaming.product.ProductDAO;
 
 import java.sql.*;
 import java.text.DecimalFormat;
@@ -23,12 +25,20 @@ public class AcquistoDAO {
                 throw new RuntimeException("INSERT error.");
             }
             int id=doRetrieveLast().getId();
+            ProductDAO pDao=new ProductDAO();
             for(int i=0; i<cart.getItems().size(); i++){
+                Product p=new Product();
+                p=cart.getItems().get(i);
                 PreparedStatement ps2 = con.prepareStatement(
                         "INSERT INTO AcqProd(prodotto, acquisto, nCopie) VALUES(?,?,?)");
-                ps2.setInt(1, cart.getItems().get(i).getId());
+                ps2.setInt(1, p.getId());
                 ps2.setInt(2, id);
-                ps.setInt(3, cart.getProductCopies(i));
+                ps2.setInt(3, cart.getProductCopies(i));
+                p.setQty(p.getQty()-cart.getProductCopies(i));
+                pDao.doChanges(p);
+                if (ps2.executeUpdate() != 1) {
+                    throw new RuntimeException("INSERT error.");
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -66,11 +76,29 @@ public class AcquistoDAO {
         }
     }
 
+    public Cart getCart(Acquisto ordine) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT prodotto, nCopie FROM Acquisto as ordine, AcqProd as ap WHERE ordine.id=ap.acquisto AND ordine.id="+ordine.getId());
+            ResultSet rs = ps.executeQuery();
+            Cart cart=new Cart();
+            ProductDAO proDao=new ProductDAO();
+            while (rs.next()) {
+                int idProd=rs.getInt(1);
+                Product p=proDao.doRetrieveById(idProd);
+                cart.addProductAndCopies(p, rs.getInt(2));
+            }
+            return cart;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public Acquisto doRetrieveById(int id) {
         Acquisto ordine = null;
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Acquisto as ordine WHERE ref_id=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Acquisto as ordine WHERE id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             AcquistoExtractor aex = new AcquistoExtractor();
