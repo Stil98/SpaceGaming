@@ -3,9 +3,9 @@ INSERT into spacegaming.utente(email, pword, fname, lname, address, phone_number
 INSERT into spacegaming.utente(email, pword, fname, lname, address, phone_number, is_admin) VALUES ('marcopastore@gmail.com', SHA1('Marco12!'), 'Marco', 'Pastore', 'Via e di Salerno 91', 0987654321, false);
 INSERT into spacegaming.utente(email, pword, fname, lname, address, phone_number, is_admin) VALUES ('sabamilan@hotmail.it', SHA1('Gennaro12!'), 'S', 'C', 'A', 1234567890, false);
 
-INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210618', 30.34, 'sabatocelentano@gmail.com');
-INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210718',60.99, 'gennarorascato@gmail.com');
-INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210728', 30.00, 'sabatocelentano@gmail.com');
+INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210618', 329.93, 'sabatocelentano@gmail.com');
+INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210718',50.99, 'gennarorascato@gmail.com');
+INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210728', 140.97, 'sabatocelentano@gmail.com');
 
 INSERT into spacegaming.console(nome, descrizione) VALUES ('XBOX', 'test xbox');
 INSERT into spacegaming.console(nome, descrizione) VALUES ('PS4', 'Test PS4');
@@ -32,5 +32,11 @@ INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) 
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (7, 'Mario Kart 8: Deluxe', 45.99, 'PEGI : 8', 'SWITCH', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\019.jpg'));
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (18, 'Arms', 49.99, 'PEGI : 12', 'SWITCH', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\020.jpg'));
 
-
-
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (1, 1, 3);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (5, 1, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (6, 1, 2);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (17, 1, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (3, 2, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (2, 3, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (3, 3, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (20, 3, 1);
