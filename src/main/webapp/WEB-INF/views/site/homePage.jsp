@@ -11,68 +11,10 @@
 
 <html>
 <head>
+  <link href="${context}/css/home.css" rel="stylesheet">
+
   <title>Home Page</title>
 
-  <style>
-
-    .containerProd, .consoleName{
-      display: flex;
-      margin-left: 10%;
-      margin-right:10%;
-      background-color: lightcyan;
-      border:2px solid black;
-      width: 100%;
-    }
-    .consoleName {
-      margin-top: 5%;
-      background-color: var(--lilla);
-    }
-  .plus_img:hover{
-   filter: brightness(80%);
-
-    }
-    .product-1{
-      border:1px solid purple;
-      flex:25%;
-      text-align: center;
-    }
-    .product-1:hover{
-      filter: brightness(80%);
-    }
-    .singleProdInfo{
-      text-align: center;
-    }
-    #last{
-      margin-bottom: 5%;
-    }
-    .show-more{
-      flex:25%;
-      text-align: center;
-      position: relative;
-      top: 20%;
-      left: 0%;
-
-    }
-    .show-more img:hover{
-      filter: brightness(80%);
-    }
-    .consoleName{
-      color:black;
-      text-align: center;
-      justify-content: center;
-
-    }
-
-    @media screen and (max-width: 900px){
-      .containerProd{
-        display:block;
-      }
-      .product-1{
-        width: 100%;
-      }
-    }
-  </style>
-  </style>
 </head>
 <body>
 <%

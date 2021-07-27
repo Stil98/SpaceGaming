@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register Complete</title>
+    <title>Order success</title>
     <style>
         h1 {
             font-size: 50px;
@@ -23,7 +23,7 @@
         }
         .bg {
 
-            background-image: url("${context}/images/mission_complete.png");
+            background-image: url("${context}/images/banner.jpg");
 
         }
 

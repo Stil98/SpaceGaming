@@ -23,23 +23,7 @@ public class UtenteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doPost(request, response);
-        HttpSession session = request.getSession();
-        String contextPath = getServletContext().getContextPath();
-        String path = getPath(request);
-        switch (path) {
-            case "/logout": //LOGOUT CLIENTE
-                session.setAttribute("log", false);
-                session.invalidate();
-                response.sendRedirect(contextPath + "/utente/home");
-                break;
-
-            case "/profilo": //apre pagina profilo
-                request.getRequestDispatcher("/WEB-INF/views/site/modProfilo.jsp");
-                break;
-        }
     }
-
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String path= getPath(request);
@@ -82,6 +66,11 @@ public class UtenteServlet extends HttpServlet {
                     session.setAttribute("log", true);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
+                break;
+            case "/logout": //LOGOUT CLIENTE
+                session.setAttribute("log", false);
+                session.invalidate();
+                response.sendRedirect(contextPath + "/utente/home");
                 break;
             case "/create": // CREAZIONE PROFILO CLIENTE
                 String fname = request.getParameter("nome");
@@ -158,9 +147,9 @@ public class UtenteServlet extends HttpServlet {
                             car.addProduct(pro); //aggiungo a cart il prodotto se non c'è gia
                         }
                     }
-                        session.setAttribute("cart", car);
-                        response.sendRedirect(contextPath + "/utente/carrello");
-                        break;
+                    session.setAttribute("cart", car);
+                    response.sendRedirect(contextPath + "/utente/carrello");
+                    break;
                 }
             case "/addprod":
                 car = (Cart) session.getAttribute("cart");
@@ -214,7 +203,7 @@ public class UtenteServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/site/viewCart.jsp").forward(request, response);
                 break;
             default:
-               // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
+                 request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 

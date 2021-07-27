@@ -119,7 +119,6 @@ public class CrmServlet extends HttpServlet {
                 session.setAttribute("cart", cart);
                 request.getRequestDispatcher("/WEB-INF/views/crm/viewCart.jsp").forward(request, response);
                 break;
-
                 default:
                     request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
@@ -208,7 +207,7 @@ public class CrmServlet extends HttpServlet {
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
                 break;
             default:
-               // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 }

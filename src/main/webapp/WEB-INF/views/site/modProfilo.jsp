@@ -154,10 +154,10 @@
             return false;
         }
         if(z && p){
-            alert("Modifiche effettuate con successo");
+            return true;
         }
-        return true;
     }
+
 
 </script>
 </html>
