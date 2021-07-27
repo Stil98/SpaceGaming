@@ -67,6 +67,9 @@
         fieldset{
             margin-bottom:60px;
         }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +116,7 @@
 
         <span> Telefono </span>
         <label for="telefono" class="field">
-            <input type="text" name="telefono" id="telefono" value="<%=user.getPhoneNumber()%>" required>
+            <input type="number" name="telefono" id="telefono" value="<%=user.getPhoneNumber()%>" required>
         </label>
         <button class="btn_primary" type="submit">Conferma Modifiche</button>
 

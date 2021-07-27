@@ -952,8 +952,6 @@ acquisto</ColNames>
       <ColNames>acquisto</ColNames>
       <RefTableName>acquisto</RefTableName>
       <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="298" parent="287" name="id">
       <Position>1</Position>
@@ -988,8 +986,6 @@ acquisto</ColNames>
       <ColNames>utente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>email</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="305" parent="288" name="nome">
       <Position>1</Position>
@@ -1055,8 +1051,6 @@ acquisto</ColNames>
       <ColNames>console</ColNames>
       <RefTableName>console</RefTableName>
       <RefColNames>nome</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="318" parent="290" name="email">
       <Position>1</Position>

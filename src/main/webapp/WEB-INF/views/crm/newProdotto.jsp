@@ -47,8 +47,8 @@
                 <div class="grid-x align-center">
                 <input type="radio" id="PS4" name="console" value="PS4">
                 <label for="PS4">PS4</label>  
-                    <input type="radio" id="XBOX ONE" name="console" value="XBOX ONE">
-                <label for="XBOX ONE">XBOX ONE</label>  
+                    <input type="radio" id="XBOX" name="console" value="XBOX">
+                <label for="XBOX">XBOX</label>  
                     <input type="radio" id="SWITCH" name="console" value="SWITCH">
                 <label for="SWITCH">SWITCH</label>  
                 </div>

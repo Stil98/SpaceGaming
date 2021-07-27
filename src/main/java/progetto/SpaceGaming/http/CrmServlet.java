@@ -187,7 +187,7 @@ public class CrmServlet extends HttpServlet {
                 double price=Double.parseDouble(request.getParameter("prezzo"));
                 p.setPrezzo(price);
                 p.setDescrizione(request.getParameter("descrizione"));
-                if (request.getParameter("img")!=null) {
+                if (!request.getPart("img").getSubmittedFileName().isEmpty()) {
                     String uPath = "C:" + File.separator + "ProgramData" + File.separator + "MySQL" +
                             File.separator + "MySQL Server 8.0" + File.separator + "Uploads" + File.separator;
                     Part fPart = request.getPart("img");

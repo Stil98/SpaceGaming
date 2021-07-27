@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
+    <style>
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     <title>Modifica Cliente</title>
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Admin Dashboard"/>
@@ -16,7 +21,7 @@
     <%@include file="../partials/crmSidebar.jsp"%>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp"%>
-        <form class="grid-x justify-center align-center" action="./clienteModifica" method="post">
+        <form class="grid-x justify-center align-center" action="./clienteModifica" method="post" onsubmit="return numberValidation()">
             <fieldset class="field grid-y cell w40">
                 <h1 style="text-align: center">Modifica Cliente</h1>
                 <br>
@@ -37,7 +42,7 @@
 
                 <span> Telefono </span>
                 <label for="telefono" class="field">
-                    <input type="text" name="telefono" id="telefono" value="${customer.phoneNumber}" required>
+                    <input type="number" name="telefono" id="telefono" value="${customer.phoneNumber}" required>
                 </label>
                 <input type="hidden" name="email" id="email" value="${customer.email}">
                 <br>
@@ -45,6 +50,18 @@
             </fieldset>
         </form>
     </section>
+    <script>
+        function numberValidation() {
+            var cell = document.getElementById("telefono").value;
+            if (cell.length == 10) {
+                return true
+            } else
+            {
+                alert("Il numero non è corretto!");
+                return false;
+            }
+        }
+    </script>
 </main>
 </body>
 </html>

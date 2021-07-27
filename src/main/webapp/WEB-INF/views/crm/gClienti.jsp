@@ -48,7 +48,7 @@
                             <td data-head="Cognome">${customer.lname}</td>
                             <td data-head="Admin">${customer.admin}</td>
                             <td>
-                                <form action="./modClienti" method="post">
+                                <form action="./modClienti">
                                     <input type="hidden" id="id" name="id" value="${customer.email}">
                                     <input type="submit" class="btn" value="Modifica">
                                 </form>

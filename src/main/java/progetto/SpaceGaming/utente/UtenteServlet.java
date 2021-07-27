@@ -120,6 +120,10 @@ public class UtenteServlet extends HttpServlet {
                 if (b) { //CONTROLLO SE LOGGATO E SE IL CART ESISTE SENO ISTANZIO
                     if (session.getAttribute("cart") != null)
                         car=(Cart) session.getAttribute("cart");
+                    else {
+                        car = new Cart();
+                        session.setAttribute("cart", car);
+                    }
                     if (car != null)
                         request.getRequestDispatcher("/WEB-INF/views/site/cart.jsp").forward(request, response);
                     else {
