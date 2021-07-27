@@ -40,7 +40,7 @@
     <div class="container">
             <div class="col-4">
                 <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-                    <a href="/SpaceGaming_war_exploded/index.jsp">Space Gaming</a>.
+                    <a href="<%=request.getContextPath()%>/index.jsp">Space Gaming</a>.
                 </p>
             </div>
             </div>
