@@ -16,152 +16,17 @@
             <jsp:include page="/WEB-INF/views/partials/headerlogged.jsp">
                 <jsp:param name="title" value=""/>
             </jsp:include>
+    <link href="${context}/css/cart.css" rel="stylesheet">
 
     <style>
-        body{
-            background-image: url("${context}/images/backimage2.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position-x: center;
-            min-height:100vh;
-        }
-        .grid-x{
-            flex-direction: column;
-        }
-        .singleProduct {
-            padding: 20px 6px;
-            margin-left: 30%;
-            margin-right: 30%;
-            border-bottom: solid 1px black;
-            background-color: white;
-        }
-
-        .singleProduct .prodImg {
-            float: left;
-            margin-right: 10px;
-        }
-
-        .singleProduct .prodImg img {
-            max-width: 100%;
-            left: 0;
-            top: 0;
-        }
-
-
-        .singleProdInfo {
-            float: left;
-            width: 250px;
-            margin-bottom: 10px;
-            padding-top: 6px;
-        }
-
-        p {
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-        }
-        ul {
-            display: block;
-            list-style-type: disc;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            padding-inline-start: 40px;
-        }
-        body, h1, h2, h3, h4, h5, h6, p, li, ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        h3{
-            color: black;
-        }
-        .singleProdInfo ul {
-            margin-top: 16px;
-        }
-        .singleProduct .prodBuy {
-            float: right;
-            clear: right;
-            width: 270px;
-        }
-        .prodBuy {
-            max-width: 320px;
-        }
-        .clearing {
-            clear: both;
-        }
-        div.prodBuy .buyNew a, div.prodBuy .buyUsed a, div.prodBuy .buyPresell a, div.prodBuy .buyDLC a, div.prodBuy .buyTier3 {
-            display: block;
-            margin-top: 10px;
-        }
-        a.megaButton {
-            display: inline-block;
-            vertical-align: middle;
-            height: 38px;
-            line-height: 38px;
-            padding: 0 5px 0 8px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 17px;
-            text-transform: uppercase;
-            background: #ee3124;
-            border: solid 2px #ee3124;
-            color: #FFF;
-            -webkit-transition: 0.2s;
-            -moz-transition: 0.2s;
-            -o-transition: 0.2s;
-            transition: 0.2s;
-        }
-        .singleProdInfo li {
-            padding-left: 10px;
-        }
-        a.megaButton span {
-            text-decoration: none;
-            cursor: pointer;
-        }
-        div.singleProdInfo strong {
-            color: black;
-            font-style: italic;
-        }
-        b{
-            color:white;
-        }
-        .btnCart {
-            background-color: #ee3124;
-            transition: none;
-            border: none;
-            padding: 8px;
-            font-weight: bold;
-            font-style: normal;
-        }
-        .btnCart:hover{
-            filter:none;
-            transition: none;
-            background-color: #ee3124;
-        }
-        a.megaButton:hover{
-            filter:brightness(140%);
-        }
-        b{
-            color: black;
-        }
-        #total {
-            color: white;
-        }
-        .add{
-            border-radius: 100%;
-            padding: 0px 8px 3px 8px;
-            background-color: var(--verde);
-        }
-        .delete{
-            border-radius: 100%;
-            padding: 0px 10px 3px 10px;
-            background-color: var(--rosso);
-        }
-    </style>
+    body{
+        background-image: url("${context}/images/backimage2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        min-height:100vh;
+    }
+</style>
 </head>
 
 <body>

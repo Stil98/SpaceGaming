@@ -23,7 +23,7 @@
         }
         .bg {
 
-            background-image: url("${context}/images/mission_complete.png");
+            background-image: url("${context}/images/banner.jpg");
 
         }
 

@@ -37,6 +37,8 @@ import java.util.ArrayList;
                     Product p=proDAO.doRetrieveById(Integer.parseInt(request.getParameter("id")));
                     request.setAttribute("product", p);
                     request.getRequestDispatcher("/WEB-INF/views/site/singleProduct.jsp").forward(request, response);
+                default:
+                    request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
             }
         }
     }
