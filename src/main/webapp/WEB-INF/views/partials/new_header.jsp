@@ -105,6 +105,11 @@
 
         }
 
+        .logo{
+            margin-top: 14px;
+            margin-top: 10px;
+        }
+
 
         @media screen and (max-width: 1300px) {
 
@@ -142,7 +147,7 @@
     </div>
     <div class="search_box">
         <input type="search" id="search" onkeyup="enterKey()" class="search-box" autocomplete="off"
-               maxlength="150"  placeholder="Search...">
+               maxlength="150"  placeholder="Cerca...">
         <div id="demo"></div>
     </div>
     <div class="log_btn">
