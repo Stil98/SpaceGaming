@@ -1,5 +1,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <html>
 <head>
   <title>Home Page</title>
@@ -14,9 +17,12 @@
       border:2px solid black;
       width: 100%;
     }
-    .consoleName{
-      margin-top:5%;
+    .consoleName {
+      margin-top: 5%;
       background-color: var(--lilla);
+    }
+  .plus_img:hover{
+   filter: brightness(80%);
 
     }
     .product-1{
@@ -39,8 +45,11 @@
       position: relative;
       top: 20%;
       left: 0%;
-    }
 
+    }
+    .show-more img:hover{
+      filter: brightness(80%);
+    }
     .consoleName{
       color:black;
       text-align: center;
@@ -125,7 +134,7 @@
     </div>
     <div class="product-1">
       <h3>Mostra di più</h3>
-      <a class="show-more" href="#"><img src="${context}/icons/menu.svg" width="50" height="50"></a>
+      <a class="show-more" href="#"><img src="${context}/icons/plus.png" width="50" height="50"></a>
     </div>
 
   </div>
@@ -162,7 +171,7 @@
     </div>
     <div class="product-1">
       <h3>Mostra di più</h3>
-      <a class="show-more" href="#"><img src="${context}/icons/menu.svg" width="50" height="50"></a>
+      <a class="show-more" href="#"><img src="${context}/icons/plus.png" width="50" height="50"></a>
     </div>
 
   </div>
