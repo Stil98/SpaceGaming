@@ -48,6 +48,21 @@ public class Cart {
         return p;
     }
 
+    public Product addProductAndCopies(Product p, int nCopie){
+        for (int i=0; i<=items.size(); i++){
+            if (i==items.size()){
+                items.add(p);
+                copies.add(nCopie);
+                return p;
+            }
+            else if (p.getId()==items.get(i).getId()) {
+                copies.set(i, copies.get(i) + nCopie);
+                return p;
+            }
+        }
+        return p;
+    }
+
     public void removeProduct(Product p){
         for (int i=0; i<items.size(); i++) {
             if (p.getId() == items.get(i).getId()) {
@@ -89,7 +104,7 @@ public class Cart {
 
     public int getProductCopies(Product p){
         for (int i=0; i<items.size(); i++) {
-            if (p.equals(items.get(i)))
+            if (p.getId() == items.get(i).getId())
                 return copies.get(i);
         }
         return 0;

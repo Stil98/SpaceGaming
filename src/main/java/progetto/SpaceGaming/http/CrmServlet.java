@@ -2,6 +2,7 @@ package progetto.SpaceGaming.http;
 
 import progetto.SpaceGaming.acquisto.Acquisto;
 import progetto.SpaceGaming.acquisto.AcquistoDAO;
+import progetto.SpaceGaming.cart.Cart;
 import progetto.SpaceGaming.console.Console;
 import progetto.SpaceGaming.console.ConsoleDAO;
 import progetto.SpaceGaming.product.Product;
@@ -31,6 +32,7 @@ public class CrmServlet extends HttpServlet {
         ProductDAO prodDao=new ProductDAO();
         ConsoleDAO cnslDao=new ConsoleDAO();
         AcquistoDAO ordDao=new AcquistoDAO();
+        HttpSession session=request.getSession();
         int id;
         Utente usr=new Utente();
         Product p=new Product();
@@ -39,6 +41,12 @@ public class CrmServlet extends HttpServlet {
                 break;
             case "/dashboard":
                 int nUtenti = usrDao.userCount();
+                String total = ordDao.getTotal();
+                String monthlytotal = ordDao.getTotalMonthly();
+                int totProd = prodDao.countById();
+                request.setAttribute("totaleprodotti",totProd);
+                request.setAttribute("totalemese", monthlytotal);
+                request.setAttribute("totale", total);
                 request.setAttribute("nUtenti", nUtenti);
                 request.getRequestDispatcher("/WEB-INF/views/crm/dashboard.jsp").forward(request, response);
                 break;
@@ -104,6 +112,13 @@ public class CrmServlet extends HttpServlet {
                 cnslDao.doChanges(cn);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gCategorie");
                 break;
+            case "/viewOrdine":
+                id= Integer.parseInt(request.getParameter("idOrdine"));
+                Acquisto a= ordDao.doRetrieveById(id);
+                Cart cart= ordDao.getCart(a);
+                session.setAttribute("cart", cart);
+                request.getRequestDispatcher("/WEB-INF/views/crm/viewCart.jsp").forward(request, response);
+                break;
 
                 default:
                     request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
@@ -114,6 +129,7 @@ public class CrmServlet extends HttpServlet {
         String path=(request.getPathInfo() != null) ? request.getPathInfo() : "/";
         UtenteDAO usrDao=new UtenteDAO();
         ProductDAO prodDao=new ProductDAO();
+        AcquistoDAO aDao=new AcquistoDAO();
         Product p=new Product();
         switch (path){
             case "/":
@@ -192,7 +208,7 @@ public class CrmServlet extends HttpServlet {
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gProdotti");
                 break;
             default:
-                request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
+               // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
         }
     }
 }

@@ -194,7 +194,6 @@ double total = 0;%>
     <a class="megaButton cartAddNoRadio">
         <span>
             <form action="./acquistoCart">
-                <input type="hidden" name="cart" value="${cart}">
                 <button type="submit" class="btnCart">Acquista Carrello</button>
                 <b id="total">€<%=df.format(total)%></b>
             </form>

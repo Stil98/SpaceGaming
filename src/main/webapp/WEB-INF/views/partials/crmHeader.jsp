@@ -5,7 +5,8 @@
     </label>
     <span class="account">
         <img src="${context}/icons/menu.svg">
-        Benvenuto Amministratore
+
+        Benvenuto ${profilo.fname}
     </span>
 </header>
 
