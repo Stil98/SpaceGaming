@@ -106,7 +106,6 @@ public class CrmServlet extends HttpServlet {
                 break;
 
             case "/cnslModifica":
-                System.out.println(cnslDao.doRetrieveById(request.getParameter("nome")));
                 Console cn=cnslDao.doRetrieveById(request.getParameter("nome"));
                 cn.setDescrizione(request.getParameter("descrizione"));
                 cnslDao.doChanges(cn);
