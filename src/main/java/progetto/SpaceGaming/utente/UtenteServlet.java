@@ -154,7 +154,6 @@ public class UtenteServlet extends HttpServlet {
             case "/addprod":
                 car = (Cart) session.getAttribute("cart");
                 p =prodao.doRetrieveById(Integer.parseInt(request.getParameter("add")));
-                System.out.println(car.getProductCopies(0)+"___"+p.getQty());
                 if(car.getProductCopies(p)<p.getQty())
                     car.addProduct(p);
                 session.setAttribute("cart", car);
@@ -176,7 +175,6 @@ public class UtenteServlet extends HttpServlet {
                 Acquisto acquisto=new Acquisto();
                 java.util.Date dataOrdine=new Date();
                 java.sql.Date sqlDate = new java.sql.Date(dataOrdine.getTime());
-                System.out.println(sqlDate);
                 acquisto.setUtente((Utente) session.getAttribute("profilo"));
                 acquisto.setData(sqlDate);
                 AcquistoDAO aDao=new AcquistoDAO();
@@ -190,7 +188,6 @@ public class UtenteServlet extends HttpServlet {
                 if (t) {
                     Utente userlog = (Utente) session.getAttribute("profilo");
                     ArrayList<Acquisto> orders = ordDao.doRetrieveByEmail(userlog.getEmail());
-                    System.out.println(orders.size());
                     request.setAttribute("ordersEmail", orders);
                     request.getRequestDispatcher("/WEB-INF/views/site/showorders.jsp").forward(request, response);
                 }

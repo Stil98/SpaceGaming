@@ -157,7 +157,6 @@ public class AcquistoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.print(tot);
         DecimalFormat df = new DecimalFormat("#.00");
         return df.format(tot);
     }
