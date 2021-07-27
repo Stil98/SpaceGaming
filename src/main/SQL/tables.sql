@@ -29,7 +29,7 @@ CREATE TABLE Console(
 CREATE TABLE Product(
                         id int PRIMARY KEY auto_increment,
                         qty int NOT NULL,
-                        nome char(20) NOT NULL,
+                        nome char(50) NOT NULL,
                         prezzo float NOT NULL,
                         descrizione varchar(200) NOT NULL,
                         console char(12) NOT NULL,
