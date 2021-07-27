@@ -16,7 +16,7 @@
             </jsp:include>
         </c:when>
         <c:otherwise>
-            <jsp:include page="/WEB-INF/views/partials/header.jsp">
+            <jsp:include page="/WEB-INF/views/partials/new_header.jsp">
                 <jsp:param name="title" value=""/>
             </jsp:include>
         </c:otherwise>

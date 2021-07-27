@@ -9,6 +9,7 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Modifica Profilo"/>
     </jsp:include>
+
     <style>
         body{
             background-image: url("${context}/images/starbackground.jpg");
@@ -124,7 +125,6 @@
     function passwordValidation() {
         let p = false;
         let z = false;
-        let y = false;
         var psw = document.getElementById("password").value;
         var psw2 = document.getElementById("confermapassword").value;
         var cell = document.getElementById("telefono").value;
@@ -153,9 +153,10 @@
             alert("Le password non corrispondono");
             return false;
         }
-        if(z && y && p){
-            return true;
+        if(z && p){
+            alert("Modifiche effettuate con successo");
         }
+        return true;
     }
 
 </script>

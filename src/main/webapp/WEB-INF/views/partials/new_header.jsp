@@ -12,17 +12,12 @@
         body{
             background-color: var(--viola);
         }
-        .logo{
-           height:200px;
-            margin: -70px -100px -80px -90px;
-        }
         header{
             display:flex;
             justify-content: flex-start;
-            background-image: url("https://media.giphy.com/media/KY2ZMhnCxP008/source.gif");
             background-size: 30px;
             widht:100%;
-            background-color: purple;
+            background-color: #1e1e1e;
         }
         .buttons,.search_box{
             flex:35%;
@@ -31,7 +26,7 @@
             margin:33px 10px 33px 10px;
         }
 
-        .cartbtn,.log_btn,.img_logo{
+        .cartbtn,.log_btn{
             flex:10%;
             text-align:center;
             top:50%;
@@ -46,13 +41,17 @@
             color:white;
             transition: all 0.4s ease 0s;
         }
-
+        .cartbtn{
+            flex: 10%;
+            margin-left: 1%;
+            margin-top: 1.15%;
+        }
         button:hover{
             background-color: violet;
             filter: brightness(100%);
         }
         .cartbtn img{
-            border-radius: 50px;
+            border-radius: 30px;
             transition: all 0.4s ease 0s;
             padding: 10px;
             height: 50px;
@@ -69,6 +68,28 @@
         input[type=search]:hover{
             filter:brightness(80%);
         }
+        .buttons a, .log_btn a{
+            display: inline-block;
+            padding:10px 20px;
+            margin-right: 20px;
+            border-radius: 50px;
+            background-color: var(--lilla);
+            color: white;
+            border:2px solid black;
+            text-decoration: none;
+        }
+        .buttons a, log_btn a{
+            transition: all 0.4s ease 0s;
+
+        }
+
+        .buttons a:hover, .log_btn a:hover{
+            background-color: violet;
+            filter: brightness(100%);
+            transition: all 0.3s ease 0s;
+
+        }
+
 
         @media screen and (max-width: 1300px) {
 
@@ -97,25 +118,24 @@
 
 <header>
     <div class="img_logo">
-        <img class="logo" src="${context}/images/logonuovo.png"  alt="logo" title="Space Gaming">
+        <a href="<%=request.getContextPath()%>/index.jsp"><img class="logo" src="${context}/icons/logo12.png" width="200" height="100" alt="logo" title="Space Gaming"></a>
     </div>
     <div class="buttons">
-        <button href="<%=request.getContextPath()%>/index.jsp">Home</button>
-        <button href="<%=request.getContextPath()%>/.jsp">Console</button>
+        <a href="<%=request.getContextPath()%>/prodotto/PS4"><img src="${context}/images/ps4.png" width="38" height="38"></a>
+        <a href="<%=request.getContextPath()%>/prodotto/XBOX"><img src="${context}/images/xbox.png" width="38" height="38"></a>
+        <a href="<%=request.getContextPath()%>/prodotto/SWITCH"><img src="${context}/images/nintendo.png" width="38" height="38"></a>
     </div>
     <div class="search_box">
         <input type="search" id="search" onkeyup="enterKey()" class="search-box" autocomplete="off"
                maxlength="150"  placeholder="Search...">
     </div>
     <div class="log_btn">
-        <button href="<%=request.getContextPath()%>/utente/secret">Login/Register</button>
+        <a href="<%=request.getContextPath()%>/utente/secret">Login/Registrati</a>
     </div>
     <div class="cartbtn">
-        <a href="#" ><img src="${context}/icons/carticon.png" ></a>
+        <a href="<%=request.getContextPath()%>/utente/carrello" class="cartbtn"><img src="${context}/icons/cart-icon.jpg" width="38" height="38"></a>
+
     </div>
-
-
-
 </header>
 
 </body>

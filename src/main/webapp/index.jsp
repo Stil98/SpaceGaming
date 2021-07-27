@@ -3,6 +3,7 @@
 <%@ page import="progetto.SpaceGaming.product.ProductDAO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html>
@@ -23,10 +24,13 @@
         </c:otherwise>
     </c:choose>
     <style>
-
+        body{
+            background-image: url("${context}/images/backhome2.jpg");
+            background-size: cover;
+        }
     </style>
 </head>
-<body>
+        <body>
 <jsp:include page="/WEB-INF/views/site/homePage.jsp">
     <jsp:param name="title" value=""/>
 </jsp:include>

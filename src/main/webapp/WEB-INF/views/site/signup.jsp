@@ -121,7 +121,6 @@
     function passwordValidation() {
         let p = false;
         let z = false;
-        let y = false;
         var psw = document.getElementById("password").value;
         var psw2 = document.getElementById("confermapassword").value;
         var cell = document.getElementById("telefono").value;
@@ -150,7 +149,7 @@
             alert("Le password non corrispondono");
             return false;
         }
-        if(z && y && p){
+        if(z && p){
             return true;
         }
     }

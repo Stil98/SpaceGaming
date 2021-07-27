@@ -114,7 +114,7 @@ public class UtenteServlet extends HttpServlet {
                 Utente newProfilo = new Utente(fname2,lname2,address2,emailutente2,password2,phoneNumber2,false,null);
                 dao.doChanges(newProfilo);
                 session.setAttribute("profilo", newProfilo);
-                response.sendRedirect(contextPath+"/utente/profile");
+                request.getRequestDispatcher("/index.jsp").forward(request,response);
                 break;
             case "/home": //TI RIMANDA ALLA HOME
                 request.getRequestDispatcher("/index.jsp").forward(request,response);
@@ -185,7 +185,8 @@ public class UtenteServlet extends HttpServlet {
                 acquisto.setData(sqlDate);
                 AcquistoDAO aDao=new AcquistoDAO();
                 aDao.addAcquisto(acquisto, car);
-                response.sendRedirect(contextPath + "/utente/home");
+                request.getRequestDispatcher("/WEB-INF/views/site/succord.jsp").forward(request, response);
+
                 break;
             default:
                // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);
