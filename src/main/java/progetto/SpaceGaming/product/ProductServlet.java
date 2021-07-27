@@ -26,7 +26,7 @@ import java.util.ArrayList;
                     request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                     break;
                 case "/XBOX":
-                    ArrayList<Product> listaX = proDAO.doRetrieveProdottiByPlatform("XBOX ONE");
+                    ArrayList<Product> listaX = proDAO.doRetrieveProdottiByPlatform("XBOX");
                     request.setAttribute("lista", listaX);
                     request.getRequestDispatcher("/WEB-INF/views/site/productPage.jsp").forward(request, response);
                 case "/SWITCH":
