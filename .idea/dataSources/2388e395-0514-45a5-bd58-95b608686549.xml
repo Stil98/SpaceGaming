@@ -993,7 +993,7 @@ acquisto</ColNames>
     </column>
     <column id="305" parent="287" name="descrizione">
       <Position>2</Position>
-      <DataType>varchar(200)|0s</DataType>
+      <DataType>varchar(400)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="306" parent="287" name="PRIMARY">

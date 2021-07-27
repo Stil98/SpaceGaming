@@ -22,7 +22,7 @@ CREATE TABLE Acquisto(
 
 CREATE TABLE Console(
                         nome varchar(20) PRIMARY KEY,
-                        descrizione varchar(200) NOT NULL
+                        descrizione varchar(400) NOT NULL
 );
 
 

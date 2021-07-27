@@ -10,6 +10,12 @@
         <jsp:param name="styles" value="crm"/>
         <jsp:param name="scripts" value="crm"/>
     </jsp:include>
+    <style>
+        td{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    </style>
 </head>
 <body>
 <main class="app">

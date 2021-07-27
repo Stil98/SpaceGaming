@@ -7,9 +7,9 @@ INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210
 INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210718',50.99, 'gennarorascato@gmail.com');
 INSERT into spacegaming.acquisto(dataAcquisto, prezzoTot, utente) VALUES ('20210728', 140.97, 'sabatocelentano@gmail.com');
 
-INSERT into spacegaming.console(nome, descrizione) VALUES ('XBOX', 'test xbox');
-INSERT into spacegaming.console(nome, descrizione) VALUES ('PS4', 'Test PS4');
-INSERT into spacegaming.console(nome, descrizione) VALUES ('SWITCH', 'Test SWITCH');
+INSERT into spacegaming.console(nome, descrizione) VALUES ('XBOX', 'All’interno ospita un processore octa-core AMD Jaguar con velocità di clock di 1,75 GHz, con GPU TFLOPS 1.2, 8 GB di RAM e memoria interna da 500 GB o 1 TB a seconda delle versione. La console dispone di un lettore DVD/Blu-ray 6x, con connettività Wi-Fi, Ethernet e Bluetooth, input e output HDMI, supporto per il 4K e la risoluzione 1080 pixel');
+INSERT into spacegaming.console(nome, descrizione) VALUES ('PS4', 'La PS4 contiene 8 GB di memoria RAM di tipo GDDR5, un hard disk interno da 500 GB, 1 o 2 TB , lettore Blu-ray 6x, DVD 8x, due porte USB 3.0 e una porta AUX. Presente la connettività Ethernet, Wi-Fi  e Bluetooth 2.1');
+INSERT into spacegaming.console(nome, descrizione) VALUES ('SWITCH', 'Nintendo Switch è una console "ibrida" tra un sistema di gioco portatile e uno casalingo. Come console fissa Nintendo Switch si collega alla televisione tramite una docking station, chiamata Nintendo Switch Dock; due joypad rimovibili, chiamati Joy-Con, vengono tenuti insieme da un''impugnatura alla quale si agganciano creando un gamepad dalla forma squadrata.');
 
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (30, 'Elder Ring', 69.99, 'PEGI : 16','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (20, 'Fifa 21', 39.99, 'PEGI : 14','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\002.jpg'));
@@ -32,11 +32,11 @@ INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) 
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (7, 'Mario Kart 8: Deluxe', 45.99, 'PEGI : 8', 'SWITCH', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\019.jpg'));
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (18, 'Arms', 49.99, 'PEGI : 12', 'SWITCH', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\020.jpg'));
 
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (1, 1, 3);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (5, 1, 1);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (6, 1, 2);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (17, 1, 1);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (3, 2, 1);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (2, 3, 1);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (3, 3, 1);
-INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (20, 3, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (17, 1, 3);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (18, 1, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (19, 1, 2);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (15, 1, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (18, 2, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (18, 3, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (16, 3, 1);
+INSERT into spacegaming.acqprod(prodotto, acquisto, nCopie) VALUES (15, 3, 1);
