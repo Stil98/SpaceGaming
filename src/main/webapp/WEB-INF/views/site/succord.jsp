@@ -36,7 +36,7 @@
 <div class="errortext">
     <h1>Ordine effettuato con successo!</h1>
     <form>
-        <input type="button" class="btn" onclick="window.location.href = '/SpaceGaming_war_exploded/index.jsp';" value="Home"/>
+        <input type="button" class="btn" onclick="window.location.href = '<%=request.getContextPath()%>/index.jsp';" value="Home"/>
     </form>
 </div>
 </body>

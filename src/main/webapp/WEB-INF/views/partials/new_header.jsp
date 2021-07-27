@@ -128,6 +128,7 @@
     <div class="search_box">
         <input type="search" id="search" onkeyup="enterKey()" class="search-box" autocomplete="off"
                maxlength="150"  placeholder="Search...">
+        <div id="demo"></div>
     </div>
     <div class="log_btn">
         <a href="<%=request.getContextPath()%>/utente/secret">Login/Registrati</a>
