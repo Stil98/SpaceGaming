@@ -109,7 +109,10 @@
         </p>
       </div>
       <div class="btn">
+        <form action="${pageContext.request.contextPath}/utente/inputcarrello" method="post">
+          <input type="hidden" name="id" value="<%=prodotti.get(y).getId()%>">
         <button type="submit" class="btnCart">Aggiungi al Carrello</button>
+        </form>
       </div>
     </div>
     <%}%>

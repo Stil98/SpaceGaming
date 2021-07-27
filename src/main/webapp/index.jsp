@@ -25,8 +25,9 @@
     </c:choose>
     <style>
         body{
-            background-image: url("${context}/images/backhome2.jpg");
-            background-size: cover;
+            background-image: url("${context}/images/backimage2.jpg");
+            background-size: inherit;
+            background-position: center;
         }
     </style>
 </head>

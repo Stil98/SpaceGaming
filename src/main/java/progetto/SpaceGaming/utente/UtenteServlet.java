@@ -191,6 +191,8 @@ public class UtenteServlet extends HttpServlet {
                 acquisto.setData(sqlDate);
                 AcquistoDAO aDao=new AcquistoDAO();
                 aDao.addAcquisto(acquisto, car);
+                car = new Cart();
+                session.setAttribute("cart",car);
                 request.getRequestDispatcher("/WEB-INF/views/site/succord.jsp").forward(request, response);
 
                 break;
