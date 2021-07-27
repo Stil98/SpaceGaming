@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<main class="appList">
+<main class="app">
     <%@include file="../partials/crmSidebar.jsp" %>
     <section class="content grid-y">
         <%@include file="../partials/crmHeader.jsp" %>

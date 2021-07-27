@@ -12,7 +12,7 @@ INSERT into spacegaming.console(nome, descrizione) VALUES ('PS4', 'Test PS4');
 INSERT into spacegaming.console(nome, descrizione) VALUES ('SWITCH', 'Test SWITCH');
 
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (30, 'Elder Ring', 69.99, 'PEGI : 16','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\001.jpg'));
-INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (20, 'Fifa 21', 39.99, 'PEGI : 14','SWITCH', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\002.jpg'));
+INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (20, 'Fifa 21', 39.99, 'PEGI : 14','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\002.jpg'));
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (30, 'The Last of Us 2', 50.99, 'PEGI : 18','PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\003.jpg'));
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (13, 'Halo', 24.99, 'Pegi : 16', 'XBOX', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\004.jpg'));
 INSERT into spacegaming.product(qty, nome, prezzo, descrizione, console, image) VALUES (10, 'Farcry Primal', 19.99, 'PEGI : 18', 'PS4', LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\products\\005.jpg'));
