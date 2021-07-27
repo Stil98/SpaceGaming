@@ -36,3 +36,13 @@ CREATE TABLE Product(
                         image longblob NOT NULL,
                         FOREIGN KEY (console) references Console(nome)
 );
+
+CREATE TABLE AcqProd(
+                        prodotto int NOT NULL ,
+                        acquisto int NOT NULL ,
+                        nCopie int NOT NULL ,
+                        PRIMARY KEY (prodotto, acquisto),
+                        FOREIGN KEY (prodotto) references Product(id),
+                        FOREIGN KEY (acquisto) references Acquisto(id)
+
+);
