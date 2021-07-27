@@ -26,8 +26,9 @@
     <style>
         body{
             background-image: url("${context}/images/backimage2.jpg");
-            background-size:cover;
-            background-position: center;
+            background-position-x: center;
+            background-attachment: fixed;
+            background-size: cover;
         }
         .grid-x{
             flex-direction: column;

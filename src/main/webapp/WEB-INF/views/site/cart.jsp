@@ -6,6 +6,8 @@
 <%@ page import="progetto.SpaceGaming.cart.Cart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/views/partials/head.jsp">
@@ -16,6 +18,13 @@
             </jsp:include>
 
     <style>
+        body{
+            background-image: url("${context}/images/backimage2.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-x: center;
+            min-height:100vh;
+        }
         .grid-x{
             flex-direction: column;
         }

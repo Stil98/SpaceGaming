@@ -2,6 +2,8 @@
 <%@ page import="progetto.SpaceGaming.product.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <html>
 <head>
@@ -21,6 +23,13 @@
     </c:otherwise>
     </c:choose>
     <style>
+        body{
+            background-image: url("${context}/images/backimage2.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-x: center;
+            min-height:100vh;
+        }
         .grid-x{
             flex-direction: column;
         }
