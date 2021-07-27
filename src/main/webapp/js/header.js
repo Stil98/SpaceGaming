@@ -34,8 +34,10 @@ function searchDB(xmlhttp){
     text="<div class='dropdown-search'>";
     for (let i in result){
         var x=JSON.stringify(result[i].nome);
+        var z=JSON.stringify(result[i].img);
         var y=JSON.stringify(result[i].id);
         idp = eval(y);
+        img = eval(z);
         /**
          * La versione a riga 58 funziona per l'applicazione all'interno di IntelliJ
          * La versione a riga 61 funziona al di fuori di IntelliJ
@@ -49,7 +51,8 @@ function searchDB(xmlhttp){
         else if (ctx == snapshot){
             text+="<a href='/SpaceGaming-1.0-SNAPSHOT/prodotto/product?id="+idp+"'>";
         }
-        text+=x+"</a>";
+        text+="<img src='data:image/jpg;base64,"+img+"' width='80' height='100'>"+x+"</a>";
+
     }
     text+="</div>";
     document.getElementById("demo").hidden=false;

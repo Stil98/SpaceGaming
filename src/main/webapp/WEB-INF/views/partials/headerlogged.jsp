@@ -20,9 +20,16 @@
         widht:100%;
         background-color: #1e1e1e;
     }
-    .buttons,.search_box{
+    .buttons{
         flex:35%;
         text-align:center;
+        top:50%;
+        margin:33px 10px 33px 10px;
+    }
+
+    .search_box{
+        flex:35%;
+        text-align:left;
         top:50%;
         margin:33px 10px 33px 10px;
     }
@@ -110,6 +117,7 @@
         font-size: 24px;
         border-bottom: solid 1px #02020c;
         padding: 5px;
+        text-decoration: none;
 
     }
     .dropdown:hover .dropdown-content {display: block;}
@@ -123,7 +131,7 @@
         header{
             display:block;
         }
-        .img_logo logo,.buttons button,.logged_btn button,.search_box *,.cartbtn {
+        .img_logo logo,.buttons button,.logged_btn button,.search_box #search,.cartbtn {
             margin:0px;
             width: 100%;
         }
@@ -161,7 +169,7 @@
             <button id="wcm">Bentornato ${profilo.fname}</button>
             <div class="dropdown-content">
                 <a href="<%=request.getContextPath()%>/utente/profile">Gestione Profilo</a>
-                <a href="<%=request.getContextPath()%>/cliente/show">I miei ordini</a>
+                <a href="<%=request.getContextPath()%>/utente/show">I miei ordini</a>
                 <a href="<%=request.getContextPath()%>/utente/logout">Logout</a>
             </div>
     </div>

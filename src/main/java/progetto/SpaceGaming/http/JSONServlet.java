@@ -29,12 +29,15 @@ public class JSONServlet extends HttpServlet {
         response.setContentType("text/plain;charset=UTF-8");
         response.getWriter().append("[");
         String nome;
+        String img;
         long id;
         for (int i=0; i<result.size(); i++){
+            img = result.get(i).getBase64img();
             nome = result.get(i).getNome();
             id = result.get(i).getId();
             String idJSON = String.valueOf(id);
             response.getWriter().append("{\"nome\":\"").append(nome).append("\", ");
+            response.getWriter().append("\"img\":\"").append(img).append("\", ");
             response.getWriter().append("\"id\":\"").append(idJSON).append("\"");
             response.getWriter().append("}");
             if (i!=result.size()-1)

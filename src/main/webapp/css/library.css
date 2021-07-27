@@ -174,7 +174,7 @@ div#demo {
     display: grid;
     position: absolute;
     width: 18rem;
-    top: 0px;
+    top: 50px;
     left: 9px;
     overflow: auto;
     max-height: 207px;

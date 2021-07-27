@@ -47,6 +47,7 @@ public class UtenteServlet extends HttpServlet {
         HttpSession session=request.getSession();
         UtenteDAO dao= new UtenteDAO();
         ProductDAO prodao = new ProductDAO();
+        AcquistoDAO ordDao = new AcquistoDAO();
         Product p = new Product();
         Boolean b;
         Cart car = new Cart();
@@ -194,7 +195,23 @@ public class UtenteServlet extends HttpServlet {
                 car = new Cart();
                 session.setAttribute("cart",car);
                 request.getRequestDispatcher("/WEB-INF/views/site/succord.jsp").forward(request, response);
-
+                break;
+            case "/show":
+                Boolean t = (Boolean) session.getAttribute("log");
+                if (t) {
+                    Utente userlog = (Utente) session.getAttribute("profilo");
+                    ArrayList<Acquisto> orders = ordDao.doRetrieveByEmail(userlog.getEmail());
+                    System.out.println(orders.size());
+                    request.setAttribute("ordersEmail", orders);
+                    request.getRequestDispatcher("/WEB-INF/views/site/showorders.jsp").forward(request, response);
+                }
+                break;
+            case "/viewOrdine":
+                int id= Integer.parseInt(request.getParameter("idOrdine"));
+                Acquisto a= ordDao.doRetrieveById(id);
+                Cart cart= ordDao.getCart(a);
+                session.setAttribute("cartv", cart);
+                request.getRequestDispatcher("/WEB-INF/views/site/viewCart.jsp").forward(request, response);
                 break;
             default:
                // request.getRequestDispatcher("/WEB-INF/views/partials/errors.jsp").forward(request, response);

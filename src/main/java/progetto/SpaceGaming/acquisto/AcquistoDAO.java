@@ -113,14 +113,15 @@ public class AcquistoDAO {
     }
 
     public ArrayList<Acquisto> doRetrieveByEmail(String email) {
-        ArrayList<Acquisto> listaOrdini = null;
+        ArrayList<Acquisto> listaOrdini = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Acquisto as ordine WHERE utente=?");
-            ps.setString(1, email);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Acquisto as ordine WHERE utente= '" +email + "';");
             ResultSet rs = ps.executeQuery();
             AcquistoExtractor aex = new AcquistoExtractor();
-            if (rs.next()) {
-                listaOrdini.add(aex.extract(rs));
+            while (rs.next()) {
+                Acquisto ord;
+                ord = aex.extract(rs);
+                listaOrdini.add(ord);
             }
             return listaOrdini;
         } catch (SQLException e) {
