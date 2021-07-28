@@ -78,6 +78,7 @@ public class UtenteDAO {
         public void doChanges(Utente c){
             try (Connection con = ConPool.getConnection()) {
                 Statement st = con.createStatement();
+                System.out.println(c.getPassword());
                 String query = "UPDATE Utente usr SET usr.pword=SHA1('"+c.getPassword()+"')," +"usr.fname='" + c.getFname() + "', " + "usr.lname='"+c.getLname() + "', usr.address='"+c.getAddress() +"'," +
                         "usr.phone_number='"+c.getPhoneNumber()+"', usr.is_admin=" + c.isAdmin() + " WHERE usr.email='" + c.getEmail() + "';";
                 st.executeUpdate(query);
@@ -86,6 +87,18 @@ public class UtenteDAO {
                 throw new RuntimeException(e);
             }
         }
+
+    public void doChangeAdmin(Utente c){
+        try (Connection con = ConPool.getConnection()) {
+            Statement st = con.createStatement();
+            System.out.println(c.getPassword());
+            String query = "UPDATE Utente usr SET usr.is_admin=" + c.isAdmin() + " WHERE usr.email='" + c.getEmail() + "';";
+            st.executeUpdate(query);
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void deleteByEmail(String email){
         try (Connection con = ConPool.getConnection()) {

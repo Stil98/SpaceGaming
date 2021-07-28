@@ -148,7 +148,7 @@ public class CrmServlet extends HttpServlet {
                     usr.setAdmin(false);
                 else
                     usr.setAdmin(true);
-                usrDao.doChanges(usr);
+                usrDao.doChangeAdmin(usr);
                 ArrayList<Utente> customerz= usrDao.doRetrieveAll();
                 request.setAttribute("customers", customerz);
                 response.sendRedirect(getServletContext().getContextPath() + "/crm/gClienti");
