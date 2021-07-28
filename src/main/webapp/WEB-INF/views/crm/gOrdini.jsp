@@ -31,6 +31,7 @@
                         <th>Id</th>
                         <th>Utente</th>
                         <th>Data</th>
+                        <th>Prezzo Totale</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -40,6 +41,7 @@
                             <td data-head="id">${order.id}</td>
                             <td data-head="email">${order.utente.email}</td>
                             <td data-head="data">${order.data}</td>
+                            <td data-head="prezzo totale">${order.prezzoTot}€</td>
                             <td>
                                 <form action="./viewOrdine">
                                     <input type="hidden" id="idOrdine" name="idOrdine" value="${order.id}">
